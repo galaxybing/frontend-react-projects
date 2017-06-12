@@ -1,0 +1,435 @@
+@charset "utf-8";/* @base */body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button{margin:0;padding:0; outline: none;}body,button,input,select,textarea{font-size:14px;font-family:'microsoft yahei',Sans-Serif;}html,body,form,fieldset,p,div,h1,h2,h3,h4,h5,h6{-webkit-text-size-adjust:none;}input,select,textarea{font-size:100%;}table{border-collapse:collapse;border-spacing:0;}th{text-align:inherit;}fieldset,img,a img{border:0;}iframe{display:block;}abbr,acronym{border:0;font-variant:normal;}del{text-decoration:line-through;}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500;}ol,ul{list-style:none;}caption,th{text-align:left;}
+h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500;}q:before,q:after{content:'';}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}em{font-style:normal;}ins,a{text-decoration:none;}a,input{-webkit-tap-highlight-color: transparent;}a{-webkit-touch-callout:none;}.fn-clear:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}.fn-clear{*zoom:1;}.fn-hide{display:none;}.fn-left,.fn-right{display:inline;}.fn-left{float:left;}.fn-right{float:right;}::-webkit-scrollbar{display: none;}
+::-webkit-scrollbar-button:vertical{display:none;}
+::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment{display:none;}
+::-webkit-scrollbar-button:vertical:start:increment,::-webkit-scrollbar-button:vertical:end:decrement{display:none;}
+::-webkit-scrollbar-button:vertical:increment{display:none;}
+::-webkit-scrollbar-button:vertical:decrement{display:none;}
+::-webkit-scrollbar-track:vertical{background-color:#ABACAB;}
+::-webkit-scrollbar-track-piece{background:white;}
+::-webkit-scrollbar-thumb:vertical{height:50px;background-color:#ABACAB;-webkit-border-radius: 5px;}
+::-webkit-scrollbar-corner:vertical{background-color:#ABACAB;}
+html{
+    width: 100%;height: 100%;
+    font-family: 'Heiti SC', 'Microsoft YaHei';
+	/*
+ios 安全字体
+	HelveticaNeue-UltraLight		[android\ios]
+
+	American Typewriter
+	Apple SD Gothic
+	Arial
+	Arial Rounded MT Bold
+	Courier
+	Courier New
+	Georgia
+	Helvetica
+	Helvetica Neue
+	Marker Felt
+	Times
+	Times New Roman
+	Trebuchet MS
+	Verdana
+	Zapfino
+	*/
+    /*  "Bookman", Georgia, "Times New Roman", serif */
+
+    /* font-size 的大小将由flex.js 来配置 */
+	/* font-size:20px; /font-size:62.5%; font-size:10px;不仅影响字体大小 ; 极限小值：font-size:0.0000002px;
+					注：font-size:10px; 确实对中文浏览器是无效的，建议最好设置20px，不过在国外可以设置成10px;
+					*/
+					/* 还可以用来设置宽、高
+					margin-top: 1rem;
+					margin-bottom: .5rem;
+					margin-right: -.5rem;
+					*/
+}
+body{
+    -webkit-backface-visibility:hidden;
+    width: 100%;
+    height: 100%;
+    background:#ffffff;
+    background-size:100% auto;
+    position: relative;
+    z-index: 0;
+
+	/* -webkit-user-select: none; -moz-user-select:none; 禁用用户选中文本（复制粘贴功能受阻） */
+}
+
+input, textarea, select, label {
+    font-family: inherit;
+    font-size: 1.2rem;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+button,input,label{-webkit-tap-highlight-color:rgba(255,0,0,0);}
+a{/* 启动正常的链接标签，带有阴影效果 */
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.3);
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+}
+button,input[type=submit] ,input[type=button]{
+    border: 0;
+    background: 0 0;
+    appearance: none;
+    -webkit-appearance: none;
+    outline: 0
+}
+
+div ,p{/* data-dpr=1 Samsung Galaxy S4 */
+    /*width: 1rem;
+    height: 0.4rem;*/
+    font-size: 14px;
+}
+[data-dpr="2"] div ,[data-dpr="2"] p{/* iphone5-6 */
+    font-size: 26px;
+}
+
+[data-dpr="3"] div ,[data-dpr="3"] p{/* iphone6Plus */
+    font-size: 40px;
+}
+.box{/* 三角形 */
+	content:'';
+	zoom:1;
+	display:block;
+      width: 0px;
+      height: 0px;
+      border: 50px solid transparent;
+      border-top-color: #2DCB70;
+      border-right-color:gold;
+      border-bottom-color: #333333;
+      border-left-color: red;
+}
+
+*, *:before, *:after {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+.indicator{/* 圆点，相对容器高度，垂直居中对齐写法：vertical-align: 30%;只要大于 30% ，即可以； */
+    width: 0.18rem;
+    height:100%;
+    display: inline-block;
+    vertical-align: 150%;
+}
+
+.ico-persion{/* 头像图片与相邻内联元素 span 标签，垂直居中写法： */
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* 盒模型display:flex;的使用[兼容微信浏览器] 处理： */
+
+    .flex{
+        /* 设置弹性布局 */
+        display:-webkit-box;/* android 2.1-3.0, ios 3.2-4.3 */
+        display:-webkit-flex;/* Chrome 21+ */
+        display:-ms-flexbox;/* WP IE 10 */
+        display:flex;/* android 4.4 */
+    }
+    .flex-direction-column{
+        /* 设置弹性布局的方向，子元素按照在源文档中声明的顺序从上到下显示 */
+        -webkit-box-orient: vertical;/* android 2.1-3.0, ios 3.2-4.3 */
+        -webkit-flex-direction: column;/* Chrome 21+ */
+        -ms-flex-direction: column;/* WP IE 10 */
+        flex-direction: column;/* android 4.4 */
+    }
+    .flex-pack-center{
+        /* 水平布局下的子元素 水平居中 */
+        -webkit-box-pack: center;/* android 2.1-3.0, ios 3.2-4.3 */
+        -webkit-justify-content: center;/* Chrome 21+ */
+        -ms-flex-pack: center;/* WP IE 10 */
+        justify-content: center;/* android 4.4 */
+    }
+    .flex-align-center{
+        /* 水平布局下的子元素 垂直居中 */
+        -webkit-box-align: center;/* android 2.1-3.0, ios 3.2-4.3 */
+        -webkit-align-items: center;/* Chrome 21+ */
+        -ms-flex-align: center;/* WP IE 10 */
+        align-items: center;/* android 4.4 */
+    }
+    .flex-pack-justify{
+        /* 水平布局下的子元素 2端对齐 */
+        -webkit-box-pack: justify;/* android 2.1-3.0, ios 3.2-4.3 */
+        -webkit-justify-content: space-between;/* Chrome 21+ */
+        -ms-flex-pack: justify;/* WP IE 10 */
+        justify-content: space-between;/* android 4.4 */
+    }
+
+    /*  设置弹性布局的方向，子元素按照在源文档中声明的顺序从左到右显示
+    .flex-grid{
+    	display:-webkit-box;
+    	display:-moz-box;
+    	display:-ms-flexbox;
+    	display:box;
+    	-webkit-box-pack:justify;
+    	-ms-flex-pack:justify;
+    }
+    */
+
+    .flex-inner{
+    	/*white-space: nowrap;
+        text-overflow: ellipsis;*/
+    	-o-text-overflow:ellipsis;
+    	overflow:hidden;
+    	width:0%;
+    }
+
+    .flex-inner-1{
+    	-moz-box-flex:1;
+    	-webkit-box-flex:1;
+        -webkit-flex:1;
+        flex:1;
+    }
+
+    .flex-inner-2{
+    	-moz-box-flex:2;
+    	-webkit-box-flex:2;
+        -webkit-flex:2;
+        flex:2;
+    }
+
+    .flex-inner-3{
+    	-moz-box-flex:3;
+    	-webkit-box-flex:3;
+        -webkit-flex:3;
+        flex:3;
+    }
+
+    .flex-inner-4{
+    	-moz-box-flex:4;
+    	-webkit-box-flex:4;
+        -webkit-flex:4;
+        flex:4;
+    }
+
+
+.base-img{
+	display:block;
+	width:100%;
+}
+.middle-img{
+    display: inline-block;
+    vertical-align: middle;
+}
+.base-text-ellipsis{/* -webkit-line-clamp: number */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    line-height: 140%;/* 行内文本不要使用上下 padding ，不然会现点号下一行被显示出来问题 */
+}
+.layer-sprite{
+    position:absolute;
+	left:0;top:0;
+	width:100%;
+}
+
+
+input[type="text"],
+input[type="password"],
+input[type="search"],
+input[type="email"],
+input[type="tel"],
+input[type="url"],
+input[type="date"],
+input[type="datetime-local"],
+input[type="time"],
+input[type="number"],
+select,
+textarea{
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	box-sizing: border-box;
+	border: none;
+	background: none;
+	border-radius: 0 0 0 0;
+	box-shadow: none;
+	display: block;
+	padding: 0px;
+	margin: 0;
+	width: 100%;
+	height: 43px;
+	color: #000;
+	font-size: 17px;
+	font-family: inherit;
+}
+
+
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color: #f00;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+    color: #f00;
+}
+
+input:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+    color: #f00;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    color: #f00;
+}
+
+/* 滚动动条 */
+::-webkit-scrollbar {
+    width: 12px;
+}
+
+	/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+
+	/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: rgba(255,0,0,0.8);
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(255,0,0,0.4);
+}
+
+.router-view-container{/* 不再轻意使用 transiton: all */
+    transition: transform 0.5s cubic-bezier(.55,0,.1,1), opacity 0.5s cubic-bezier(.55,0,.1,1);
+    -webkit-transition: -webkit-transform 0.5s cubic-bezier(.55,0,.1,1), opacity 0.5s cubic-bezier(.55,0,.1,1);
+}
+
+/*
+ * @page 页面结构
+ *
+ */
+.page{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 0;
+    overflow: hidden;
+    display: none;/* 延迟渲染 */
+    background-size: cover;
+    z-index: 10;
+
+}
+.layer{
+    position: absolute;
+    display: block;
+}
+
+
+/* 原子化移动端的表单元素 */
+.input-text, .input-button{
+
+	-webkit-appearance: none;
+
+	-moz-appearance: none;
+
+	-ms-appearance: none;
+
+	appearance: none;
+
+	box-sizing: border-box;
+
+	border: none;
+
+	background: none;
+
+	border-radius: 0 0 0 0;
+
+	box-shadow: none;
+
+	display: block;
+
+	padding: 0px;
+
+	margin: 0;
+
+	width: 100%;
+
+	height: 43px;
+
+	color: #000;
+
+	font-size: 17px;
+
+	font-family: inherit;
+
+}
+
+
+/*
+ *  动画
+ *
+ */
+.ani-light{
+    -webkit-transform-origin: 50% 10%;
+    -webkit-animation: lightshaketwo 6s 1s ease-in-out infinite;
+}
+/*
+@-webkit-keyframes lightshaketwo{
+    0% {}
+    100%{}
+}
+*/
+
+
+/* 绝对定位元素水平垂直居中 */
+.page-index  .nav{
+
+	position:absolute;
+
+	left:50%;top:50%;
+
+	-webkit-transform:translate(-50%, -50%);
+
+	transform:translate(-50%, -50%);
+
+}
+
+
+
+/* 度量单位-兼容性处理 微信浏览器可兼容性检测设备宽度咯，
+
+iPhone6&iPhone6 Plus CSS3 Media Queries
+http://www.dbpoo.com/iphone6-plus-css3-media-queries/ */
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) {
+     /*iPhone 6 Portrait*/
+}
+
+@media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : landscape) {
+     /*iPhone 6 landscape*/
+}
+
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation : portrait) {
+     /*iPhone 6+ Portrait*/
+}
+
+@media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (orientation : landscape) {
+     /*iPhone 6+ landscape*/
+}
+
+@media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px){
+     /*iPhone 6 and iPhone 6+ portrait and landscape*/
+}
+
+@media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) and (orientation : portrait){
+     /*iPhone 6 and iPhone 6+ portrait*/
+}
+
+@media only screen and (max-device-width: 640px), only screen and (max-device-width: 667px), only screen and (max-width: 480px) and (orientation : landscape){
+     /*iPhone 6 and iPhone 6+ landscape*/
+}
