@@ -6,7 +6,7 @@ module.exports = {
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist/static/'),
     assetsSubDirectory: 'assets',// static
-    assetsPublicPath: 'http://localhost/demo/demo-react/dist/static/', // /static/
+    assetsPublicPath: 'http://localhost/com_317hu/fe-workflow/dist/static/', // /static/
     productionSourceMap: false,// true 配置是否创建调试 .map 文件
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.

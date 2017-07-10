@@ -1,13 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import {TweenMax} from 'gsap';
+import { Link } from 'react-router-dom';
 
 class DetailView extends Component{
-    render(){
-        return (
-            <div style={{border: '1px solid red'}}>DetailView</div>
-        );
-    }
+  componentDidMount(){
+    console.log('render detail ...');
+  }
+  render(){
+      return (
+        <p style={{textAlign: 'center'}}><Link to='/'>[返回上页]</Link></p>
+      );
+  }
 }
 
 function select(store/*, ownProps*/){ // 1）第一个参数总是state对象，还可以使用第二个参数，代表容器组件的props对象
@@ -20,7 +24,6 @@ function select(store/*, ownProps*/){ // 1）第一个参数总是state对象，
 
 function actions(dispatch, ownProps){
 	return {
-		//loginCodeCheck: (arg)=> dispatch(loginCodeCheck(arg)),
 		dispatch
 	};
 }

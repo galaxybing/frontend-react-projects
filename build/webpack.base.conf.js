@@ -26,13 +26,6 @@ module.exports = {
   },
   module: {
     rules: [
-        /*
-      {
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: vueLoaderConfig // var vueLoaderConfig = require('./vue-loader.conf')
-      },
-      */
       {
         test: /\.js[x]?$/,
         loader: 'babel-loader',

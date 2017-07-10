@@ -6,5 +6,5 @@ import { routerReducer } from 'react-router-redux';
 module.exports = combineReducers({
     config: require('./config'),
     main: require('./main'),
-    router: routerReducer // Add the reducer to store on the `router` key
+    router: routerReducer //将 reducer 声明到 store 里面的 router 键
 });

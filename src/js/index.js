@@ -1,9 +1,9 @@
 'use strict';
 require('../css/lib.css');
 require('../css/app.css');
-require('../js/core/flex.js');
 
 import React, { Component } from 'react';
+
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
@@ -25,10 +25,9 @@ class Root extends Component{
     }
     render(){
         var props = this.props;
-        // return <h1>Hello, {props.name}？</h1>;
         return (
           <Provider store={this.state.store}>
-			  <App />
+			      <App />
           </Provider>
         );
     }

@@ -9,8 +9,7 @@ const storage = window.localStorage;
 
 async function loadFetchQueryAwait(query) {/* 强制同步请求，返回的是最终数据格式 */
     let { method, body }= query;
-    // method = `http://test.receive.zjqq.mobi/${method}`;
-    method = `http://jd.zju.edu.cn/${method}`;
+    method = `http://localhost/${method}`;
     // 处理传参数据
     if(typeof body == 'string'){
         if(body.indexOf('=')<0){
@@ -46,9 +45,7 @@ async function loadFetchQueryAwait(query) {/* 强制同步请求，返回的是�
 
 function loadFetchQuery(query) {/* 异步请求，返回的是 Promise 对象 */
     let {method, body, methodType, hostType}= query;
-    // method= `http://test.receive.zjqq.mobi/${method}.html`;
-    // method = `http://jd.zju.edu.cn/${method}`;
-    method = `http://localhost:8000/${method}`;
+    method = `http://localhost/${method}`;
     // 处理传参数据
     if(typeof body == 'string'){
         if(body.indexOf('=')<0){
@@ -100,7 +97,7 @@ function getFetchQuery(query) {
     var params = typeof body == 'string' ? body : Object.keys(body).map(
             function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(body[k]) }
         ).join('&');
-    method = `http://localhost:8000${method}?${params}`;
+    method = `http://localhost/${method}?${params}`;
     return new Promise((resolve, reject) => {
         fetch(method,{
             method: 'GET',

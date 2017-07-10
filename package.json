@@ -5,15 +5,11 @@
   "private": true,
   "scripts": {
     "build": "node build/build.js",
-    "build:nothistory": "webpack --config ./webpack.config.js",
-    "build:production": "NODE_ENV=production webpack -p",
     "test": "jest",
     "lint": "eslint",
     "start": "",
     "watch": "",
-    "dev": "node build/dev-server.js",
-    "dev:server": "webpack-dev-server --config ./webpack.config.js --inline --hot --port 9090  --content-base ./app/ --devtool eval --progress --colors",
-    "dev:history": "webpack-dev-server --config ./webpack.config.js --history-api-fallback"
+    "dev": "node build/dev-server.js"
   },
   "dependencies": {
     "create-react-class": "^15.5.3",

@@ -1,19 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {TweenMax} from 'gsap';
 
-class ListView extends Component{
+import { Link } from 'react-router-dom';
+import { TweenMax } from 'gsap';// 动画
+
+class LoginView extends Component{
   static contextTypes={
 		router: React.PropTypes.object.isRequired,
 	};
-  goBack(){
+  toPageList(){
     var loc = this.context.router.history;
-    loc.goBack()
+    // loc.replace({ pathname: `/list/100153/hospital`});
+    loc.push({ pathname: `/list/100153/hospital`});
+    
   }
   render(){
       return (
-        <div style={{textAlign: 'center', color: '#ff0000'}} onClick={()=>this.goBack()}>[返回上页]</div>
-      );
+          <div className="page-index">
+            <p style={{textAlign: 'center'}}>
+              <a href="http://www.317hu.com/" target="_blank">317护</a>
+            </p>
+            <div className=""><a href="javascript:;" onClick={()=>this.toPageList()}>动态跳转路由链接</a></div>
+            <Link to="/detail">Link 标签跳转路由链接</Link>
+          </div>
+      )
   }
 }
 
@@ -27,9 +37,8 @@ function select(store/*, ownProps*/){ // 1）第一个参数总是state对象，
 
 function actions(dispatch, ownProps){
 	return {
-		//loginCodeCheck: (arg)=> dispatch(loginCodeCheck(arg)),
+		//loginCheck: (arg)=> dispatch(loginCheck(arg)),
 		dispatch
 	};
 }
-
-module.exports = connect(select, actions)(ListView);
+module.exports = connect(select, actions)(LoginView);
