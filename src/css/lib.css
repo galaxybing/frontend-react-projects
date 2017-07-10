@@ -1,4 +1,4 @@
-@charset "utf-8";/* @base */body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button{margin:0;padding:0; outline: none;}body,button,input,select,textarea{font-size:14px;font-family:'microsoft yahei',Sans-Serif;}html,body,form,fieldset,p,div,h1,h2,h3,h4,h5,h6{-webkit-text-size-adjust:none;}input,select,textarea{font-size:100%;}table{border-collapse:collapse;border-spacing:0;}th{text-align:inherit;}fieldset,img,a img{border:0;}iframe{display:block;}abbr,acronym{border:0;font-variant:normal;}del{text-decoration:line-through;}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500;}ol,ul{list-style:none;}caption,th{text-align:left;}
+@charset "utf-8";/* @base */body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,textarea,p,blockquote,th,td,hr,button{margin:0;padding:0; outline: none;}body,button,input,select,textarea{font-size:14px;font-family:-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB', "Microsoft YaHei", sans-serif}html,body,form,fieldset,p,div,h1,h2,h3,h4,h5,h6{-webkit-text-size-adjust:none;}input,select,textarea{font-size:100%;}table{border-collapse:collapse;border-spacing:0;}th{text-align:inherit;}fieldset,img,a img{border:0;}iframe{display:block;}abbr,acronym{border:0;font-variant:normal;}del{text-decoration:line-through;}address,caption,cite,code,dfn,em,th,var{font-style:normal;font-weight:500;}ol,ul{list-style:none;}caption,th{text-align:left;}
 h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500;}q:before,q:after{content:'';}sup{vertical-align:text-top;}sub{vertical-align:text-bottom;}em{font-style:normal;}ins,a{text-decoration:none;}a,input{-webkit-tap-highlight-color: transparent;}a{-webkit-touch-callout:none;}.fn-clear:after{visibility:hidden;display:block;font-size:0;content:" ";clear:both;height:0;}.fn-clear{*zoom:1;}.fn-hide{display:none;}.fn-left,.fn-right{display:inline;}.fn-left{float:left;}.fn-right{float:right;}::-webkit-scrollbar{display: none;}
 ::-webkit-scrollbar-button:vertical{display:none;}
 ::-webkit-scrollbar-button:start:decrement,::-webkit-scrollbar-button:end:increment{display:none;}
@@ -9,56 +9,13 @@ h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:500;}q:before,q:after{content:'';}s
 ::-webkit-scrollbar-track-piece{background:white;}
 ::-webkit-scrollbar-thumb:vertical{height:50px;background-color:#ABACAB;-webkit-border-radius: 5px;}
 ::-webkit-scrollbar-corner:vertical{background-color:#ABACAB;}
-html{
-    width: 100%;height: 100%;
-    font-family: 'Heiti SC', 'Microsoft YaHei';
-	/*
-ios 安全字体
-	HelveticaNeue-UltraLight		[android\ios]
-
-	American Typewriter
-	Apple SD Gothic
-	Arial
-	Arial Rounded MT Bold
-	Courier
-	Courier New
-	Georgia
-	Helvetica
-	Helvetica Neue
-	Marker Felt
-	Times
-	Times New Roman
-	Trebuchet MS
-	Verdana
-	Zapfino
-	*/
-    /*  "Bookman", Georgia, "Times New Roman", serif */
-
-    /* font-size 的大小将由flex.js 来配置 */
-	/* font-size:20px; /font-size:62.5%; font-size:10px;不仅影响字体大小 ; 极限小值：font-size:0.0000002px;
-					注：font-size:10px; 确实对中文浏览器是无效的，建议最好设置20px，不过在国外可以设置成10px;
-					*/
-					/* 还可以用来设置宽、高
-					margin-top: 1rem;
-					margin-bottom: .5rem;
-					margin-right: -.5rem;
-					*/
-}
 body{
     -webkit-backface-visibility:hidden;
-    width: 100%;
-    height: 100%;
-    background:#ffffff;
-    background-size:100% auto;
-    position: relative;
-    z-index: 0;
-
-	/* -webkit-user-select: none; -moz-user-select:none; 禁用用户选中文本（复制粘贴功能受阻） */
 }
 
 input, textarea, select, label {
     font-family: inherit;
-    font-size: 1.2rem;
+    /* font-size: 1.2rem; */
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -109,7 +66,8 @@ div ,p{/* data-dpr=1 Samsung Galaxy S4 */
 }
 
 .indicator{/* 圆点，相对容器高度，垂直居中对齐写法：vertical-align: 30%;只要大于 30% ，即可以； */
-    width: 0.18rem;
+    /* width: 0.18rem; */
+    width: 12px;
     height:100%;
     display: inline-block;
     vertical-align: 150%;
@@ -372,7 +330,6 @@ textarea::-webkit-input-placeholder {
 
 /*
  *  动画
- *
  */
 .ani-light{
     -webkit-transform-origin: 50% 10%;
@@ -387,24 +344,12 @@ textarea::-webkit-input-placeholder {
 
 
 /* 绝对定位元素水平垂直居中 */
-.page-index  .nav{
-
+.page .item-center{
 	position:absolute;
-
 	left:50%;top:50%;
-
 	-webkit-transform:translate(-50%, -50%);
-
 	transform:translate(-50%, -50%);
-
 }
-
-
-
-/* 度量单位-兼容性处理 微信浏览器可兼容性检测设备宽度咯，
-
-iPhone6&iPhone6 Plus CSS3 Media Queries
-http://www.dbpoo.com/iphone6-plus-css3-media-queries/ */
 
 @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (orientation : portrait) {
      /*iPhone 6 Portrait*/

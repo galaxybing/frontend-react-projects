@@ -1,17 +1,9 @@
 .page-base{
-    padding: 0.38rem;
     line-height: 220%;
 }
-.page-header{
-    font-size: 0.48rem;
-    font-weight: bold;
-    height: 1.2rem;
-    line-height: 1.2rem;
-    text-align: center;
-}
 .page-base .pic-sprite{
-    margin: 0.28rem auto;
+    margin: 10px auto;
 }
 .page-base p{
-    margin-bottom: 0.38rem;
+    margin-bottom: 10px;
 }
