@@ -1,15 +1,16 @@
 'use strict';
-//require('es6-promise').polyfill();
+const Promise = require('es6-promise').polyfill();
 const fetch = require('isomorphic-fetch');// 针对 ios 10.3.1（不含）以下版本？？及ie
 //const logError = require('logError');
-
+if (!window.Promise) {
+window.Promise = Promise;
+}
 import type { ThunkAction } from '../actions/types';
-const storage = window.localStorage;
-
+const config = require('../../../config/request.js');
 
 async function loadFetchQueryAwait(query) {/* 强制同步请求，返回的是最终数据格式 */
     let { method, body }= query;
-    method = `http://localhost/${method}`;
+    method = `http://${config.privilegeApi}/${method}`;
     // 处理传参数据
     if(typeof body == 'string'){
         if(body.indexOf('=')<0){
@@ -25,6 +26,7 @@ async function loadFetchQueryAwait(query) {/* 强制同步请求，返回的是�
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded'
             },
+            credentials: 'include'
         }).then(function(response){
             return response;
         })
@@ -43,48 +45,42 @@ async function loadFetchQueryAwait(query) {/* 强制同步请求，返回的是�
 
 }
 
-function loadFetchQuery(query) {/* 异步请求，返回的是 Promise 对象 */
-    let {method, body, methodType, hostType}= query;
-    method = `http://localhost/${method}`;
-    // 处理传参数据
-    if(typeof body == 'string'){
-        if(body.indexOf('=')<0){
-            body = JSON.parse(body);
-        };
-    }
-    var params = typeof body == 'string' ? body : Object.keys(body).map(
-            function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(body[k]) }
-        ).join('&');
-    /*
-    return new Promise((resolve, reject) => {
-        fetch(method, {
-            method: "POST",
-            body: params,
-            async: false,
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-        })
-    	.then(function(response) {
-            return response.json();
-    	}).then(function(res){
-            resolve(res);
-            //引用
-            // let results = await Parse.run({hostType: "comment", method: `auth/auth`, body: {code: source,}});
-        });
-    });
-    */
-    return fetch(method, {
-        method: "POST",
-        body: params,
-        async: false,
-        headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-        },
-    }).then(function(response) {
-        return response.json();
+/** @loadFetchQuery
+ * 向服务器发起请求的方法，且方法类型为: POST
+ *
+ * 1) Object.keys(source).map() 时，需要配置 Content-Type 为 'application/x-www-form-urlencoded'
+ * 2) JSON.stringify(source) 时，需要配置 Content-Type 为 'application/json'
+ * 
+ * @param    {query}  object     请求参数
+ * @returns  promise
+ *
+ * @date     2017-07-12 create
+ * @author   galaxyw<wangyh@317hu.com>
+ */
+function loadFetchQuery(query) {
+  let {method, body, methodType, hostType}= query;
+  method = `http://${config.privilegeApi}/${method}`;
+
+  if(typeof body == 'string'){
+    if(body.indexOf('=')<0){
+        body = JSON.parse(body);
+    };
+  }
+  var params = typeof body == 'string' ? body : Object.keys(body).map(
+          function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(body[k]) }
+      ).join('&');
+  return fetch(method, {
+    method: "POST",
+    body: params,
+    async: false,
+    headers: {
+        'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    credentials: 'include'
+  }).then(function(response) {
+      return response.json();
 	});
-}
+};
 
 function getFetchQuery(query) {
     var {method, body, methodType, hostType}= query;
@@ -97,7 +93,7 @@ function getFetchQuery(query) {
     var params = typeof body == 'string' ? body : Object.keys(body).map(
             function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(body[k]) }
         ).join('&');
-    method = `http://localhost/${method}?${params}`;
+    method = `http://${config.privilegeApi}/${method}?${params}`;
     return new Promise((resolve, reject) => {
         fetch(method,{
             method: 'GET',

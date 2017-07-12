@@ -9,7 +9,7 @@
     "lint": "eslint",
     "start": "",
     "watch": "",
-    "dev": "node build/dev-server.js"
+    "dev:server": "node build/dev-server.js"
   },
   "dependencies": {
     "create-react-class": "^15.5.3",

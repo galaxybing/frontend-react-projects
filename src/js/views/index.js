@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import { Link } from 'react-router-dom';
 import { TweenMax } from 'gsap';// 动画
-
+import { vedioListAndUrlQuery } from '../actions';
 class LoginView extends Component{
   static contextTypes={
 		router: React.PropTypes.object.isRequired,
@@ -13,6 +13,9 @@ class LoginView extends Component{
     // loc.replace({ pathname: `/list/100153/hospital`});
     loc.push({ pathname: `/list/100153/hospital`});
     
+  }
+  componentDidMount(){
+    this.props.dispatch(vedioListAndUrlQuery());
   }
   render(){
       return (
@@ -37,7 +40,6 @@ function select(store/*, ownProps*/){ // 1）第一个参数总是state对象，
 
 function actions(dispatch, ownProps){
 	return {
-		//loginCheck: (arg)=> dispatch(loginCheck(arg)),
 		dispatch
 	};
 }
