@@ -39,3 +39,19 @@ function select(store) {
   };
 };
 module.exports = connect(select)(App);
+
+/*
+ * 没有路由版本结构：
+import React, { Component } from 'react';
+import IndexView from './index';
+
+class App extends Component{// function??/
+  render() {
+    return (
+      <IndexView />
+    );
+  }
+};
+
+module.exports = App;
+*/

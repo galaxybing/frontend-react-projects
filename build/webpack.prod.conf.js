@@ -6,27 +6,41 @@ var merge = require('webpack-merge')
 var baseWebpackConfig = require('./webpack.base.conf')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractCss = new ExtractTextPlugin({
+  filename: utils.assetsPath('css/[name].[contenthash].css'),
+  disable: process.env.NODE_ENV === "development"
+});
+const extractAntd = new ExtractTextPlugin({
+  filename: utils.assetsPath('css/antd.[contenthash].css'),
+  disable: process.env.NODE_ENV === "development"
+});
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
-
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
-    rules: utils.styleLoaders({
-      sourceMap: config.build.productionSourceMap,
-      extract: true
-    })
+    rules: [
+      // ...utils.styleLoaders({
+      //   sourceMap: config.build.productionSourceMap,
+      //   extract: true,
+      // }),
+      //...utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true, includeNodeModules: false }),
+      //...utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true, includeNodeModules: true }),
+    ]
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
     // filename: utils.assetsPath('js/[name].[chunkhash].js'),
     // chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
-    filename: utils.assetsPath('js/[name].js'),
-    chunkFilename: utils.assetsPath('js/[id].js')
+    filename: utils.assetsPath('js/[name].[chunkhash].js'),
+    chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -39,10 +53,19 @@ var webpackConfig = merge(baseWebpackConfig, {
       sourceMap: true
     }),
     // extract css into its own file
+    extractAntd,// ??
+    extractCss,
+    /*
     new ExtractTextPlugin({
       // filename: utils.assetsPath('css/[name].[contenthash].css')
-      filename: utils.assetsPath('css/[name].css')
+      filename: function(getPath){
+        console.log(getPath('css/[name].css'));
+        return getPath('css/[name].css')
+      },
+      allChunks: true
     }),
+    */
+    
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin(),

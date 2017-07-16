@@ -5,6 +5,15 @@ var config = require('../config')
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
+var ExtractTextPlugin = require('extract-text-webpack-plugin');
+const extractCss = new ExtractTextPlugin({
+  filename: utils.assetsPath('css/[name].[contenthash].css'),
+  disable: process.env.NODE_ENV === "development"
+});
+const extractAntd = new ExtractTextPlugin({
+  filename: utils.assetsPath('css/antd.[contenthash].css'),
+  disable: process.env.NODE_ENV === "development"
+});
 
 module.exports = {
   entry: {
@@ -24,8 +33,44 @@ module.exports = {
       '@': resolve('src'),
     }
   },
+  plugins: [
+    extractCss,
+    extractAntd,
+  ],
   module: {
     rules: [
+      
+      {test: /(\.css|\.less)$/, include: [resolve('src/js/components')], use: extractCss.extract({
+                use: [{
+                    loader: "css-loader",
+                    options: {
+                      modules: true,
+                      url: false,
+                      minimize: process.env.NODE_ENV === 'production',
+                      sourceMap: config.build.productionSourceMap,
+                      localIdentName: '[name]__[local]___[hash:base64:5]',
+                    }
+                }, {
+                    loader: "less-loader"
+                }],
+                fallback: "style-loader"
+            })},
+      {test: /(\.css|\.less)$/, exclude: [resolve('src/js/components')], use: extractAntd.extract({
+                use: [{
+                    loader: "css-loader",
+                    options: {
+                      modules: false,
+                      url: false,
+                      minimize: process.env.NODE_ENV === 'production',
+                      sourceMap: config.build.productionSourceMap,
+                      localIdentName: '[name]__[local]___[hash:base64:5]',
+                    }
+                }, {
+                    loader: "less-loader"
+                }],
+                fallback: "style-loader"
+            })},
+      
       {
         test: /\.js[x]?$/,
         loader: 'babel-loader',
@@ -41,7 +86,8 @@ module.exports = {
         query: {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
-        }
+        },
+        include: [resolve('src')],
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
