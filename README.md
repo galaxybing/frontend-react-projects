@@ -9,8 +9,11 @@ npm run dev:server
 ```
 # 热替换的演示路径
 - 访问：`http://localhost:8081/`
-
 - [热替换演示路径：](http://localhost:9090/index.html)
 
+# 提交开发域名给后端 galaxyw.317hu.com
+
 ***
+
+
 
