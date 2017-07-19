@@ -15,5 +15,5 @@ npm run dev:server
 
 ***
 
-
+http://resource.317hu.com/frontend-workflow/v1.0.10/static/index.html
 
