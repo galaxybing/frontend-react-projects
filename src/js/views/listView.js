@@ -6,6 +6,11 @@ class ListView extends Component{
   static contextTypes={
 		router: React.PropTypes.object.isRequired,
 	};
+  componentDidMount(){
+    console.log('this.props.match.params->', this.props.match.params);
+    console.log('this.context.router->', this.context.router);
+    console.log('this.props->', this.props);// dispatch history location match
+  }
   goBack(){
     var loc = this.context.router.history;
     loc.goBack()

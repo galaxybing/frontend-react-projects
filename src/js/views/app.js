@@ -5,7 +5,16 @@ import { ConnectedRouter } from 'react-router-redux';
 
 import IndexView from './index';
 import ListView from './listView';
-import DetailView from './detailView';
+
+// import DetailView from './detailView';
+import Bundle from '../core/bundle.js';
+import DetailViewContainer from 'bundle-loader?lazy&name=page-[name]!./detailView.js';
+const DetailView = () => (
+    <Bundle load={DetailViewContainer}>
+        {(DetailView) => <DetailView />}
+    </Bundle>
+)
+
 class App extends Component{// function??/
   render() {
     // /* Router switch to [ ConnectedRouter ] will use the store from Provider automatically */

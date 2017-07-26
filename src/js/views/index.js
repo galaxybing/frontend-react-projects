@@ -15,7 +15,7 @@ class LoginView extends Component{
     
   }
   componentDidMount(){
-    this.props.dispatch(vedioListAndUrlQuery());
+    // this.props.dispatch(vedioListAndUrlQuery());
   }
   render(){
       return (
@@ -23,8 +23,8 @@ class LoginView extends Component{
             <p style={{textAlign: 'center'}}>
               <a href="http://www.317hu.com/" target="_blank">317护</a>
             </p>
-            <div className=""><a href="javascript:;" onClick={()=>this.toPageList()}>动态跳转路由链接</a></div>
-            <Link to="/detail">Link 标签跳转路由链接</Link>
+            <div className=""><a href="javascript:;" onClick={()=>this.toPageList()}>动态跳转路由链接 - list</a></div>
+            <Link to="/detail">Link 标签跳转路由链接 - detail</Link>
           </div>
       )
   }

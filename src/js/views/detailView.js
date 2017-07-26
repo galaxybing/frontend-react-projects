@@ -4,12 +4,17 @@ import {TweenMax} from 'gsap';
 import { Link } from 'react-router-dom';
 
 class DetailView extends Component{
+  constructor(props){
+    super(props);
+  }
   componentDidMount(){
     console.log('render detail ...');
   }
   render(){
       return (
-        <p style={{textAlign: 'center'}}><Link to='/'>[返回上页]</Link></p>
+        <p style={{textAlign: 'center'}}>
+          <Link to='/'>[返回上页]</Link>
+        </p>
       );
   }
 }
