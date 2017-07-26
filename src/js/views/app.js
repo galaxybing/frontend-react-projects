@@ -7,6 +7,9 @@ import IndexView from './index';
 import ListView from './listView';
 
 // import DetailView from './detailView';
+/*
+ * 这里为按单独文件引用，也可以按目录：
+ */
 import Bundle from '../core/bundle.js';
 import DetailViewContainer from 'bundle-loader?lazy&name=page-[name]!./detailView.js';
 const DetailView = () => (
@@ -14,6 +17,8 @@ const DetailView = () => (
         {(DetailView) => <DetailView />}
     </Bundle>
 )
+// <Route name='detail' path='/detail' component={DetailView} />
+
 
 class App extends Component{// function??/
   render() {
