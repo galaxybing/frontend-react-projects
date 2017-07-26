@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {TweenMax} from 'gsap';
+// import {TweenMax} from 'gsap';
 import { Link } from 'react-router-dom';
 
 class DetailView extends Component{

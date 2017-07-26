@@ -3,29 +3,26 @@ import { connect } from 'react-redux';
 import { BrowserRouter, HashRouter, Switch, Route } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
 
-import IndexView from './index';
-import ListView from './listView';
-
-// import DetailView from './detailView';
-/*
- * 这里为按单独文件引用，也可以按目录：
- */
 import Bundle from '../core/bundle.js';
-import DetailViewContainer from 'bundle-loader?lazy&name=page-[name]!./detailView.js';
-const DetailView = () => (
-    <Bundle load={DetailViewContainer}>
-        {(DetailView) => <DetailView />}
-    </Bundle>
-)
-// <Route name='detail' path='/detail' component={DetailView} />
 
+//import DetailViewContainer from 'bundle-loader?lazy&name=page-[name]!./pages/detailView.js';
+
+import IndexView from './index.js';
+import ListViewContainer from './pages/ListView.js'; // bundle-loader 返回
+import DetailViewContainer from './pages/DetailView.js';
+const createChildRouteComponent = (container, props,) => (
+    <Bundle load={container}>
+        {(View) => <View {...props} />}
+    </Bundle>
+);
 
 class App extends Component{// function??/
   render() {
     // /* Router switch to [ ConnectedRouter ] will use the store from Provider automatically */
+    const supportsHistory = 'pushState' in window.history;
     /*
     return (
-      <BrowserRouter history={history}>
+      <BrowserRouter forceRefresh={!supportsHistory} keyLength={12}>
 				<div>
 					<Route exact path="/" component={IndexView}/>
 					<Route name='list' path='/list(/:id/:name)' component={ListView} />
@@ -38,8 +35,11 @@ class App extends Component{// function??/
       <HashRouter>
 				<Switch>
           <Route exact path="/" component={IndexView}/>
-					<Route name='list' path='/list/:id/:name' component={ListView} />
-					<Route name='detail' path='/detail' component={DetailView} />
+					<Route name='list' path='/list/:id/:name' page='abc' component={(props, a, method) => {
+            // console.log('props->>>', props, ' a->>>', a, ' method->>>', method,);
+            return createChildRouteComponent(ListViewContainer, props);
+          }} />
+					<Route name='detail' path='/detail' component={() => createChildRouteComponent(DetailViewContainer)} />
 				</Switch>
       </HashRouter>
     );

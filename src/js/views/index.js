@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import { Link } from 'react-router-dom';
-import { TweenMax } from 'gsap';// 动画
+// import { TweenMax } from 'gsap';// 动画
 import { vedioListAndUrlQuery } from '../actions';
 class LoginView extends Component{
   static contextTypes={
