@@ -15,11 +15,6 @@ const extractCss = new ExtractTextPlugin({
   filename: exports.assetsPath('css/[name].[contenthash].css'),
   disable: process.env.NODE_ENV === "development"
 });
-const extractAntd = new ExtractTextPlugin({
-  filename: exports.assetsPath('css/antd.[contenthash].css'),
-  disable: process.env.NODE_ENV === "development"
-});
-
 
 exports.cssLoaders = function (options) {
   options = options || {}

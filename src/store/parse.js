@@ -6,7 +6,7 @@ if (!window.Promise) {
 window.Promise = Promise;
 }
 import type { ThunkAction } from '../actions/types';
-const config = require('../../config/request.js');
+const config = require('./api.js');
 
 async function loadFetchQueryAwait(query) {/* 强制同步请求，返回的是最终数据格式 */
     let { method, body }= query;

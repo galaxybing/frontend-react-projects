@@ -7,6 +7,7 @@ var baseWebpackConfig = require('./webpack.base.conf')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
+/*
 const extractCss = new ExtractTextPlugin({
   filename: utils.assetsPath('css/[name].[contenthash].css'),
   disable: process.env.NODE_ENV === "development"
@@ -15,6 +16,7 @@ const extractAntd = new ExtractTextPlugin({
   filename: utils.assetsPath('css/antd.[contenthash].css'),
   disable: process.env.NODE_ENV === "development"
 });
+*/
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 var env = process.env.NODE_ENV === 'testing'
@@ -55,9 +57,10 @@ var webpackConfig = merge(baseWebpackConfig, {
       sourceMap: true
     }),
     */
+    
     // extract css into its own file
-    extractAntd,// ??
-    extractCss,
+    // extractAntd,// ??
+    // extractCss,
     /*
     new ExtractTextPlugin({
       // filename: utils.assetsPath('css/[name].[contenthash].css')
@@ -95,6 +98,8 @@ var webpackConfig = merge(baseWebpackConfig, {
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
+    
+    /*
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -109,6 +114,8 @@ var webpackConfig = merge(baseWebpackConfig, {
         )
       }
     }),
+    */
+    
     // extract webpack runtime and module manifest to its own file in order to
     // prevent vendor hash from being updated whenever app bundle is updated
     new webpack.optimize.CommonsChunkPlugin({

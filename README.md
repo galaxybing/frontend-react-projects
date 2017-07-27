@@ -28,25 +28,15 @@ npm run build
 
 # 项目特性：
 
-## 单页面开发模式
+1. 单页面开发模式
+2. 按需加载子路由
+3. 进行路由美化配置
+  - 对 history 显示进行路由美化
+  - 实现生产环境，配置 nginx 代理服务器为 history 路径显示
+  - nginx
 
-## 按需加载子路由
-- 的资源加载做分离处理
-- 构建打包时，路由分离加载机制
-  - react-router
-  - webpack
-- 保持开发环境，node本机服务器模拟 history 路径、#SourceMap定位源码；能分离路由资源文件的话，更好！
-  - node express 服务器
 
-## 目录结构调整 - 可借鉴 dva
-- 去除简单 js\css 目录，按功能进行线分
-
-## 进行路由美化配置
-- 对 history 显示进行路由美化
-- 实现生产环境，配置 nginx 代理服务器为 history 路径显示
-- nginx
-
-***
+/ 路径加载失败？？403
 
 ## react-router-redux@^5.0.0-alpha.6
 

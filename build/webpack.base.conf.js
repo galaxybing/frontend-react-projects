@@ -40,7 +40,7 @@ module.exports = {
   module: {
     rules: [
       {/* 自定义的组件，样式 css-modules 化？？如果需要使用其他的 css 预编译程序，则可以去除以下两条配置 */
-        test: /(\.css|\.less)$/, include: [resolve('src/js/components')], use: extractCss.extract({
+        test: /(\.css|\.less)$/, include: [resolve('src/components')], use: extractCss.extract({
           use: [{
               loader: "css-loader",
               options: {
@@ -57,7 +57,7 @@ module.exports = {
         })
       },
       {
-        test: /(\.css|\.less)$/, exclude: [resolve('src/js/components')], use: extractAntd.extract({
+        test: /(\.css|\.less)$/, exclude: [resolve('src/components')], use: extractAntd.extract({
           use: [{
               loader: "css-loader",
               options: {
