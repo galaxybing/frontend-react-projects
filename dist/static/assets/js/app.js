@@ -99,12 +99,11 @@ var App = function (_Component) {
     key: 'render',
     value: function render() {
       var supportsHistory = 'pushState' in window.history;
-
       return _react2.default.createElement(
-        _reactRouterDom.HashRouter,
-        null,
+        _reactRouterDom.BrowserRouter,
+        { forceRefresh: !supportsHistory, keyLength: 12 },
         _react2.default.createElement(
-          _reactRouterDom.Switch,
+          'div',
           null,
           _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _index2.default }),
           _react2.default.createElement(_reactRouterDom.Route, { name: 'list', path: '/list/:id/:name', page: 'abc', component: function component(props, a, method) {
@@ -719,7 +718,7 @@ var LoginView = function (_Component) {
           _react2.default.createElement(
             'a',
             { href: 'http://www.317hu.com/', target: '_blank' },
-            '317\u62A4'
+            '317\u62A4\u54AF'
           )
         ),
         _react2.default.createElement(

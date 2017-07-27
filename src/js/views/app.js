@@ -18,19 +18,27 @@ const createChildRouteComponent = (container, props,) => (
 
 class App extends Component{// function??/
   render() {
-    // /* Router switch to [ ConnectedRouter ] will use the store from Provider automatically */
-    const supportsHistory = 'pushState' in window.history;
+    // Router switch to [ ConnectedRouter ] will use the store from Provider automatically ??
     /*
+     * 美化路由为 .html
+    
+    const supportsHistory = 'pushState' in window.history;
     return (
       <BrowserRouter forceRefresh={!supportsHistory} keyLength={12}>
 				<div>
 					<Route exact path="/" component={IndexView}/>
-					<Route name='list' path='/list(/:id/:name)' component={ListView} />
-					<Route name='detail' path='/detail' component={DetailView} />
+					<Route name='list' path='/list/:id/:name' page='abc' component={(props, a, method) => {
+            return createChildRouteComponent(ListViewContainer, props);
+          }} />
+					<Route name='detail' path='/detail' component={() => createChildRouteComponent(DetailViewContainer)} />
 				</div>
       </BrowserRouter>
     );
-    */
+     */
+     
+    /*
+     * 锚点路由链接形式：
+     */
     return (
       <HashRouter>
 				<Switch>
@@ -43,7 +51,7 @@ class App extends Component{// function??/
 				</Switch>
       </HashRouter>
     );
-    
+  
   }
 };
 

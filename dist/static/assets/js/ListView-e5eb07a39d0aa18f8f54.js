@@ -54,7 +54,7 @@ var ListView = function (_Component) {
         { style: { textAlign: 'center', color: '#ff0000' }, onClick: function onClick() {
             return _this2.goBack();
           } },
-        '[\u8FD4\u56DE\u4E0A\u9875]'
+        '[\u8FD4\u56DE\u4E0A\u9875\u53BB\u5427]'
       );
     }
   }]);

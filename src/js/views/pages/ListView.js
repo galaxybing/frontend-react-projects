@@ -17,7 +17,7 @@ class ListView extends Component{
   }
   render(){
       return (
-        <div style={{textAlign: 'center', color: '#ff0000'}} onClick={()=>this.goBack()}>[返回上页]</div>
+        <div style={{textAlign: 'center', color: '#ff0000'}} onClick={()=>this.goBack()}>[返回上页去吧]</div>
       );
   }
 }

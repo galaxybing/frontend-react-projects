@@ -39,37 +39,40 @@ module.exports = {
   ],
   module: {
     rules: [
-      
-      {test: /(\.css|\.less)$/, include: [resolve('src/js/components')], use: extractCss.extract({
-                use: [{
-                    loader: "css-loader",
-                    options: {
-                      modules: true,
-                      url: false,
-                      minimize: process.env.NODE_ENV === 'production',
-                      sourceMap: config.build.productionSourceMap,
-                      localIdentName: '[name]__[local]___[hash:base64:5]',
-                    }
-                }, {
-                    loader: "less-loader"
-                }],
-                fallback: "style-loader"
-            })},
-      {test: /(\.css|\.less)$/, exclude: [resolve('src/js/components')], use: extractAntd.extract({
-                use: [{
-                    loader: "css-loader",
-                    options: {
-                      modules: false,
-                      url: false,
-                      minimize: process.env.NODE_ENV === 'production',
-                      sourceMap: config.build.productionSourceMap,
-                      localIdentName: '[name]__[local]___[hash:base64:5]',
-                    }
-                }, {
-                    loader: "less-loader"
-                }],
-                fallback: "style-loader"
-            })},
+      {/* 自定义的组件，样式 css-modules 化？？如果需要使用其他的 css 预编译程序，则可以去除以下两条配置 */
+        test: /(\.css|\.less)$/, include: [resolve('src/js/components')], use: extractCss.extract({
+          use: [{
+              loader: "css-loader",
+              options: {
+                modules: true,
+                url: false,
+                minimize: process.env.NODE_ENV === 'production',
+                sourceMap: config.build.productionSourceMap,
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              }
+          }, {
+              loader: "less-loader"
+          }],
+          fallback: "style-loader"
+        })
+      },
+      {
+        test: /(\.css|\.less)$/, exclude: [resolve('src/js/components')], use: extractAntd.extract({
+          use: [{
+              loader: "css-loader",
+              options: {
+                modules: false,
+                url: false,
+                minimize: process.env.NODE_ENV === 'production',
+                sourceMap: config.build.productionSourceMap,
+                localIdentName: '[name]__[local]___[hash:base64:5]',
+              }
+          }, {
+              loader: "less-loader"
+          }],
+          fallback: "style-loader"
+        })
+      },
       
       {
         test: /\.js[x]?$/,
@@ -79,6 +82,14 @@ module.exports = {
         },
         exclude: /node_modules/,
         include: [resolve('src'), resolve('test')] // include: path.join(__dirname, './src/js')
+      },
+      {/* 按需加载子路由 */
+        test: /([^/]+)\/?([^/]*)\.(js|jsx)?$/,
+        use: [
+            'bundle-loader?lazy&name=[name]',
+            'babel-loader?presets=es2015&presets=stage-2&presets=react',
+        ],
+        include: path.resolve(__dirname, '../src/js/views/pages/'),
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

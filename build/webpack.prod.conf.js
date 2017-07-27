@@ -33,17 +33,6 @@ var webpackConfig = merge(baseWebpackConfig, {
       // }),
       //...utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true, includeNodeModules: false }),
       //...utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true, includeNodeModules: true }),
-      
-      {
-          // test: /views\/pages\/([^/]+)\/?([^/]*)\.(js|jsx)?$/,
-         test: /([^/]+)\/?([^/]*)\.(js|jsx)?$/,
-          use: [
-              'bundle-loader?lazy&name=[name]',
-              'babel-loader?presets=es2015&presets=stage-2&presets=react',
-          ],
-          include: path.resolve(__dirname, '../src/js/views/pages/'),
-      },
-      
     ]
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
