@@ -1,6 +1,6 @@
 'use strict';
-require('../css/lib.css');
-require('../css/app.css');
+require('./assets/css/lib.css');
+require('./assets/css/app.css');
 
 import React, { Component } from 'react';
 

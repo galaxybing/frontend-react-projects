@@ -17,7 +17,7 @@ const extractAntd = new ExtractTextPlugin({
 
 module.exports = {
   entry: {
-    app: './src/js/index.js'
+    app: './src/index.js'
   },
   output: {
     path: config.build.assetsRoot,
@@ -81,7 +81,7 @@ module.exports = {
             presets: ['es2015','stage-2', 'react']
         },
         exclude: /node_modules/,
-        include: [resolve('src'), resolve('test')] // include: path.join(__dirname, './src/js')
+        include: [resolve('src'), resolve('test')] // include: path.join(__dirname, './src')
       },
       {/* 按需加载子路由 */
         test: /([^/]+)\/?([^/]*)\.(js|jsx)?$/,
@@ -89,7 +89,7 @@ module.exports = {
             'bundle-loader?lazy&name=[name]',
             'babel-loader?presets=es2015&presets=stage-2&presets=react',
         ],
-        include: path.resolve(__dirname, '../src/js/views/pages/'),
+        include: path.resolve(__dirname, '../src/views/pages/'),
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

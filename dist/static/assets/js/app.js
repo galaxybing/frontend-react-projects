@@ -76,14 +76,6 @@ var createChildRouteComponent = function createChildRouteComponent(container, pr
   );
 };
 
-var Home = function Home() {
-  return _react2.default.createElement(
-    'div',
-    null,
-    'abc'
-  );
-};
-
 var App = function (_Component) {
   _inherits(App, _Component);
 
@@ -99,7 +91,7 @@ var App = function (_Component) {
       var supportsHistory = 'pushState' in window.history;
       return _react2.default.createElement(
         _reactRouterDom.BrowserRouter,
-        { basename: '/frontend-react-projects', forceRefresh: !supportsHistory, keyLength: 6 },
+        { basename: '/frontend-react-projects', forceRefresh: !supportsHistory, keyLength: 10 },
         _react2.default.createElement(
           'div',
           null,
