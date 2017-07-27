@@ -11,6 +11,7 @@ import PropTypes from 'prop-types';
 import createClass from 'create-react-class';
 import configureStore from './store/configureStore';
 import App from './views/app';
+// import AnimationExample from './views/AnimationExample';
 
 class Root extends Component{
     static defaultProps = {
@@ -19,7 +20,7 @@ class Root extends Component{
     constructor(props){
         super(props);
         this.state = {
-            userName: "galaxyw",
+            author: "galaxyw",
             store: configureStore(),
         };
     }
@@ -35,5 +36,6 @@ class Root extends Component{
 
 function startApp(){
     ReactDOM.render(<Root name="demo-react-router-redux" />, document.getElementById('app'));
+    // ReactDOM.render(<AnimationExample name="demo-react-router-redux" />, document.getElementById('app'));
 }
 startApp();

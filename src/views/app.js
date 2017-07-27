@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import { ConnectedRouter } from 'react-router-redux';
-// import { CSSTransitionGroup } from 'react-transition-group';
+import { CSSTransitionGroup } from 'react-transition-group';
 import Bundle from '../core/bundle.js';
 
 //import DetailViewContainer from 'bundle-loader?lazy&name=page-[name]!./pages/detailView.js';
@@ -15,10 +15,6 @@ const createChildRouteComponent = (container, props,) => (
         {(View) => <View {...props} />}
     </Bundle>
 );
-
-const Home = ()=>(
-  <div>page Home</div>
-)
 
 class App extends Component{// function??/
   render() {
@@ -42,21 +38,20 @@ class App extends Component{// function??/
             )}/>
             
             <div>
-              {/*
-              <CSSTransitionGroup  transitionName="fade"  transitionEnterTimeout={300}  transitionLeaveTimeout={300}>
+              {/* 目前 CSSTransitionGroup 动画，要求路由结构已经生成？？，所以不可与子路由按需加载共用：
+                <CSSTransitionGroup transitionName="fade" transitionEnterTimeout={300}  transitionLeaveTimeout={300}>
+        					<Route name="index" path="/index.html" location={location} key={location.key} component={IndexView} />
+        					<Route name='list' path='/list/:id/:name.html' location={location} key={location.key} component={(props, a, method) => {
+                    return createChildRouteComponent(ListViewContainer, props);
+                  }} />
+                  <Route name='detail' path='/detail.html' location={location} key={location.key} component={() => createChildRouteComponent(DetailViewContainer)} />
+                </CSSTransitionGroup>
+                 */}
       					<Route name="index" path="/index.html" location={location} key={location.key} component={IndexView} />
-      					<Route name='list' path='/list/:id/:name.html' location={location} key={location.key} component={(props, a, method) => {
-                  return createChildRouteComponent(ListViewContainer, props);
-                }} />
-                <Route name='detail' path='/detail.html' location={location} key={location.key} component={() => createChildRouteComponent(DetailViewContainer)} />
-              </CSSTransitionGroup>
-                */}
-      					<Route name="index" path="/index.html" component={IndexView} />
       					<Route name='list' path='/list/:id/:name.html' component={(props, a, method) => {
                   return createChildRouteComponent(ListViewContainer, props);
                 }} />
                 <Route name='detail' path='/detail.html' component={() => createChildRouteComponent(DetailViewContainer)} />
-                
             </div>
           
           </div>
