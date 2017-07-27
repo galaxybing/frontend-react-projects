@@ -79,7 +79,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       filename: process.env.NODE_ENV === 'testing'
         ? 'index.html'
         : config.build.index,
-      template: 'index.html',
+      template: path.resolve(__dirname, '../src/index.html'),
       inject: true,
 
       minify: {

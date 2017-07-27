@@ -1,21 +1,15 @@
 'use strict';
 
 import { applyMiddleware, createStore } from 'redux';
-// import createHistory from 'history/createBrowserHistory';
-import createHistory from 'history/createHashHistory';
-
-import { routerMiddleware } from 'react-router-redux';
+// import { routerMiddleware } from 'react-router-redux'; // ???
 var thunkMiddleware = require('redux-thunk').default; // Note on 2.x Update
 var promise = require('./promise');
 var array = require('./array');
 var analytics = require('./analytics');
 var reducers = require('../reducers');
 
-var history = createHistory();
-var routerHistoryMiddleware = routerMiddleware(history);// ???是否失效
-
-// apply our middleware for navigating
-var createWeSiteStore = applyMiddleware(routerHistoryMiddleware, thunkMiddleware, promise, array, analytics );
+// 配置自定义的中间件
+var createWeSiteStore = applyMiddleware( thunkMiddleware, promise, array, analytics );
 
 function configureStore(onComplete: ?() => void) {
   // 1) createStore 接受第二个参数，表示 State 的最初状态。这通常是服务器给出的。

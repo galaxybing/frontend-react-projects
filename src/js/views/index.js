@@ -11,7 +11,7 @@ class LoginView extends Component{
   toPageList(){
     var loc = this.context.router.history;
     // loc.replace({ pathname: `/list/100153/hospital`});
-    loc.push({ pathname: `/list/100153/hospital`});
+    loc.push({ pathname: `/list/100153/hospital.html`});
     
   }
   componentDidMount(){
@@ -24,7 +24,7 @@ class LoginView extends Component{
               <a href="http://www.317hu.com/" target="_blank">317护咯</a>
             </p>
             <div className=""><a href="javascript:;" onClick={()=>this.toPageList()}>动态跳转路由链接 - list</a></div>
-            <Link to="/detail">Link 标签跳转路由链接 - detail</Link>
+            <Link to="/detail.html">Link 标签跳转路由链接 - detail</Link>
           </div>
       )
   }

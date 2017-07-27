@@ -4,13 +4,16 @@
 ```bash
 # 当一直无法找到 react 包资源时，请删除所以 node_modules 目录，再重新安装；
 npm install
-# 启动开发环境
-npm run dev:server
-```
 
-## 启用本地开发环境
-- 热替换的演示路径，访问：`http://localhost:8081/`
-- [热替换演示路径：](http://localhost:9090/index.html)
+npm run dev:server
+# 启用本地的开发环境，及热更新模式
+# http://localhost:8081/frontend-react-projects/index.html
+
+npm run build
+# 构建生产环境的部署代码
+# http://browserroute.galaxyw.com/frontend-react-projects/index.html
+
+```
 
 ## 提交开发域名给后端 galaxyw.317hu.com
 - 是为了得到权限中心的接口请求的授权

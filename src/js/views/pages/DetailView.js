@@ -13,7 +13,7 @@ class DetailView extends Component{
   render(){
       return (
         <p style={{textAlign: 'center'}}>
-          <Link to='/'>[返回上页]</Link>
+          <Link to='/index.html'>[返回上页]</Link>
         </p>
       );
   }
