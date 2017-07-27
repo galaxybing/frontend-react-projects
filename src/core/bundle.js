@@ -14,14 +14,14 @@ export default class Bundle extends React.Component {
     }
   }
   load(props) {
-    this.setState({
+    this.setState && this.setState({
       mod: null
     })
     
     // 由于这里的 props.load ，就是由 import .. from 'bundle-loader?' 形式生成并传入的；
     // 所以，它本来就是一个函数: waitForChunk
     props.load((mod) => {
-      this.setState({
+      this.setState && this.setState({
         // handle both es imports and cjs
         mod: mod.default ? mod.default : mod
       })

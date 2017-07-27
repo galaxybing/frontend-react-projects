@@ -49,14 +49,12 @@ var webpackConfig = merge(baseWebpackConfig, {
     new webpack.DefinePlugin({
       'process.env': env
     }),
-    /*
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         warnings: false
       },
       sourceMap: true
     }),
-    */
     
     // extract css into its own file
     // extractAntd,// ??
@@ -99,7 +97,6 @@ var webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'dependency'
     }),
     
-    /*
     // split vendor js into its own file
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
@@ -114,7 +111,6 @@ var webpackConfig = merge(baseWebpackConfig, {
         )
       }
     }),
-    */
     
     // extract webpack runtime and module manifest to its own file in order to
     // prevent vendor hash from being updated whenever app bundle is updated
@@ -122,6 +118,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       name: 'manifest',
       chunks: ['vendor']
     }),
+    
     // copy custom static assets
     new CopyWebpackPlugin([
       {

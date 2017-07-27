@@ -38,6 +38,13 @@ npm run build
 
 / 路径加载失败？？403
 
-## react-router-redux@^5.0.0-alpha.6
+# Scroll Restoration
+- 
+
+# 子路由组件里面，得到 this.props 两种方式：
+- withRouter: A public higher-order component to access the imperative API # react-router
+- module.exports = connect(select, actions)(ListView); # react-redux
+
+# react-router-redux@^5.0.0-alpha.6
 
 ***

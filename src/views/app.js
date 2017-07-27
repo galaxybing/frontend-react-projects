@@ -4,7 +4,7 @@ import { BrowserRouter, HashRouter, Switch, Route, Redirect } from 'react-router
 import { ConnectedRouter } from 'react-router-redux';
 import { CSSTransitionGroup } from 'react-transition-group';
 import Bundle from '../core/bundle.js';
-
+import ScrollToTop from '../components/ScrollToTop';
 //import DetailViewContainer from 'bundle-loader?lazy&name=page-[name]!./pages/detailView.js';
 
 import IndexView from './Index.js';
@@ -29,7 +29,7 @@ class App extends Component{// function??/
     const supportsHistory = 'pushState' in window.history;
     return (
       <BrowserRouter basename="/frontend-react-projects" forceRefresh={!supportsHistory} keyLength={10}>
-				
+				<ScrollToTop>
         <Route render={({ location }) => (
           <div>
             
@@ -56,7 +56,7 @@ class App extends Component{// function??/
           
           </div>
         )} />
-				
+        </ScrollToTop>
       </BrowserRouter>
     );
      

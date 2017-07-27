@@ -13,6 +13,10 @@ import configureStore from './store/configureStore';
 import App from './views/app';
 // import AnimationExample from './views/AnimationExample';
 
+if ('scrollRestoration' in history) {
+  // history.scrollRestoration = 'manual';
+}
+
 class Root extends Component{
     static defaultProps = {
         demo: false,
