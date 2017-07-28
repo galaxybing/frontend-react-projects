@@ -1,14 +1,37 @@
 import React, { Component } from 'react';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
 // import {TweenMax} from 'gsap';
 import { Link } from 'react-router-dom';
+import { push, replace } from 'react-router-redux';
 
 class DetailView extends Component{
   constructor(props){
     super(props);
+    
+    this.state = {
+      count: 0,
+      ...props.stateData
+    }
+    /*
+    let history = this.props.history;
+    this.state = {
+      count: (history.location.state && history.location.state.count) ? history.location.state.count : 0,
+    }
+    // history.listen((location,action) => { // router: routerReducer
+        // this.setState({
+        //     count: (history.location.state && history.location.state.count) ? history.location.state.count : 0,
+        // })
+    // }); 
+    */
   }
   componentDidMount(){
-    console.log('render detail ...');
+  }
+  addStateNumber(){
+    this.setState((prevState, props) => {
+      return { count: prevState.count + 1};
+    })
   }
   render(){
       return (
@@ -26,7 +49,18 @@ class DetailView extends Component{
           <p>文二西路738号西溪乐谷2号楼2楼</p>
           <p>破冰+嘉宾分享+自由提问+场景题讨论</p>
           <div>*活动限制20人，工作人员将以报名页您的提问为参考进行筛选，请务必认真填写问题。</div>
-          <Link to='/index.html'>[返回上页]</Link>
+          <p>
+            <a href="javascript:;" onClick={()=>{this.addStateNumber()}}>点击操作</a>
+          </p>
+          <div >显示操作次数：{this.state.count}</div>
+          <Link to='/index.html'>[Link链接到首页界面]</Link>
+          <p>
+            <a href="javascript:;" onClick={()=>{
+              // this.props.dispatch(push({pathname: '/index.html', state: this.state}));
+              // [A location object](https://github.com/ReactTraining/history/blob/v3/docs/Location.md)
+              this.props.dispatch(replace({pathname: '/index.html', detailState: this.state})); // goBack routerActions
+            }}>切换到首页界面</a>
+          </p>
         </div>
       );
   }
@@ -35,15 +69,16 @@ class DetailView extends Component{
 function select(store/*, ownProps*/){ // 1）第一个参数总是state对象，还可以使用第二个参数，代表容器组件的props对象
 								  // 2) 侦听 Store，每当state更新的时候，就会自动执行，重新计算 UI 组件的参数，从而触发 UI 组件的重新渲染。
 								  // 3）当使用了 ownProps 作为参数后，如果容器组件的参数发生变化，也会引发 UI 组件重新渲染。
+  console.log(store.router.location.pathname, " state->", store.router.location.state);
 	return {
-
+    stateData: store.router.location.state 
 	}
 }
 
 function actions(dispatch, ownProps){
 	return {
-		dispatch
+		dispatch,
 	};
 }
 
-module.exports = connect(select, actions)(DetailView);
+module.exports = withRouter(connect(select, actions)(DetailView));

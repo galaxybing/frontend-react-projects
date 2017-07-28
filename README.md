@@ -45,11 +45,21 @@ npm run build
 - module.exports = connect(select, actions)(ListView); # react-redux
 
 # react-router-redux@^5.0.0-alpha.6
+- Keep your state in sync with your router 
+- ConnectedRouter will use the store from Provider automatically
 
 # react-router-config
+- this.props.dispatch(replace({pathname: '/index.html', detailState: this.state})); # 所跳转的路由栈是不计入浏览器历史记录里面的？？
 
 # 抽离基础通用脚本、样式：
   - react + react-dom + react-router + animation(pc端可以使用js引擎、移动端看css3为主吧) 
   - antd组件等第三方组件库使用
+  
+# Promise based HTTP client
+- npm install axios
+
+# after you execute the api method you should dispatch the result to the reducers.
+
+# [For async actions I'm using redux-thunk.](https://stackoverflow.com/questions/42872846/react-router-redux-setstate-warning-after-redirect/42915448#42915448)
 
 ***

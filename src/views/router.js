@@ -1,7 +1,7 @@
 import React from 'react';
 import IndexView from './Index.js';
 import ListViewContainer from './routes/ListView.js'; // bundle-loader 返回
-import DetailViewContainer from './routes/DetailView.js';
+// import DetailViewContainer from './routes/DetailView.js';
 import ScrollToTop from '../components/ScrollToTop';
 
 import Bundle from '../core/bundle.js';
@@ -45,7 +45,7 @@ function RouterConfig({ history, app }) {
         },
         { 
           path: '/detail.html',
-          component: () => createChildRouteComponent(DetailViewContainer),
+          component: () => createChildRouteComponent(require('./routes/DetailView.js')),// DetailViewContainer
         }
       ]
     }

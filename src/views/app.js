@@ -3,6 +3,9 @@ import { connect } from 'react-redux';
 import { BrowserRouter, HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 // import { ConnectedRouter } from 'react-router-redux';
 // import { CSSTransitionGroup } from 'react-transition-group';
+
+import { ConnectedRouter } from 'react-router-redux';
+
 import RootRouter from './router';
 
 class App extends Component{// function??/
@@ -17,10 +20,19 @@ class App extends Component{// function??/
      */
      
     const supportsHistory = 'pushState' in window.history;
+    /*
+    <BrowserRouter basename="/frontend-react-projects" forceRefresh={!supportsHistory} keyLength={10}>
+      <RootRouter />
+    </BrowserRouter>
+    
+    <ConnectedRouter history={this.props.history}>
+      <RootRouter />
+    </ConnectedRouter>
+    */
     return (
-      <BrowserRouter basename="/frontend-react-projects" forceRefresh={!supportsHistory} keyLength={10}>
+      <ConnectedRouter history={this.props.history}>
         <RootRouter />
-      </BrowserRouter>
+      </ConnectedRouter>
     );
     
     /*
@@ -49,6 +61,7 @@ function select(store) {
   };
 };
 module.exports = connect(select)(App);
+// module.exports = App;
 
 /*
  * 没有路由版本结构：

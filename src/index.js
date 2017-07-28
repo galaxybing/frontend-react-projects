@@ -9,7 +9,7 @@ import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import createClass from 'create-react-class';
-import configureStore from './store/configureStore';
+import { configureStore, history } from './store/configureStore';
 import App from './views/app';
 // import AnimationExample from './views/AnimationExample';
 
@@ -32,7 +32,7 @@ class Root extends Component{
         var props = this.props;
         return (
           <Provider store={this.state.store}>
-			      <App />
+  			    <App history={history} />
           </Provider>
         );
     }
@@ -40,6 +40,5 @@ class Root extends Component{
 
 function startApp(){
     ReactDOM.render(<Root name="demo-react-router-redux" />, document.getElementById('app'));
-    // ReactDOM.render(<AnimationExample name="demo-react-router-redux" />, document.getElementById('app'));
 }
 startApp();
