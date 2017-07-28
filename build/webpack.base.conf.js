@@ -89,7 +89,7 @@ module.exports = {
             'bundle-loader?lazy&name=[name]',
             'babel-loader?presets=es2015&presets=stage-2&presets=react',
         ],
-        include: path.resolve(__dirname, '../src/views/pages/'),
+        include: path.resolve(__dirname, '../src/views/routes/'),
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

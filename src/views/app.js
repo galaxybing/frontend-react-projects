@@ -1,44 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter, HashRouter, Switch, Route, Redirect } from 'react-router-dom';
-import { ConnectedRouter } from 'react-router-redux';
-import { CSSTransitionGroup } from 'react-transition-group';
-import Bundle from '../core/bundle.js';
-//import DetailViewContainer from 'bundle-loader?lazy&name=page-[name]!./pages/detailView.js';
-
-import ScrollToTop from '../components/ScrollToTop';
-
-import { matchRoutes, renderRoutes } from 'react-router-config';
-
-import IndexView from './Index.js';
-import ListViewContainer from './pages/ListView.js'; // bundle-loader 返回
-import DetailViewContainer from './pages/DetailView.js';
-const createChildRouteComponent = (container, props,) => (
-    <Bundle load={container}>
-        {(View) => <View {...props} />}
-    </Bundle>
-);
-const routes = [
-  {
-    component: Root,
-    routes: [
-      {
-        path: '/',
-        exact: true,
-        component: Home
-      },
-      { 
-        path: '/child/:id',
-        component: Child,
-        routes: [
-          { path: '/child/:id/grand-child',
-            component: GrandChild
-          }
-        ]
-      }
-    ]
-  }
-]
+// import { ConnectedRouter } from 'react-router-redux';
+// import { CSSTransitionGroup } from 'react-transition-group';
+import RootRouter from './router';
 
 class App extends Component{// function??/
   render() {
@@ -50,47 +15,14 @@ class App extends Component{// function??/
      *    3) <Route name="index" path="/index.html" ，如果指明确为.html 则/ 表示为所有子路由都共用的部分了
      *    4）basename="/" 子目录名称配置，需要后端应用服务器（如，nginx）对应的配置
      */
+     
     const supportsHistory = 'pushState' in window.history;
     return (
       <BrowserRouter basename="/frontend-react-projects" forceRefresh={!supportsHistory} keyLength={10}>
-				<ScrollToTop>
-        <Route render={({ location }) => (
-          <div>
-            
-            <Route path="/" render={() => (
-              <Redirect to="/index.html" />
-            )}/>
-            
-            <div>
-              {/* 目前 CSSTransitionGroup 动画，要求路由结构已经生成？？，所以不可与子路由按需加载共用：
-                <CSSTransitionGroup transitionName="fade" transitionEnterTimeout={300}  transitionLeaveTimeout={300}>
-        					<Route name="index" path="/index.html" location={location} key={location.key} component={IndexView} />
-        					<Route name='list' path='/list/:id/:name.html' location={location} key={location.key} component={(props, a, method) => {
-                    return createChildRouteComponent(ListViewContainer, props);
-                  }} />
-                  <Route name='detail' path='/detail.html' location={location} key={location.key} component={() => createChildRouteComponent(DetailViewContainer)} />
-                </CSSTransitionGroup>
-                 */}
-                 
-                {/*
-                  <Route name="index" path="/index.html" location={location} key={location.key} component={IndexView} />
-        					<Route name='list' path='/list/:id/:name.html' component={(props, a, method) => {
-                    return createChildRouteComponent(ListViewContainer, props);
-                  }} />
-                  <Route name='detail' path='/detail.html' component={() => createChildRouteComponent(DetailViewContainer)} />
-                  */}
-      					
-                {renderRoutes(routes)}
-                
-            </div>
-          
-          </div>
-        )} />
-        </ScrollToTop>
+        <RootRouter />
       </BrowserRouter>
     );
-     
-     
+    
     /*
      * 锚点路由链接形式：
      *    1）配合没有个性权限的应有服务器，或者本地开发时使用；
