@@ -4,8 +4,11 @@ import { BrowserRouter, HashRouter, Switch, Route, Redirect } from 'react-router
 import { ConnectedRouter } from 'react-router-redux';
 import { CSSTransitionGroup } from 'react-transition-group';
 import Bundle from '../core/bundle.js';
-import ScrollToTop from '../components/ScrollToTop';
 //import DetailViewContainer from 'bundle-loader?lazy&name=page-[name]!./pages/detailView.js';
+
+import ScrollToTop from '../components/ScrollToTop';
+
+import { matchRoutes, renderRoutes } from 'react-router-config';
 
 import IndexView from './Index.js';
 import ListViewContainer from './pages/ListView.js'; // bundle-loader 返回
@@ -15,6 +18,27 @@ const createChildRouteComponent = (container, props,) => (
         {(View) => <View {...props} />}
     </Bundle>
 );
+const routes = [
+  {
+    component: Root,
+    routes: [
+      {
+        path: '/',
+        exact: true,
+        component: Home
+      },
+      { 
+        path: '/child/:id',
+        component: Child,
+        routes: [
+          { path: '/child/:id/grand-child',
+            component: GrandChild
+          }
+        ]
+      }
+    ]
+  }
+]
 
 class App extends Component{// function??/
   render() {
@@ -47,11 +71,17 @@ class App extends Component{// function??/
                   <Route name='detail' path='/detail.html' location={location} key={location.key} component={() => createChildRouteComponent(DetailViewContainer)} />
                 </CSSTransitionGroup>
                  */}
-      					<Route name="index" path="/index.html" location={location} key={location.key} component={IndexView} />
-      					<Route name='list' path='/list/:id/:name.html' component={(props, a, method) => {
-                  return createChildRouteComponent(ListViewContainer, props);
-                }} />
-                <Route name='detail' path='/detail.html' component={() => createChildRouteComponent(DetailViewContainer)} />
+                 
+                {/*
+                  <Route name="index" path="/index.html" location={location} key={location.key} component={IndexView} />
+        					<Route name='list' path='/list/:id/:name.html' component={(props, a, method) => {
+                    return createChildRouteComponent(ListViewContainer, props);
+                  }} />
+                  <Route name='detail' path='/detail.html' component={() => createChildRouteComponent(DetailViewContainer)} />
+                  */}
+      					
+                {renderRoutes(routes)}
+                
             </div>
           
           </div>
