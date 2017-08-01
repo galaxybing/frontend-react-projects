@@ -1,122 +1,52 @@
 'use strict';
 const Promise = require('es6-promise').polyfill();
-const fetch = require('isomorphic-fetch');// 针对 ios 10.3.1（不含）以下版本？？及ie
-//const logError = require('logError');
 if (!window.Promise) {
-window.Promise = Promise;
+  window.Promise = Promise;
 }
-import type { ThunkAction } from '../actions/types';
-const config = require('./api.js');
+// import querystring from 'querystring';
+// import 'isomorphic-fetch';// 针对 ios 10.3.1（不含）以下版本？？及ie
+import axios from 'axios'; 
+import objectAssign from 'object-assign';
+import apiConfig from './api.js';
 
-async function loadFetchQueryAwait(query) {/* 强制同步请求，返回的是最终数据格式 */
-    let { method, body }= query;
-    method = `http://${config.privilegeApi}/${method}`;
-    // 处理传参数据
-    if(typeof body == 'string'){
-        if(body.indexOf('=')<0){
-            body = JSON.parse(body);
-        };
-    }
-    var params = typeof body == 'string' ? body : Object.keys(body).map(
+export function saveCache(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
+}
+
+export function getCache(key) {
+  return JSON.parse(localStorage.getItem(key));
+}
+
+export function clearCacheByKey(key) {
+  localStorage.removeItem(key);
+}
+
+export function run(query) {
+  let { url, options, api } = query;
+  let headers = {}, body = options.data;
+  
+  if (options && options.method !== 'GET') {
+    let params = typeof body == 'string' ? body : Object.keys(body).map(
             function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(body[k]) }
         ).join('&');
-    let results = await fetch(method,{
-            method: 'POST',
-            body: params,
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-            credentials: 'include'
-        }).then(function(response){
-            return response;
-        })
-        .then(function(response) {
-            return response.json(); // ----- 直接返回解析的结果
-        });
-    if(results.state=="token"){
-        alert("请使用微信进行登录吧～");
-    }
-    /*
-    * ----------------------------------------- 直接返回解析的结果，然后使用回调函数实现异步
-    */
-    return (
-        results
-    )
-
-}
-
-/** @loadFetchQuery
- * 向服务器发起请求的方法，且方法类型为: POST
- *
- * 1) Object.keys(source).map() 时，需要配置 Content-Type 为 'application/x-www-form-urlencoded'
- * 2) JSON.stringify(source) 时，需要配置 Content-Type 为 'application/json'
- * 
- * @param    {query}  object     请求参数
- * @returns  promise
- *
- * @date     2017-07-12 create
- * @author   galaxyw<wangyh@317hu.com>
- */
-function loadFetchQuery(query) {
-  let {method, body, methodType, hostType}= query;
-  method = `http://${config.privilegeApi}/${method}`;
-
-  if(typeof body == 'string'){
-    if(body.indexOf('=')<0){
-        body = JSON.parse(body);
+    headers = {
+      //'content-type': 'application/json' // 配置为该内容类型时，使之成为了复杂请求形式；即，跨域发起 POST 请求时，会导致二次请求？？所以，使用下面的
+      'Content-Type': 'application/x-www-form-urlencoded'
     };
-  }
-  var params = typeof body == 'string' ? body : Object.keys(body).map(
-          function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(body[k]) }
-      ).join('&');
-  return fetch(method, {
-    method: "POST",
-    body: params,
-    async: false,
-    headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-    },
-    credentials: 'include'
-  }).then(function(response) {
-      return response.json();
-	});
-};
-
-function getFetchQuery(query) {
-    var {method, body, methodType, hostType}= query;
-    // 处理传参数据
-    if(typeof body == 'string'){
-        if(body.indexOf('=')<0){
-            body = JSON.parse(body);
-        };
-    }
-    var params = typeof body == 'string' ? body : Object.keys(body).map(
-            function(k){ return encodeURIComponent(k) + '=' + encodeURIComponent(body[k]) }
-        ).join('&');
-    method = `http://${config.privilegeApi}/${method}?${params}`;
-    return new Promise((resolve, reject) => {
-        fetch(method,{
-            method: 'GET',
-            async: false,
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
-            },
-        })
-    	.then(function(response) {
-            return response.json();// return this.text().then(JSON.parse);
-    	}).then(function(res){
-            resolve(res);
-        });
-    });
-
+    options.data = params;
+  };
+  
+  let cancel;
+  let optionConfig = {
+    withCredentials: false,
+    responseType: 'json',
+    data: {},
+    // cancelToken: new CancelToken(function (cancelCallback) {cancel = cancelCallback;}),
+  };
+  
+  objectAssign(optionConfig, options);
+  return axios(apiConfig[api]+url, optionConfig) // 虽然是使用 XMLHttpRequest ，但它却是基于 Pormise API;所以后面是可以使用 then()
+                            // 1）XMLHttpRequest http-request 所以它是可以修复华为手机百度浏览器中，发送请求失败的问题！
+                            // 2）实现更为丰富的请求队列控制方法
+                            // 3）不必再引入垫片代码： import 'isomorphic-fetch';
 }
-
-module.exports = {
-    run: loadFetchQuery,
-    runAwait: (url, query) => loadFetchQueryAwait(url, query),
-    runQuery: (url, query, method) => getFetchQuery(url, query, method),
-};
-/*
-var globalObject = typeof self === "undefined" ? global : self;
- module.exports = globalObject.fetch.bind(globalObject);
- */

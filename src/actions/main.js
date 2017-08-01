@@ -16,7 +16,10 @@ module.exports = {
   },
   vedioListAndUrlQuery: ()=>{
     return (dispatch)=>{
-      return Parse.run({method: 'privilege-web/privilege/privilegeWeb/vedioListAndUrlQuery', body: {}});
+      return Parse.run({url: 'checkCode', options: {
+        method: 'POST',
+        data: { userName: 'wangyh@317hu.com' }
+      }, api: 'baseComponentApi'})
     }
   }
 };

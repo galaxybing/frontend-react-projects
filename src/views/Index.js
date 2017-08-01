@@ -17,7 +17,10 @@ class IndexView extends Component{
     
   }
   componentDidMount(){
-    // this.props.dispatch(vedioListAndUrlQuery());
+    let checkCodeResult = this.props.dispatch(vedioListAndUrlQuery());
+    checkCodeResult.then((res)=>{
+      console.log(res);
+    });
   }
   render(){
       return (

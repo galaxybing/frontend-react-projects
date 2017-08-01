@@ -1,6 +1,6 @@
 module.exports = {
-  "nurseTrainApi": "nursetraindev.317hu.com",
+  "baseComponentApi": "http://rap.317hu.com/mockjsdata/1/",
+  "nurseTrainApi": "",
   "careCentralApi": "",
-  "privilegeApi": "privilegesit.317hu.com:8081",
-  "watcher": ""
+  "privilegeApi": "",
 }
