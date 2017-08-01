@@ -10,8 +10,8 @@ const extractCss = new ExtractTextPlugin({
   filename: utils.assetsPath('css/[name].[contenthash].css'),
   disable: process.env.NODE_ENV === "development"
 });
-const extractAntd = new ExtractTextPlugin({
-  filename: utils.assetsPath('css/antd.[contenthash].css'),
+const extractLib = new ExtractTextPlugin({
+  filename: utils.assetsPath('css/lib.[contenthash].css'),
   disable: process.env.NODE_ENV === "development"
 });
 
@@ -35,7 +35,7 @@ module.exports = {
   },
   plugins: [
     extractCss,
-    extractAntd,
+    extractLib,
   ],
   module: {
     rules: [
@@ -57,7 +57,7 @@ module.exports = {
         })
       },
       {
-        test: /(\.css|\.less)$/, exclude: [resolve('src/components')], use: extractAntd.extract({
+        test: /(\.css|\.less)$/, exclude: [resolve('src/components')], use: extractLib.extract({
           use: [{
               loader: "css-loader",
               options: {
