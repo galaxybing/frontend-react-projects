@@ -1,5 +1,6 @@
 .page-base{
     line-height: 220%;
+  display: flex;
 }
 .page-base .pic-sprite{
     margin: 10px auto;

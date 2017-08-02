@@ -50,8 +50,15 @@ module.exports = {
                 sourceMap: config.build.productionSourceMap,
                 localIdentName: '[name]__[local]___[hash:base64:5]',
               }
-          }, {
+          },{
               loader: "less-loader"
+          },{
+            loader: 'postcss-loader',
+            options: {
+              plugins: (loader) => process.env.NODE_ENV === 'production' ? [
+                 require('autoprefixer')(),
+              ]: []
+            }
           }],
           fallback: "style-loader"
         })
@@ -59,16 +66,27 @@ module.exports = {
       {
         test: /(\.css|\.less)$/, exclude: [resolve('src/components')], use: extractLib.extract({
           use: [{
-              loader: "css-loader",
-              options: {
-                modules: false,
-                url: false,
-                minimize: process.env.NODE_ENV === 'production',
-                sourceMap: config.build.productionSourceMap,
-                localIdentName: '[name]__[local]___[hash:base64:5]',
-              }
-          }, {
-              loader: "less-loader"
+            loader: "css-loader",
+            options: {
+              importLoaders: 1, // 
+              modules: false,
+              url: false,
+              minimize: process.env.NODE_ENV === 'production',
+              sourceMap: config.build.productionSourceMap,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            }
+          },{
+            loader: "less-loader"
+          },{
+            loader: 'postcss-loader',
+            options: {
+              plugins: (loader) => process.env.NODE_ENV === 'production' ? [
+                // require('postcss-import')({ root: loader.resourcePath }),
+                // require('postcss-cssnext')(),
+                 require('autoprefixer')(),
+                // require('cssnano')()
+              ]: []
+            }
           }],
           fallback: "style-loader"
         })
