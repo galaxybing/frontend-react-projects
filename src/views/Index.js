@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { push } from 'react-router-redux';
 // import { TweenMax } from 'gsap';// 动画
-import { vedioListAndUrlQuery } from '../actions';
+import { checkedQuery } from '../actions';
 class LoginView extends Component{
   static contextTypes={
 		router: React.PropTypes.object.isRequired,
@@ -15,7 +15,7 @@ class LoginView extends Component{
     
   }
   componentDidMount(){
-    let checkCodeResult = this.props.dispatch(vedioListAndUrlQuery());
+    let checkCodeResult = this.props.dispatch(checkedQuery());
     checkCodeResult.then((res)=>{
       // 得到同步数据，以备操作
     });

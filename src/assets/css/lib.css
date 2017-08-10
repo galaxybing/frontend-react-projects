@@ -183,7 +183,7 @@ div ,p{/* data-dpr=1 Samsung Galaxy S4 */
 	width:100%;
 }
 
-
+/*
 input[type="text"],
 input[type="password"],
 input[type="search"],
@@ -214,7 +214,7 @@ textarea{
 	font-size: 17px;
 	font-family: inherit;
 }
-
+*/
 
 
 :-moz-placeholder { /* Mozilla Firefox 4 to 18 */

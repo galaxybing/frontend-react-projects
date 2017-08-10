@@ -3,7 +3,7 @@ import type { Action, ThunkAction } from './types';
 const Parse = require('../store/parse');
 
 module.exports = {
-  vedioListAndUrlQuery: ()=>{
+  checkedQuery: ()=>{
     return (dispatch)=>{
       return Parse.run({url: 'checkCode', options: {
         method: 'POST',
