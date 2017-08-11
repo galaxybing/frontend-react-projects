@@ -63,3 +63,5 @@ npm run build
 ## [For async actions I'm using redux-thunk.](https://stackoverflow.com/questions/42872846/react-router-redux-setstate-warning-after-redirect/42915448#42915448)
 
 ***
+
+# 处理 verden.js 文件过大问题
