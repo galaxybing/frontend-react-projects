@@ -97,26 +97,60 @@ var webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'dependency'
     }),
     
-    // split vendor js into its own file
+    /* 从 vendor 里面分离抽取，且注意插件引用顺序：
+     name: 'vendor',
+     name: 'vendor-antd',
+     name: 'vendor-react',
+    */
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
+      chunks: ['app'],
       minChunks: function (module, count) {
-        // any required modules inside node_modules are extracted to vendor
         return (
           module.resource &&
-          /\.js$/.test(module.resource) &&
-          module.resource.indexOf(
-            path.join(__dirname, '../node_modules')
-          ) === 0
+          /\.js$/.test(module.resource) && (
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules')
+            ) === 0 
+          )
         )
       }
     }),
-    
-    // extract webpack runtime and module manifest to its own file in order to
-    // prevent vendor hash from being updated whenever app bundle is updated
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'manifest',
-      chunks: ['vendor']
+      name: 'vendor-antd',
+      chunks: ['vendor'],
+      minChunks: function (module, count) {
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&(
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules/antd/')
+            ) === 0 ||
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules/moment/')
+            ) === 0 ||
+            module.resource.indexOf(path.join(__dirname, '../node_modules/rc-calendar')) === 0
+          )
+          
+        )
+      }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor-react',
+      chunks: ['vendor'],
+      minChunks: function (module, count) {
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) && (
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules/react')
+            ) === 0 ||
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules/redux')
+            ) === 0
+          )
+        )
+      }
     }),
     
     // copy custom static assets
