@@ -40,8 +40,6 @@ var webpackConfig = merge(baseWebpackConfig, {
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
-    // filename: utils.assetsPath('js/[name].[chunkhash].js'),
-    // chunkFilename: utils.assetsPath('js/[id].[chunkhash].js')
     filename: utils.assetsPath('js/[name].js'),
     chunkFilename: utils.assetsPath('js/[name]-[chunkhash].js')
   },
@@ -73,6 +71,71 @@ var webpackConfig = merge(baseWebpackConfig, {
     // Compress extracted CSS. We are using this plugin so that possible
     // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin(),
+    
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      chunks: ['app'],
+      minChunks: function (module, count) {
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) && (
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules')
+            ) === 0 
+          )
+        )
+      }
+    }),
+    
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor-react',
+      chunks: ['vendor'],
+      minChunks: function (module, count) {
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) &&(
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules/antd/')
+            ) === 0 ||
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules/moment/')
+            ) === 0 ||
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules/rc-calendar')
+            ) === 0 ||
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules/react')
+            ) === 0 ||
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules/redux')
+            ) === 0
+          )
+          
+        )
+      }
+    }),
+    
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor-antd',
+      chunks: ['vendor-react'],
+      minChunks: function (module, count) {
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) && (
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules/antd/')
+            ) === 0 ||
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules/moment/')
+            ) === 0 ||
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules/rc-calendar')
+            ) === 0
+          )
+        )
+      }
+    }),
+    
     // generate dist index.html with correct asset hash for caching.
     // you can customize output by editing /index.html
     // see https://github.com/ampedandwired/html-webpack-plugin
@@ -94,63 +157,7 @@ var webpackConfig = merge(baseWebpackConfig, {
       hash: false,
 
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
-    }),
-    
-    /* 从 vendor 里面分离抽取，且注意插件引用顺序：
-     name: 'vendor',
-     name: 'vendor-antd',
-     name: 'vendor-react',
-    */
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      chunks: ['app'],
-      minChunks: function (module, count) {
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) && (
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules')
-            ) === 0 
-          )
-        )
-      }
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor-antd',
-      chunks: ['vendor'],
-      minChunks: function (module, count) {
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&(
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules/antd/')
-            ) === 0 ||
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules/moment/')
-            ) === 0 ||
-            module.resource.indexOf(path.join(__dirname, '../node_modules/rc-calendar')) === 0
-          )
-          
-        )
-      }
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor-react',
-      chunks: ['vendor'],
-      minChunks: function (module, count) {
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) && (
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules/react')
-            ) === 0 ||
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules/redux')
-            ) === 0
-          )
-        )
-      }
+      chunksSortMode: 'auto' // auto | dependency
     }),
     
     // copy custom static assets

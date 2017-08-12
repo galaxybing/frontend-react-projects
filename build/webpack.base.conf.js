@@ -7,11 +7,11 @@ function resolve (dir) {
 }
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 const extractCss = new ExtractTextPlugin({
-  filename: utils.assetsPath('css/[name].[contenthash].css'),
+  filename: utils.assetsPath('css/[name].css'),
   disable: process.env.NODE_ENV === "development"
 });
 const extractLib = new ExtractTextPlugin({
-  filename: utils.assetsPath('css/lib.[contenthash].css'),
+  filename: utils.assetsPath('css/lib.css'),
   disable: process.env.NODE_ENV === "development"
 });
 

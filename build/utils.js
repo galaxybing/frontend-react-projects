@@ -12,7 +12,7 @@ exports.assetsPath = function (_path) {
   return path.posix.join(assetsSubDirectory, _path)
 }
 const extractCss = new ExtractTextPlugin({
-  filename: exports.assetsPath('css/[name].[contenthash].css'),
+  filename: exports.assetsPath('css/[name].css'),
   disable: process.env.NODE_ENV === "development"
 });
 

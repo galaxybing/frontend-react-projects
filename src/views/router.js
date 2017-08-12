@@ -26,8 +26,8 @@ function RouterConfig({ history, app }) {
       component: Root,
       routes: [
         {
-          path: '/index.html',
-          exact: true,
+          path: '/',
+          exact: false,
           component: IndexView
         },
         { 
