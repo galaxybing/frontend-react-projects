@@ -1,6 +1,7 @@
 import React from 'react';
 import IndexView from './Index.js';
 import ListViewContainer from './routes/ListView.js'; // bundle-loader 返回
+
 // import DetailViewContainer from './routes/DetailView.js';
 import ScrollToTop from '../components/ScrollToTop';
 

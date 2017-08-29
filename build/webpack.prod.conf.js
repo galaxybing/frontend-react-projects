@@ -7,16 +7,6 @@ var baseWebpackConfig = require('./webpack.base.conf')
 var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
-/*
-const extractCss = new ExtractTextPlugin({
-  filename: utils.assetsPath('css/[name].[contenthash].css'),
-  disable: process.env.NODE_ENV === "development"
-});
-const extractAntd = new ExtractTextPlugin({
-  filename: utils.assetsPath('css/antd.[contenthash].css'),
-  disable: process.env.NODE_ENV === "development"
-});
-*/
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 
 var env = process.env.NODE_ENV === 'testing'
@@ -29,12 +19,6 @@ function resolve (dir) {
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: [
-      // ...utils.styleLoaders({
-      //   sourceMap: config.build.productionSourceMap,
-      //   extract: true,
-      // }),
-      //...utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true, includeNodeModules: false }),
-      //...utils.styleLoaders({ sourceMap: config.build.productionSourceMap, extract: true, includeNodeModules: true }),
     ]
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,

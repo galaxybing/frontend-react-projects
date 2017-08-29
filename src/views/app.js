@@ -34,7 +34,6 @@ class App extends Component{// function??/
         <RootRouter />
       </ConnectedRouter>
     );
-    
     /*
      * 锚点路由链接形式：
      *    1）配合没有个性权限的应有服务器，或者本地开发时使用；
@@ -60,6 +59,7 @@ function select(store) {
     isLoggedIn: true
   };
 };
+
 module.exports = connect(select)(App);
 // module.exports = App;
 
@@ -78,3 +78,4 @@ class App extends Component{// function??/
 
 module.exports = App;
 */
+

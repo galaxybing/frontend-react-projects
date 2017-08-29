@@ -35,7 +35,7 @@ function main(state: Config = initialState, action: Action) {
       }
 
   }
-
+  
   if(action.type==='LOAD_SITE_INDEX_MORE'){
       let res = action.res;
       if(!res.data.list){
@@ -55,7 +55,6 @@ function main(state: Config = initialState, action: Action) {
       }
 
   }
-
   return state;
 }
 
