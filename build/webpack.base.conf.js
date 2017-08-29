@@ -45,7 +45,7 @@ module.exports = {
               loader: "css-loader",
               options: {
                 modules: true,
-                url: false,
+                url: true, // 允许对 import 的 css 文件内部背景图片进行 url-loader 操作
                 minimize: process.env.NODE_ENV === 'production',
                 sourceMap: config.build.productionSourceMap,
                 localIdentName: '[name]__[local]___[hash:base64:5]',
@@ -70,23 +70,13 @@ module.exports = {
             options: {
               importLoaders: 1, // 
               modules: false,
-              url: false,
+              url: true,
               minimize: process.env.NODE_ENV === 'production',
               sourceMap: config.build.productionSourceMap,
               localIdentName: '[name]__[local]___[hash:base64:5]',
             }
           },{
             loader: "less-loader"
-          },{
-            loader: 'postcss-loader',
-            options: {
-              plugins: (loader) => process.env.NODE_ENV === 'production' ? [
-                // require('postcss-import')({ root: loader.resourcePath }),
-                // require('postcss-cssnext')(),
-                 require('autoprefixer')(),
-                // require('cssnano')()
-              ]: []
-            }
           }],
           fallback: "style-loader"
         })

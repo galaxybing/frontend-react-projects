@@ -62,4 +62,16 @@ npm run build
 
 # [For async actions I'm using redux-thunk.](https://stackoverflow.com/questions/42872846/react-router-redux-setstate-warning-after-redirect/42915448#42915448)
 
+## 阻塞父层级的请求发送，实现子组件 dom 数据同步：
+
+```javascript
+class PanningList extends Component{
+  async componentDidMount() {
+    await this.props.dispatch(get());// 
+    // 
+    
+  }
+}
+```
+
 ***
