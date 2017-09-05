@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter, HashRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as RouterContainer, HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 // import { ConnectedRouter } from 'react-router-redux';
 // import { CSSTransitionGroup } from 'react-transition-group';
 
@@ -21,6 +21,8 @@ class App extends Component{// function??/
      
     const supportsHistory = 'pushState' in window.history;
     /*
+     * // {basename="/planning"}
+     *
     <BrowserRouter basename="/frontend-react-projects" forceRefresh={!supportsHistory} keyLength={10}>
       <RootRouter />
     </BrowserRouter>
@@ -30,9 +32,9 @@ class App extends Component{// function??/
     </ConnectedRouter>
     */
     return (
-      <ConnectedRouter history={this.props.history}>
+      <RouterContainer forceRefresh={!supportsHistory} keyLength={10}>
         <RootRouter />
-      </ConnectedRouter>
+      </RouterContainer>
     );
     /*
      * 锚点路由链接形式：
@@ -54,28 +56,12 @@ class App extends Component{// function??/
   }
 };
 
-function select(store) {
-  return {
-    isLoggedIn: true
-  };
-};
-
-module.exports = connect(select)(App);
-// module.exports = App;
-
-/*
- * 没有路由版本结构：
-import React, { Component } from 'react';
-import IndexView from './index';
-
-class App extends Component{// function??/
-  render() {
-    return (
-      <IndexView />
-    );
-  }
-};
-
-module.exports = App;
-*/
+module.exports = connect(null, dispatch => {
+    /*
+    dispatch(getAtionMethod());
+    */
+    return {
+      dispatch
+    }
+})(App);
 

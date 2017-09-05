@@ -1,8 +1,6 @@
 import React from 'react';
 import IndexView from './Index.js';
 import ListViewContainer from './routes/ListView.js'; // bundle-loader 返回
-
-// import DetailViewContainer from './routes/DetailView.js';
 import ScrollToTop from '../components/ScrollToTop';
 
 import Bundle from '../core/bundle.js';
@@ -27,8 +25,8 @@ function RouterConfig({ history, app }) {
       component: Root,
       routes: [
         {
-          path: '/',
-          exact: false,
+          path: '/index.html',
+          exact: true,
           component: IndexView
         },
         { 

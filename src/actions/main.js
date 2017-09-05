@@ -13,13 +13,5 @@ module.exports = {
         * })
        */
     }
-  },
-  vedioListAndUrlQuery: ()=>{
-    return (dispatch)=>{
-      return Parse.run({url: 'checkCode', options: {
-        method: 'POST',
-        data: { userName: 'wangyh@317hu.com' }
-      }, api: 'baseComponentApi'})
-    }
   }
 };

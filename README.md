@@ -1,20 +1,18 @@
 # 初始化项目
 
 ## 项目特性：
-#### 1. 单页面开发
-#### 2. 按需加载子路由
-#### 3. 路由美化配置
-- 对 history 显示进行路由美化
-- 实现生产环境，配置 nginx 代理服务器为 history 路径显示
-- nginx
+1. 单页面开发
+2. 按需加载子路由
+3. 路由美化配置
+  - 对 history 显示进行路由美化
+  - 实现生产环境，配置 nginx 代理服务器为 history 路径显示
+  - nginx
+4. 不再使用生成器函数
 
-#### 4. 不再使用生成器函数
-
-***
-
-## 安装环境：
+## 开发和构建命令的操作：
 
 ```bash
+# 安装环境
 npm install
 
 # 启用
@@ -39,6 +37,17 @@ npm run build:uat
 npm run build:prod
 
 ```
+
+## 环境分支的推送步骤：
+1. 配置 package.json 的项目名称：
+  - 如 "name": "frontend-react-projects"
+2. 指定 push 推送消息格式：
+  - 如，一般分支上操作时，dev@[消息内容]，指定推送至 dev 环境
+  - 如，checkout至master时，v1.0.0@[消息内容]，指定推送至 prod 环境，按版本号区分
+3. [Bone部署系统](http://bone.317hu.com/task/submit/)，更新指定环境分支的 Eweb 分支的推送至对应的 webapps 后端工程
+4. 完成部署。
+
+***
 
 ## 如何使用：
 
@@ -106,7 +115,7 @@ server {
 #### 8.[For async actions I'm using redux-thunk.](https://stackoverflow.com/questions/42872846/react-router-redux-setstate-warning-after-redirect/42915448#42915448)
 
 
-#### 阻塞父层级的请求发送，实现子组件 dom 数据同步：
+#### 9.阻塞父层级的请求发送，实现子组件 dom 数据同步：
 
 ```javascript
 class PanningList extends Component{
@@ -117,5 +126,3 @@ class PanningList extends Component{
   }
 }
 ```
-
-***
