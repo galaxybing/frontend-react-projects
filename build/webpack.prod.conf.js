@@ -8,6 +8,7 @@ var CopyWebpackPlugin = require('copy-webpack-plugin')
 var HtmlWebpackPlugin = require('html-webpack-plugin')
 var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
+var DllLinkPlugin = require('dll-link-webpack-plugin');
 
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -17,15 +18,11 @@ function resolve (dir) {
 }
 
 var webpackConfig = merge(baseWebpackConfig, {
-  module: {
-    rules: [
-    ]
-  },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].js'),
-    chunkFilename: utils.assetsPath('js/[name]-[chunkhash].js')
+    chunkFilename: utils.assetsPath('js/[name]/[chunkhash].js')
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -40,70 +37,13 @@ var webpackConfig = merge(baseWebpackConfig, {
       sourceMap: true
     }),
     
-    // extract css into its own file
-    // extractAntd,// ??
-    // extractCss,
-    /*
-    new ExtractTextPlugin({
-      // filename: utils.assetsPath('css/[name].[contenthash].css')
-      filename: function(getPath){
-        console.log(getPath('css/[name].css'));
-        return getPath('css/[name].css')
-      },
-      allChunks: true
-    }),
-    */
-    
-    // Compress extracted CSS. We are using this plugin so that possible
-    // duplicated CSS from different components can be deduped.
     new OptimizeCSSPlugin(),
     
+    // 分离插件配置：
+    new webpack.optimize.CommonsChunkPlugin({ name: 'vendorLib', filename: 'vendorLib.bundle.js' }),
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      chunks: ['app'],
-      minChunks: function (module, count) {
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) && (
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules')
-            ) === 0 
-          )
-        )
-      }
-    }),
-    
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor-react',
-      chunks: ['vendor'],
-      minChunks: function (module, count) {
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&(
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules/antd/')
-            ) === 0 ||
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules/moment/')
-            ) === 0 ||
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules/rc-calendar')
-            ) === 0 ||
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules/react')
-            ) === 0 ||
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules/redux')
-            ) === 0
-          )
-          
-        )
-      }
-    }),
-    
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor-antd',
-      chunks: ['vendor-react'],
+      name: 'vendorAntd',
+      chunks: ['vendorLib'],
       minChunks: function (module, count) {
         return (
           module.resource &&
@@ -121,10 +61,23 @@ var webpackConfig = merge(baseWebpackConfig, {
         )
       }
     }),
-    
-    // generate dist index.html with correct asset hash for caching.
-    // you can customize output by editing /index.html
-    // see https://github.com/ampedandwired/html-webpack-plugin
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendorMoment',
+      chunks: ['vendorAntd'],
+      minChunks: function (module, count) {
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) && (
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules/moment/')
+            ) === 0 ||
+            module.resource.indexOf(
+              path.join(__dirname, '../node_modules/rc-calendar')
+            ) === 0
+          )
+        )
+      }
+    }),
     new HtmlWebpackPlugin({
       filename: process.env.NODE_ENV === 'testing'
         ? 'index.html'
@@ -137,16 +90,12 @@ var webpackConfig = merge(baseWebpackConfig, {
         collapseWhitespace: false,
         removeAttributeQuotes: false,
         keepClosingSlash: true
-        // more options:
-        // https://github.com/kangax/html-minifier#options-quick-reference
       },
       hash: false,
 
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'auto' // auto | dependency
     }),
     
-    // copy custom static assets
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),
@@ -159,7 +108,6 @@ var webpackConfig = merge(baseWebpackConfig, {
 
 if (config.build.productionGzip) {
   var CompressionWebpackPlugin = require('compression-webpack-plugin')
-
   webpackConfig.plugins.push(
     new CompressionWebpackPlugin({
       asset: '[path].gz[query]',

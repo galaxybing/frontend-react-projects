@@ -31,7 +31,7 @@ var middleware = [
   analytics
 ];
 if (process.env.NODE_ENV !== 'production') {
-  middleware.push(createLogger());
+  // middleware.push(createLogger());
 }
 var createWeSiteStore = applyMiddleware( ...middleware );
 

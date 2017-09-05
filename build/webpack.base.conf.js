@@ -1,4 +1,8 @@
-var path = require('path')
+const path = require('path');
+var join = path.join;
+var resolve = path.resolve;
+var existsSync = require('fs').existsSync;
+var webpack = require('webpack')
 var utils = require('./utils')
 var config = require('../config')
 
@@ -11,13 +15,29 @@ const extractCss = new ExtractTextPlugin({
   disable: process.env.NODE_ENV === "development"
 });
 const extractLib = new ExtractTextPlugin({
-  filename: utils.assetsPath('css/lib.css'),
+  filename: utils.assetsPath('css/lib-[name].css'),
   disable: process.env.NODE_ENV === "development"
 });
 
+const pkgPath = join(__dirname, '../package.json');
+const pkg = existsSync(pkgPath) ? require(pkgPath) : {};
+let theme = {};
+if (pkg.theme && typeof(pkg.theme) === 'string') {
+  let cfgPath = pkg.theme;
+  // relative path
+  if (cfgPath.charAt(0) === '.') {
+    cfgPath = resolve(args.cwd, cfgPath);
+  }
+  const getThemeConfig = require(cfgPath);
+  theme = getThemeConfig();
+} else if (pkg.theme && typeof(pkg.theme) === 'object') {
+  theme = pkg.theme;
+};
+
 module.exports = {
   entry: {
-    app: './src/index.js'
+    app: './src/index.js',
+    vendorLib: ['react', 'redux','antd', 'moment', 'rc-calendar' ] // 'lodash'
   },
   output: {
     path: config.build.assetsRoot,
@@ -36,39 +56,41 @@ module.exports = {
   plugins: [
     extractCss,
     extractLib,
+    new webpack.EnvironmentPlugin({
+      VERSION_ENV: 'dev'
+    })
   ],
   module: {
     rules: [
+      
       {/* 自定义的组件，样式 css-modules 化？？如果需要使用其他的 css 预编译程序，则可以去除以下两条配置 */
-        test: /(\.css|\.less)$/, include: [resolve('src/components')], use: extractCss.extract({
+        test: /(\.css|\.less)$/, include: [resolve('src/components'), resolve('src/views/')], use: extractCss.extract({
           use: [{
               loader: "css-loader",
               options: {
+                importLoaders: 1,
                 modules: true,
-                url: true, // 允许对 import 的 css 文件内部背景图片进行 url-loader 操作
+                url: true,
                 minimize: process.env.NODE_ENV === 'production',
                 sourceMap: config.build.productionSourceMap,
                 localIdentName: '[name]__[local]___[hash:base64:5]',
               }
           },{
-              loader: "less-loader"
+            loader: "less-loader"
           },{
             loader: 'postcss-loader',
             options: {
-              plugins: (loader) => process.env.NODE_ENV === 'production' ? [
-                 require('autoprefixer')(),
-              ]: []
+              plugins: process.env.NODE_ENV === 'production' ? (loader) => [require('postcss-import')({ root: loader.resourcePath }), require('autoprefixer')(),] : []
             }
           }],
           fallback: "style-loader"
         })
       },
       {
-        test: /(\.css|\.less)$/, exclude: [resolve('src/components')], use: extractLib.extract({
+        test: /(\.css|\.less)$/, exclude: [resolve('src/components'), resolve('src/views/')], use: extractLib.extract({
           use: [{
             loader: "css-loader",
             options: {
-              importLoaders: 1, // 
               modules: false,
               url: true,
               minimize: process.env.NODE_ENV === 'production',
@@ -76,12 +98,14 @@ module.exports = {
               localIdentName: '[name]__[local]___[hash:base64:5]',
             }
           },{
-            loader: "less-loader"
+            loader: "less-loader",
+            options: {
+              modifyVars: theme
+            }
           }],
           fallback: "style-loader"
         })
       },
-      
       {
         test: /\.js[x]?$/,
         loader: 'babel-loader',
@@ -91,7 +115,7 @@ module.exports = {
         exclude: /node_modules/,
         include: [resolve('src'), resolve('test')] // include: path.join(__dirname, './src')
       },
-      {/* 按需加载子路由 */
+      {
         test: /([^/]+)\/?([^/]*)\.(js|jsx)?$/,
         use: [
             'bundle-loader?lazy&name=[name]',
