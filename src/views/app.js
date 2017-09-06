@@ -23,18 +23,18 @@ class App extends Component{// function??/
     /*
      * // {basename="/planning"}
      *
-    <BrowserRouter basename="/frontend-react-projects" forceRefresh={!supportsHistory} keyLength={10}>
+    <RouterContainer basename="/frontend-react-projects" forceRefresh={!supportsHistory} keyLength={10}>
       <RootRouter />
-    </BrowserRouter>
+    </RouterContainer>
     
     <ConnectedRouter history={this.props.history}>
       <RootRouter />
     </ConnectedRouter>
     */
     return (
-      <RouterContainer forceRefresh={!supportsHistory} keyLength={10}>
+      <ConnectedRouter history={this.props.history}>
         <RootRouter />
-      </RouterContainer>
+      </ConnectedRouter>
     );
     /*
      * 锚点路由链接形式：
