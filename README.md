@@ -25,18 +25,19 @@ npm run start:uat
 
 # 构建
 # 生产环境的部署代码(默认应用 dev 服务数据)
-npm run build
-npm run build:dev
+npm run build 
+npm run build:dev -- develop
 npm run build:dev-local # 本机
 # 应用 sit 服务数据
-npm run build:sit
+npm run build:sit -- develop
 npm run build:sit-local # 本机
 # 应用 uat 服务数据
-npm run build:uat
+npm run build:uat -- develop
 # 应用 prod 服务数据
-npm run build:prod
+npm run build:prod -- develop
 
 # 构建master分支dev环境
+# npm run build:[环境标示] -- [分支名称]
 npm run build:dev -- master
 
 ```
