@@ -4,6 +4,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { push } from 'react-router-redux';
 // import { TweenMax } from 'gsap';// 动画
+// 
+// var request = require('request');
+
 class IndexView extends Component{
   static contextTypes={
 		router: React.PropTypes.object.isRequired,
