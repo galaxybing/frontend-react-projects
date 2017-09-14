@@ -66,7 +66,7 @@ npm run build:dev -- master
 
 ## 部署 dev|sit|uat 环境版本：
 - git checkout develop
-- npm run build:dev -- develop （声明发布 sit 环境，且当前所在主发布分支为 develop 的情况；以备 index.html 页面结构使用，即 dev-develop）
+- npm run build:dev -- develop （声明发布 dev 环境，且当前所在主发布分支为 develop 的情况；以备 index.html 页面结构使用，即 dev-develop）
 - git commit -m 'dev@配置发布的版本号（以备 qsync 使用）'
   - git push origin develop:dev-develop
 - Bone 操作界面
