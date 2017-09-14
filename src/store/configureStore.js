@@ -36,6 +36,8 @@ if (process.env.NODE_ENV !== 'production') {
 var createWeSiteStore = applyMiddleware( ...middleware );
 
 function configureStore(onComplete: ?() => void) {
+  // 1) createStore 接受第二个参数，表示 State 的最初状态。这通常是服务器给出的。
+  // 2) 如果 createStore 方法已经接受整个应用的初始状态作为参数，那样的话，applyMiddleware就是第三个参数了。不然就是第二个参数
   const store = createStore(reducers, composeEnhancers(createWeSiteStore));
   return store;
 }

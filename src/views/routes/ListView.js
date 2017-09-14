@@ -7,6 +7,9 @@ class ListView extends Component{
 		router: React.PropTypes.object.isRequired,
 	};
   componentDidMount(){
+    console.log('this.props.match.params->', this.props.match.params);
+    console.log('this.context.router->', this.context.router);
+    console.log('this.props->', this.props);// dispatch history location match
   }
   goBack(){
     var loc = this.context.router.history;
@@ -19,7 +22,9 @@ class ListView extends Component{
   }
 }
 
-function select(store){
+function select(store/*, ownProps*/){ // 1）第一个参数总是state对象，还可以使用第二个参数，代表容器组件的props对象
+								  // 2) 侦听 Store，每当state更新的时候，就会自动执行，重新计算 UI 组件的参数，从而触发 UI 组件的重新渲染。
+								  // 3）当使用了 ownProps 作为参数后，如果容器组件的参数发生变化，也会引发 UI 组件重新渲染。
 	return {
 
 	}
@@ -27,6 +32,7 @@ function select(store){
 
 function actions(dispatch, ownProps){
 	return {
+		//loginCodeCheck: (arg)=> dispatch(loginCodeCheck(arg)),
 		dispatch
 	};
 }

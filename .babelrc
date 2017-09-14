@@ -6,7 +6,8 @@
       'polyfill': false, // defaults to true
       'regenerator': true, // defaults to true
       'moduleName': 'babel-runtime' // defaults to "babel-runtime"
-    }]
+    }],
+    ["import", { "libraryName": "antd","style": true}]
   ],
   "comments": false,
   "env": {

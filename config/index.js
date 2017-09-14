@@ -1,13 +1,21 @@
 var path = require('path')
 
+var apiConfig = require('../src/store/api.js');
+const versionEnv = process.env.VERSION_ENV || 'dev';
+var assetsPublicPathConfig = apiConfig['assetsPublicPathConfig'];
+if(versionEnv=='dev-local'||versionEnv=='sit-local'){
+  assetsPublicPathConfig = 'http://historyroute.317hu.com/static/';
+}
+
+console.log('静态资源目录：%s', assetsPublicPathConfig);
 module.exports = {
   build: {
     env: require('./prod.env'),
     index: path.resolve(__dirname, '../dist/index.html'),
     assetsRoot: path.resolve(__dirname, '../dist/static/'),
     assetsSubDirectory: 'assets',// static
-    assetsPublicPath: 'http://localhost/frontend-react-projects/dist/static/', // /static/
-    productionSourceMap: false,// true 配置是否创建调试 .map 文件
+    assetsPublicPath: assetsPublicPathConfig, // /static/
+    productionSourceMap: false,
     productionGzip: false,
     productionGzipExtensions: ['js', 'css'],
     bundleAnalyzerReport: process.env.npm_config_report
@@ -16,7 +24,7 @@ module.exports = {
     env: require('./dev.env'),
     port: 8081,
     autoOpenBrowser: false,
-    assetsSubDirectory: 'static',
+    assetsSubDirectory: 'static/assets/',
     assetsPublicPath: '/',
     proxyTable: {},
     cssSourceMap: false

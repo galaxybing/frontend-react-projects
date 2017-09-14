@@ -1,13 +1,18 @@
 'use strict';
 require('./assets/css/lib.css');
 require('./assets/css/app.css');
+
 import React, { Component } from 'react';
+
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import PropTypes from 'prop-types';
+
 import createClass from 'create-react-class';
 import { configureStore, history } from './store/configureStore';
 import App from './views/app';
+// import AnimationExample from './views/AnimationExample';
+
 if ('scrollRestoration' in history) {
   // history.scrollRestoration = 'manual';
 }

@@ -8,10 +8,38 @@
 .page-base p{
     margin-bottom: 10px;
 }
+.artical-content p img{
+  display: block;
+  margin: 10px auto;
+}
 
-.page-index{
-  text-align: center;
+.page-index, .page-detail{
+  text-align: left;
   margin-top: 30px;
+  width: 820px;
+  margin: 30px auto 0;
+  line-height: 220%;
+}
+.page-index p, .page-detail p{
+  margin-bottom: 15px;
+}
+.page-index .pic-sprite, .page-detail .pic-sprite{
+  text-align: center;
+}
+.article-header{
+  font-size: 20px;
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+}
+.source-author{
+  font-size: 16px;
+  text-align: center;
+}
+.aligncenter{
+  text-align: center;
+  display: block;
+  margin: 0 auto;
 }
 
 /*
