@@ -26,12 +26,8 @@ Temporary Items
 .apdisk
 
 /node_modules/*
-<<<<<<< HEAD
-yarn-error.log
-=======
 npm-debug.log
 yarn-error.log
 
 .idea
 .dll-link-plugin
->>>>>>> master

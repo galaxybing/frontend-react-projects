@@ -76,21 +76,11 @@ module.exports = {
                 localIdentName: '[name]__[local]___[hash:base64:5]',
               }
           },{
-<<<<<<< HEAD
-              loader: "less-loader"
-          },{
-            loader: 'postcss-loader',
-            options: {
-              plugins: (loader) => process.env.NODE_ENV === 'production' ? [
-                 require('autoprefixer')(),
-              ]: []
-=======
             loader: "less-loader"
           },{
             loader: 'postcss-loader',
             options: {
               plugins: process.env.NODE_ENV === 'production' ? (loader) => [require('postcss-import')({ root: loader.resourcePath }), require('autoprefixer')(),] : []
->>>>>>> master
             }
           }],
           fallback: "style-loader"
@@ -101,35 +91,16 @@ module.exports = {
           use: [{
             loader: "css-loader",
             options: {
-<<<<<<< HEAD
-              importLoaders: 1, // 
-              modules: false,
-              url: false,
-=======
               modules: false,
               url: true,
->>>>>>> master
               minimize: process.env.NODE_ENV === 'production',
               sourceMap: config.build.productionSourceMap,
               localIdentName: '[name]__[local]___[hash:base64:5]',
             }
           },{
-<<<<<<< HEAD
-            loader: "less-loader"
-          },{
-            loader: 'postcss-loader',
-            options: {
-              plugins: (loader) => process.env.NODE_ENV === 'production' ? [
-                // require('postcss-import')({ root: loader.resourcePath }),
-                // require('postcss-cssnext')(),
-                 require('autoprefixer')(),
-                // require('cssnano')()
-              ]: []
-=======
             loader: "less-loader",
             options: {
               modifyVars: theme
->>>>>>> master
             }
           }],
           fallback: "style-loader"

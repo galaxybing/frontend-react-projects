@@ -4,12 +4,7 @@ import ListViewContainer from './routes/ListView.js'; // bundle-loader 返回
 import ScrollToTop from '../components/ScrollToTop';
 
 import Bundle from '../core/bundle.js';
-<<<<<<< HEAD
-// import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect';
-// import { userIsAuthenticatedRedir, userIsNotAuthenticatedRedir, userIsAdminRedir, userIsAuthenticated, userIsNotAuthenticated } from '../core/auth';
-=======
 //import DetailViewContainer from 'bundle-loader?lazy&name=page-[name]!./routes/detailView.js';
->>>>>>> master
 
 import { matchRoutes, renderRoutes } from 'react-router-config';
 const createChildRouteComponent = (container, props,) => (

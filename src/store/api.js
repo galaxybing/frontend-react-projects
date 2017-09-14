@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-module.exports = {
-  "apiMock": "",
-  "baseComponentApi": "http://rap.317hu.com/mockjsdata/1/",
-  "nurseTrainApi": "",
-  "careCentralApi": "",
-  "privilegeApi": "",
-}
-=======
 var apiConfig;
 // if(!window['VMCONFIG']){
   const versionEnv = process.env.VERSION_ENV || 'dev';
@@ -42,4 +33,3 @@ if(/^v(\d){1,2}\.(\d){1,2}\.(\d){1,2}$/.test(ver)){
 }
 
 module.exports = apiConfig;
->>>>>>> master

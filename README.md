@@ -153,11 +153,6 @@ server {
 
 #### 8.[For async actions I'm using redux-thunk.](https://stackoverflow.com/questions/42872846/react-router-redux-setstate-warning-after-redirect/42915448#42915448)
 
-<<<<<<< HEAD
-***
-
-# 处理 verden.js 文件过大问题
-=======
 #### 9.阻塞父层级的请求发送，实现子组件 dom 数据同步：
 
 ```javascript
@@ -169,4 +164,3 @@ class PanningList extends Component{
   }
 }
 ```
->>>>>>> master

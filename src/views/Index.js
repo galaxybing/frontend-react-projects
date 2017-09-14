@@ -4,15 +4,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { push } from 'react-router-redux';
 // import { TweenMax } from 'gsap';// 动画
-<<<<<<< HEAD
-import { checkedQuery } from '../actions';
-class LoginView extends Component{
-=======
 // 
 // var request = require('request');
 
 class IndexView extends Component{
->>>>>>> master
   static contextTypes={
 		router: React.PropTypes.object.isRequired,
 	};
@@ -22,13 +17,6 @@ class IndexView extends Component{
     
   }
   componentDidMount(){
-<<<<<<< HEAD
-    let checkCodeResult = this.props.dispatch(checkedQuery());
-    checkCodeResult.then((res)=>{
-      // 得到同步数据，以备操作
-    });
-=======
->>>>>>> master
   }
   render(){
       return (

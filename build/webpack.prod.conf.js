@@ -92,74 +92,9 @@ var webpackConfig = merge(baseWebpackConfig, {
         keepClosingSlash: true
       },
       hash: false,
-
-<<<<<<< HEAD
-      // necessary to consistently work with multiple chunks via CommonsChunkPlugin
-      chunksSortMode: 'dependency'
-    }),
-    
-    /* 从 vendor 里面分离抽取，且注意插件引用顺序：
-     name: 'vendor',
-     name: 'vendor-antd',
-     name: 'vendor-react',
-    */
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      chunks: ['app'],
-      minChunks: function (module, count) {
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) && (
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules')
-            ) === 0 
-          )
-        )
-      }
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor-antd',
-      chunks: ['vendor'],
-      minChunks: function (module, count) {
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) &&(
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules/antd/')
-            ) === 0 ||
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules/moment/')
-            ) === 0 ||
-            module.resource.indexOf(path.join(__dirname, '../node_modules/rc-calendar')) === 0
-          )
-          
-        )
-      }
-    }),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor-react',
-      chunks: ['vendor'],
-      minChunks: function (module, count) {
-        return (
-          module.resource &&
-          /\.js$/.test(module.resource) && (
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules/react')
-            ) === 0 ||
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules/redux')
-            ) === 0
-          )
-        )
-      }
-    }),
-    
-    // copy custom static assets
-=======
       chunksSortMode: 'auto' // auto | dependency
     }),
     
->>>>>>> master
     new CopyWebpackPlugin([
       {
         from: path.resolve(__dirname, '../static'),

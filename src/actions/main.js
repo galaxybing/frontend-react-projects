@@ -3,14 +3,6 @@ import type { Action, ThunkAction } from './types';
 const Parse = require('../store/parse');
 
 module.exports = {
-<<<<<<< HEAD
-  checkedQuery: ()=>{
-    return (dispatch)=>{
-      return Parse.run({url: 'checkCode', options: {
-        method: 'POST',
-        data: { userName: 'wangyh@317hu.com' }
-      }, api: 'baseComponentApi'})
-=======
   common: (source)=>{
     return async (dispatch, getState)=>{
       let results= await Parse.run({method: 'login/checkIn', body: source});
@@ -20,7 +12,6 @@ module.exports = {
         *  dispatch({type:"LOAD_SITE_INDEX", action: data});
         * })
        */
->>>>>>> master
     }
   }
 };
