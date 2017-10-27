@@ -689,7 +689,8 @@ function select(store/*, ownProps*/){ // 1）第一个参数总是state对象，
 								  // 3）当使用了 ownProps 作为参数后，如果容器组件的参数发生变化，也会引发 UI 组件重新渲染。
 
 	return {
-    detailState: store.router.location.detailState
+    // detailState: store.router.location.detailState
+    detailState: 0
 	}
 }
 

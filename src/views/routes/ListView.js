@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { PropTypes } from 'prop-types';
 // import {TweenMax} from 'gsap';
 
 class ListView extends Component{
   static contextTypes={
-		router: React.PropTypes.object.isRequired,
+		router: PropTypes.object.isRequired, // React.PropTypes.object.isRequired
 	};
   componentDidMount(){
     console.log('this.props.match.params->', this.props.match.params);

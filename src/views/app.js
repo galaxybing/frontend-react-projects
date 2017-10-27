@@ -27,14 +27,16 @@ class App extends Component{// function??/
       <RootRouter />
     </RouterContainer>
     
+    // 定义 function select(store){ store.router.location
+    // withRouter(
     <ConnectedRouter history={this.props.history}>
       <RootRouter />
     </ConnectedRouter>
     */
     return (
-      <ConnectedRouter history={this.props.history}>
+      <RouterContainer basename="/frontend-react-projects" forceRefresh={!supportsHistory} keyLength={10}>
         <RootRouter />
-      </ConnectedRouter>
+      </RouterContainer>
     );
     /*
      * 锚点路由链接形式：

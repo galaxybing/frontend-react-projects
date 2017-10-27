@@ -1,13 +1,13 @@
 {
-  'presets': ['es2015', 'stage-1', 'react'],
-  'plugins': [
-    ['transform-runtime', {
-      'helpers': false, // defaults to true
-      'polyfill': false, // defaults to true
-      'regenerator': true, // defaults to true
-      'moduleName': 'babel-runtime' // defaults to "babel-runtime"
+  "presets": ["es2015", "stage-1", "react"],
+  "plugins": [
+    ["transform-runtime", {
+      "helpers": false,
+      "polyfill": false,
+      "regenerator": true,
+      "moduleName": "babel-runtime"
     }],
-    ["import", { "libraryName": "antd","style": true}]
+    ["import", { "libraryName": "antd", "style": true}]
   ],
   "comments": false,
   "env": {

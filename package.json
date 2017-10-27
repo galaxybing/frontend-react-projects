@@ -14,9 +14,9 @@
     "build:prod": "cross-env VERSION_ENV=prod node build/build.js",
     "test": "jest",
     "lint": "eslint",
-    "start": "node build/dev-server.js",
-    "start:sit": "cross-env VERSION_ENV=sit node build/dev-server.js",
-    "start:uat": "cross-env VERSION_ENV=uat node build/dev-server.js",
+    "start": "cross-env EXECUTE_ENV=start node build/dev-server.js",
+    "start:sit": "cross-env VERSION_ENV=sit EXECUTE_ENV=start node build/dev-server.js",
+    "start:uat": "cross-env VERSION_ENV=uat EXECUTE_ENV=start node build/dev-server.js",
     "watch": ""
   },
   "dependencies": {

@@ -165,3 +165,5 @@ class PanningList extends Component{
   }
 }
 ```
+
+#### 10. basename 与 push 测试：
