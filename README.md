@@ -72,8 +72,7 @@ npm run build:dev -- master
 - Bone 操作界面
   - 同步hospital-admin仓库与Eweb工程的 index.vm 入口文件
 * 测试环境：
-  - http://nursetrain.dev.317hu.com/hospital-admin/nurse-training-planning/planningMessage/planning-message-list.html
-  - http://nursetrain.sit.317hu.com/hospital-admin/nurse-training-planning/planningMessage/planning-message-list.html
+  - http://hospital.sit.317hu.com/hospital-admin/frontend-react-projects/index.html
 
 ## 部署生产环境版本：
 - git checkout master
