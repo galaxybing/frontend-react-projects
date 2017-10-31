@@ -72,7 +72,7 @@ npm run build:dev -- master
 - Bone 操作界面
   - 同步hospital-admin仓库与Eweb工程的 index.vm 入口文件
 * 测试环境：
-  - http://hospital.sit.317hu.com/hospital-admin/frontend-react-projects/index.html
+  - http://hospital.dev.317hu.com/hospital-admin/frontend-react-projects/index.html
 
 ## 部署生产环境版本：
 - git checkout master
@@ -84,8 +84,7 @@ npm run build:dev -- master
 - Bone 操作界面
   - 同步hospital-admin仓库与Eweb工程的 index.vm 入口文件
 * 本地测试目录：( 即，模拟发布生产环境版本 使用uat数据 )
-  - http://nurse-training-planning.galaxyw.317hu.com/hospital-admin/nurse-training-planning/planning/hospital.html
-  - http://nurse-training-planning.galaxyw.317hu.com/hospital-admin/nurse-training-planning/planningMessage/planning-message-list.html
+  - http://galaxyw.317hu.com/hospital-admin/frontend-react-projects/index.html
 
 
 # 如何使用：
