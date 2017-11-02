@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as RouterContainer, HashRouter, Switch, Route, Redirect } from 'react-router-dom';
-// import { ConnectedRouter } from 'react-router-redux';
-// import { CSSTransitionGroup } from 'react-transition-group';
+import { BrowserRouter as RouterContainer, Router, HashRouter, Switch, Route, Redirect } from 'react-router-dom';
+
+//const RouterContainer = require('react-router-dom').BrowserRouter;
 
 import { ConnectedRouter } from 'react-router-redux';
+// import { CSSTransitionGroup } from 'react-transition-group';
 
 import RootRouter from './router';
 
@@ -21,14 +22,23 @@ class App extends Component{// function??/
      
     const supportsHistory = 'pushState' in window.history;
     /*
-     * // {basename="/planning"}
-     *
+     路由封装：
+     1. Router 与 BrowserRouter 的区别意义在哪里？
+     <Router history={this.props.history}>
+       <RootRouter />
+     </Router>
+
+     2. 
+     // {basename="/planning"}
+     // 不支持 history 属性，所以里面不可使用由 react-router-redux 导出的 push、replace 方法：
     <RouterContainer basename="/frontend-react-projects" forceRefresh={!supportsHistory} keyLength={10}>
       <RootRouter />
     </RouterContainer>
     
+     3. 
     // 定义 function select(store){ store.router.location
     // withRouter(
+    //
     <ConnectedRouter history={this.props.history}>
       <RootRouter />
     </ConnectedRouter>

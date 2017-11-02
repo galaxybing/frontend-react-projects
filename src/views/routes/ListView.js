@@ -12,14 +12,21 @@ class ListView extends Component{
     console.log('this.context.router->', this.context.router);
     console.log('this.props->', this.props);// dispatch history location match
   }
-  goBack(){
-    var loc = this.context.router.history;
-    loc.goBack()
-  }
   render(){
-      return (
-        <div style={{textAlign: 'center', color: '#ff0000'}} onClick={()=>this.goBack()}>[返回上页去吧]</div>
-      );
+    return (
+      <div>
+        <div style={{textAlign: 'center', color: '#ff0000', cursor: 'pointer', width: 260, margin: '0 auto'}} onClick={()=>{
+          this.context.router.history.goBack();
+          // this.props.history.replace({ pathname: '/hospital-admin/frontend-react-projects/index.html'});
+        }}>[返回 - 直接使用goBack无法回到顶部]</div>
+        <pre>
+          console.log('this.props.match.params->', this.props.match.params);<br />
+          console.log('this.context.router->', this.context.router);<br />
+          console.log('this.props->', this.props);// dispatch history location match
+        </pre>
+        
+      </div>
+    );
   }
 }
 

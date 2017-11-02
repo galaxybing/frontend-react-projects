@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 
 import { Link } from 'react-router-dom';
@@ -9,676 +10,198 @@ import { push } from 'react-router-redux';
 
 class IndexView extends Component{
   static contextTypes={
-		router: React.PropTypes.object.isRequired,
+		router: PropTypes.object.isRequired,
 	};
-  toPageList(){
-    var loc = this.context.router.history;
-    loc.push({ pathname: `/list/100153/hospital.html`});
-    
-  }
   componentDidMount(){
   }
   render(){
       return (
           <div className="page-index">
-            <h1 className="article-header">可视化系统搭建</h1>
+            <h1 className="article-header">欢迎来到后 ASO 时代</h1>
             
             <div className="artical-content">
               <p>
-                  如何搭建数据可视化系统，用丰富的设计语言清晰表达复杂和庞大数据，并形成鲜明的设计风格？我们把数据可视化的元素进行拆分并建立相应的规范体系。
+                6 月 WWDC 上所宣布的「App Store 将迎来大改版」的消息，给 ASO 界砸下了一枚重磅炸弹。虽说 iOS11 要到今年秋季才会正式推送，且正式版面世到大面积使用还需要一定时间，到底会不会迎来一个新的 ASO 时代，目前尚不可知。
+              </p>
+              <img className="w-100 alignnone size-medium wp-image-25556" src="https://isux.tencent.com/static/upload/pics/8/25/201710_JzMu7FMwXyG3mYTLDVYO5.jpg" />
+              <p>
+                前言导语
+              </p>
+              <p>
+                6 月 WWDC 上所宣布的「App Store 将迎来大改版」的消息，给 ASO 界砸下了一枚重磅炸弹。虽说 iOS11 要到今年秋季才会正式推送，且正式版面世到大面积使用还需要一定时间，到底会不会迎来一个新的 ASO 时代，目前尚不可知。
+              </p>
+              <p>
+                为了做好迎接新时代的准备，咱们先来看看苹果砸下的到底是一枚什么样的「炸弹」。
+              </p>
+              <h3>搜索改动还算小</h3>
+              <p>
+                到了 iOS11 之后搜索将会发生哪些变化呢？我们就按照「搜索 -> 应用详情 -> 下载」这条路径来看看。
+              </p>
+              <p>
+                  <img className="alignnone size-medium wp-image-25556" src="https://isux.tencent.com/static/upload/pics/8/25/2017ClYjNT0kxdz6hCzeDeKI9Gxi.png" />
+              </p>
+              <h3>1. 搜索入口</h3>
+              <p>
+                搜索入口从右二被挪到到右一的位置
+              </p>
+              <p>
+                热搜词从 10 个降为 7 个
+              </p>
+              <p>
+                虽然官方从未公开过热搜词的筛选算法，但根据长期观察，我们发现热搜词会受到搜索频次、短期下载次数、社会化分享、用户评分评论和苹果人为干涉等影响。
+              </p>
+              <p>
+                可以发现除了苹果人为干涉之外，其他几个影响热搜词的因素都是可控的，所以刷榜或是积分墙依然有存在意义，也将无法杜绝。
+              </p>
+              <p>
+                <img className="alignnone size-medium wp-image-25556" src="https://isux.tencent.com/static/upload/pics/8/25/20170KLLhHm451I5aFfUiCvq7rlm.png" />
+              </p>
+              <h3>2.  搜索结果</h3>
+              <p>
+                应用名不折行，「副标题」可能显示不全
+              </p>
+              <p>
+                应用名下方默认展示应用所在的次分类（是的每个应用可以设置主分类和次分类）
+              </p>
+              <p>
+                应用截图展示三张，应用视频可以展示三个
+              </p>
+              <p>
+                目前，为了扩张词库、增加关键词权重，我们所谓的副标题其实是在「应用名称」的位置，用连字符与应用名区分开。从本质上来说“企鹅FM-做电台直播, 听有声书情感音乐广播剧”应该都是算作「应用名称」。在新版搜索结果中设置过副标题的应用名基本显示不全。
+              </p>
+              <p>
+                还好，此次大改版新增了“subtitle”字段（注：后文均用 subtitle 表示苹果规定的副标题，以区分人为设置的副标题），也就是 App Store 的「亲生副标题」。如果设置了，它会出现在应用名称下方，也就是上图中应用次分类的位置。subtitle 对于关键词收录和用户查看应用详情页的可能性都会有影响。它似乎和安卓平台上的一句话简介有了相似的作用。
+              </p>
+              <p>
+                应用截图二变三、视频一变三，换言之，搜索结果中能传达给用户的信息更多了。听起来是个好事，但多不一定是好，也可能是一个坑。虽然系统升级了，但多数用户的硬件并没有升级，要在 iPhone6 或者 iPhone7 的屏幕上多塞入一张截图，就需要运营和视觉把控好传达的信息。画布没有变大，但能承载的信息变多了，也可以算是一种诱惑吧。
+              </p>
+              <p>
+                <img className="alignnone size-medium wp-image-25556" src="https://isux.tencent.com/static/upload/pics/8/25/2017weeE0vsPGMr6R5ZAdiAzcdvE.png" />
+              </p>
+              <h3>3. 应用详情页</h3>
+              <p>
+                自然，应用名称显示完整。应用名下方默认显示次分类，有 subtitle 则显示 subtitle
+              </p>
+              <p>
+                What’s new 被放到了第一屏，默认显示前三行
+              </p>
+              <p>
+                应用详情、评分评论和相关应用依次排列在应用截图之后，相关应用推荐甚至到了最后一屏
+              </p>
+              <p>
+                值得注意的是，原来被排在描述之后的What’s new ，在大改版中突然翻身做主，坐到了黄金位置，虽然不知道官方的意图，但这无疑又是一块可运营的空间，值得思考如何将它变成一个拉新工具。
+              </p>
+              <p>
+                其实评分在 What’s new 上方也有，但是用户评论是在第二屏位置。笔者对于描述和用户评论无甚想法，但对被放到了最后一屏的相关应用推荐，就略有担忧。毕竟通过友链还是能引一部分流量的，现在位置被调整到了犄角旮旯，来自于此的流量多少将会受到影响。
+              </p>
+              <h3>榜单 Jobs 估计都不认识了</h3>
+              <p>
+                榜单改动虽大，但影响不及搜索。假如幸运地被推荐，很是可以捧着当日新增笑了。
+              </p>
+              <p>
+                <img className="alignnone size-medium wp-image-25556" src="https://isux.tencent.com/static/upload/pics/8/25/2017H9zFg2MnZPilO_QnRYOLz3Ph.png" />
+              </p>
+              <p>
+                1. tab 换血
+              </p>
+              <p>
+                「今天」取代「精品推荐」
+              </p>
+              <p>
+                「游戏」成为与 APP 同级的入口
+              </p>
+              <p>
+                「类别」和「排行榜」不再是一级入口
+              </p>
+              <p>
+                值得一说的是，「游戏」被升级为一个单独的 tab。笔者认为这可能是苹果在平衡 App Store 的公平性和调整营收力度：其他互联网产品的流量和游戏的流量都不在一个量级上，而游戏 App 所带来的营收也不是其他产品可以拍马追上的。
+              </p>
+              <p>
+                <img className="alignnone size-medium wp-image-25556" src="https://isux.tencent.com/static/upload/pics/8/25/2017A_Ecx5TUZ4a4HWODQhPXZhj-.png" />
+              </p>
+              <p>
+                2. 每日更新的「今天」
+              </p>
+              <p>
+                卡片式设计风格
+              </p>
+              <p>
+                庞大的人工编辑团队
+              </p>
+              <p>
+                从原来每周更新到每日更新
+              </p>
+              <p>
+                目前公认的未来最大流量入口就是「今天」，除了推荐 App 之外，还有专题、文章……这不仅仅是一个卖应用更新应用的杂货铺，是要发展成能看电影吃饭的购物商场，将用户更长久地留在 App Store 中。业界对于上推荐位的普遍看法是，如果应用中使用到苹果主推的新技术（比如 AR）或者新 API，那么上推荐位的几率将大大提高。
+              </p>
+              <p>
+                <img className="alignnone size-medium wp-image-25556" src="https://isux.tencent.com/static/upload/pics/8/25/2017b1cl153ynvkb66AihA0el3Ws.png" />
+              </p>
+              <p>
+                3.收归了「类别」和「排行榜」的 「APP」
+              </p>
+              <p>
+                取消「畅销榜」
+              </p>
+              <p>
+                「付费榜」、「免费榜」和「类别」依次在倒数第二屏到最后一屏的位置
               </p>
               <h3>
-                  图表设计
+                「付费榜」和「免费榜」默认展示前三位，可左右滑动或点右上角「查看全部」查看榜单
               </h3>
               <p>
-                  <strong>
-                      1.
-                  </strong>
-                  <strong>
-                      图表基本类型
-                  </strong>
+                传言取消畅销榜是因为刷榜太多，规则玩崩了，所以苹果直接取消畅销榜让刷榜没得玩。不过这个事情…笔者认为刷榜公司还是能够找到对策的。
               </p>
               <p>
-                  六种基本图表涵盖了大部分图表使用场景，也是做数据可视化最常用的图表类型：
+                对于不刷榜的我们受到更大影响的可能是「类别」的移动，这一举动相当于从一级入口到了三级入口（毕竟是最后一屏）。来自分类的流量将会受到一定影响，所以更要通过把握搜索来挽回损失的流量。
               </p>
+              <h3>其他</h3>
               <p>
-                  <strong>
-                      柱状图
-                  </strong>
-                  &nbsp; 分类照片照片什么照片什么什么项目之间的比较;
+                除新增的 subtitle 字段之外，App Store 还新增了「宣传文本」字段，限制 170 字，可以随时更改不需要审核。成功提交后，这段文字会出现在应用描述之上，应用截图之下，大概第二屏的位置。通常应用截图在第一屏是无法显示完整的，用户大概率上会看到第二屏，也就很容易看到「宣传文本」。
               </p>
               <p>
-                  <strong>
-                      饼图
-                  </strong>
-                  &nbsp; 构成即部分占总体的比例;
+                <img className="alignnone size-medium wp-image-25556" src="https://isux.tencent.com/static/upload/pics/8/25/20177_G757GVjCninv2Gn8aJeDDZ.png" />
               </p>
               <p>
-                  <strong>
-                      折线图
-                  </strong>
-                  &nbsp; &nbsp;随时间变化的趋势;
+                这个新增字段对重运营的产品，可是个好消息。通常一个版本里运营会推好几拨活动，可惜描述不能随时更改，活动也无法同步到 App Store。「宣传文本」的存在，让运营也能在 App Store 都做上文案推广啦。
               </p>
-              <p>
-                  <strong>
-                      条形图
-                  </strong>
-                  &nbsp; 分类照片照片什么照片什么什么项目之间的比较;
-              </p>
-              <p>
-                  <strong>
-                      散点图
-                  </strong>
-                  &nbsp; 相关性或分布关系;
-              </p>
-              <p>
-                  <strong>
-                      地图
-                  </strong>
-                  &nbsp; 区域之间的分类照片照片什么照片什么什么比较。
-              </p>
-              <p>
-                  基本图表类型都有通用的样式，不过多的展开讲解我们更多的考虑如何选择常用图表来呈现数据，达到数据可视化的目标基本方法：
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25556" src="https://isux.tencent.com/wp-content/uploads/2017/07/060507-46299-590x128.png"
-                  alt="" width="590" height="128" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/060507-46299-590x128.png 590w, https://isux.tencent.com/wp-content/uploads/2017/07/060507-46299-768x166.png 768w, https://isux.tencent.com/wp-content/uploads/2017/07/060507-46299-630x137.png 630w, https://isux.tencent.com/wp-content/uploads/2017/07/060507-46299-770x167.png 770w, https://isux.tencent.com/wp-content/uploads/2017/07/060507-46299-310x67.png 310w, https://isux.tencent.com/wp-content/uploads/2017/07/060507-46299.png 960w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25556" src="https://isux.tencent.com/wp-content/uploads/2017/07/060507-46299-590x128.png"
-                      alt="" width="590" height="128" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/060507-46299-590x128.png
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/060507-46299-768x166.png
-                      768w, https://isux.tencent.com/wp-content/uploads/2017/07/060507-46299-630x137.png
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/060507-46299-770x167.png
-                      770w, https://isux.tencent.com/wp-content/uploads/2017/07/060507-46299-310x67.png
-                      310w, https://isux.tencent.com/wp-content/uploads/2017/07/060507-46299.png
-                      960w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p>
-                  a.明确目标
-              </p>
-              <p>
-                  明确数据可视化的目标，通过数据可视化我们要解决什么样的问题，需要探索什么内容或陈述什么事实。
-              </p>
-              <p>
-                  b.选择图形
-              </p>
-              <p>
-                  围绕目标找到能提供信息的指标或者数据，选择合适的图形去展示需要可视化的数据。
-              </p>
-              <p>
-                  Andrew Abela整理的图表类型选择指南图示，将图表展示的关系分为四类：
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25571" src="https://isux.tencent.com/wp-content/uploads/2017/07/063056-39119-590x440.png"
-                  alt="" width="590" height="440" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063056-39119-590x440.png 590w, https://isux.tencent.com/wp-content/uploads/2017/07/063056-39119-768x573.png 768w, https://isux.tencent.com/wp-content/uploads/2017/07/063056-39119-630x470.png 630w, https://isux.tencent.com/wp-content/uploads/2017/07/063056-39119-770x574.png 770w, https://isux.tencent.com/wp-content/uploads/2017/07/063056-39119-310x231.png 310w, https://isux.tencent.com/wp-content/uploads/2017/07/063056-39119.png 924w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25571" src="https://isux.tencent.com/wp-content/uploads/2017/07/063056-39119-590x440.png"
-                      alt="" width="590" height="440" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063056-39119-590x440.png
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/063056-39119-768x573.png
-                      768w, https://isux.tencent.com/wp-content/uploads/2017/07/063056-39119-630x470.png
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/063056-39119-770x574.png
-                      770w, https://isux.tencent.com/wp-content/uploads/2017/07/063056-39119-310x231.png
-                      310w, https://isux.tencent.com/wp-content/uploads/2017/07/063056-39119.png
-                      924w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p>
-                  c.选择维度
-              </p>
-              <p>
-                  分辨哪些是有价值的值得关注的维度，选择数据展示的视角。基本图表一般有哪些可用维度呢？
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25572" src="https://isux.tencent.com/wp-content/uploads/2017/07/063057-44549-590x277.jpg"
-                  alt="" width="590" height="277" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063057-44549-590x277.jpg 590w, https://isux.tencent.com/wp-content/uploads/2017/07/063057-44549-768x360.jpg 768w, https://isux.tencent.com/wp-content/uploads/2017/07/063057-44549-630x295.jpg 630w, https://isux.tencent.com/wp-content/uploads/2017/07/063057-44549-770x361.jpg 770w, https://isux.tencent.com/wp-content/uploads/2017/07/063057-44549-310x145.jpg 310w, https://isux.tencent.com/wp-content/uploads/2017/07/063057-44549.jpg 960w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25572" src="https://isux.tencent.com/wp-content/uploads/2017/07/063057-44549-590x277.jpg"
-                      alt="" width="590" height="277" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063057-44549-590x277.jpg
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/063057-44549-768x360.jpg
-                      768w, https://isux.tencent.com/wp-content/uploads/2017/07/063057-44549-630x295.jpg
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/063057-44549-770x361.jpg
-                      770w, https://isux.tencent.com/wp-content/uploads/2017/07/063057-44549-310x145.jpg
-                      310w, https://isux.tencent.com/wp-content/uploads/2017/07/063057-44549.jpg
-                      960w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p style={{textAlign: 'center'}}>
-                  <em>
-                      基本图表维度
-                  </em>
-              </p>
-              <p>
-                  对照以上图形维度，制作可视化图形。
-              </p>
-              <p>
-                  d.突出关键信息
-              </p>
-              <p>
-                  根据可视化展示目标，将重要信息添加辅助线或更改颜色等手段，进行信息的凸显，将用户的注意力引向关键信息，帮助用户理解数据意义。
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25567" src="https://isux.tencent.com/wp-content/uploads/2017/07/063051-2569-590x277.jpg"
-                  alt="" width="590" height="277" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063051-2569-590x277.jpg 590w, https://isux.tencent.com/wp-content/uploads/2017/07/063051-2569-768x360.jpg 768w, https://isux.tencent.com/wp-content/uploads/2017/07/063051-2569-630x295.jpg 630w, https://isux.tencent.com/wp-content/uploads/2017/07/063051-2569-770x361.jpg 770w, https://isux.tencent.com/wp-content/uploads/2017/07/063051-2569-310x145.jpg 310w, https://isux.tencent.com/wp-content/uploads/2017/07/063051-2569.jpg 960w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25567" src="https://isux.tencent.com/wp-content/uploads/2017/07/063051-2569-590x277.jpg"
-                      alt="" width="590" height="277" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063051-2569-590x277.jpg
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/063051-2569-768x360.jpg
-                      768w, https://isux.tencent.com/wp-content/uploads/2017/07/063051-2569-630x295.jpg
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/063051-2569-770x361.jpg
-                      770w, https://isux.tencent.com/wp-content/uploads/2017/07/063051-2569-310x145.jpg
-                      310w, https://isux.tencent.com/wp-content/uploads/2017/07/063051-2569.jpg
-                      960w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p style={{textAlign: 'center'}}>
-                  <em>
-                      CPU监控
-                  </em>
-              </p>
-              <p>
-                  CPU使用率监控案例，可视化的目标就是检测CPU的使用情况，特别是异常使用情况。所以图中将100％最高临界线使用特殊的颜色和线形标识出来，异常的使用段用颜色帮助用户识别。
-              </p>
-              <p>
-                  <strong>
-                      2.
-                  </strong>
-                  <strong>
-                      图表排布
-                  </strong>
-              </p>
-              <p>
-                  在可视化展示中，往往有多组数据进行展示。通过信息的构图来突出重点，在主信息图和次信息图之间的排布和大小比例上进行调整，明确信息层级及信息流向，使用户获取重要信息的同时达到视觉平衡。以扶贫展示项目为例，以地图的方式展示出扶贫的概况信息，两边排布扶贫的具体内容信息，在构图和上突出主次。并在主要信息的背景上做动画处理，进一步加强信息层级及视觉流向的引导。
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25566" src="https://isux.tencent.com/wp-content/uploads/2017/07/063050-89901-590x332.jpg"
-                  alt="" width="590" height="332" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063050-89901-590x332.jpg 590w, https://isux.tencent.com/wp-content/uploads/2017/07/063050-89901-768x432.jpg 768w, https://isux.tencent.com/wp-content/uploads/2017/07/063050-89901-630x354.jpg 630w, https://isux.tencent.com/wp-content/uploads/2017/07/063050-89901-770x433.jpg 770w, https://isux.tencent.com/wp-content/uploads/2017/07/063050-89901-310x174.jpg 310w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25566" src="https://isux.tencent.com/wp-content/uploads/2017/07/063050-89901-590x332.jpg"
-                      alt="" width="590" height="332" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063050-89901-590x332.jpg
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/063050-89901-768x432.jpg
-                      768w, https://isux.tencent.com/wp-content/uploads/2017/07/063050-89901-630x354.jpg
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/063050-89901-770x433.jpg
-                      770w, https://isux.tencent.com/wp-content/uploads/2017/07/063050-89901-310x174.jpg
-                      310w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p style={{textAlign: 'center'}}>
-                  <em>
-                      扶贫项目
-                  </em>
-              </p>
-              <p>
-                  <strong>
-                      3.
-                  </strong>
-                  <strong>
-                      动效设计
-                  </strong>
-              </p>
-              <p>
-                  目前越来越多的可视化展示的数据都是实时的，所以动效在可视化项目中的应用越来越广泛，动效设计肩负着承载更多信息和丰富画面效果的重要作用。
-              </p>
-              <p>
-                  a.信息承载
-              </p>
-              <p>
-                  在可视化设计中经常遇到，非常多的数据信息需要展示在一个大屏幕上。遇到这种情况，需要对信息进行合并整理或通过动画的方式，在有限的屏幕空间里承载更多的信息，使信息更加聚合，同时使信息展示更加清晰，突出重点。
-              </p>
-              <p>
-                  b.画面效果
-              </p>
-              <p>
-                  增加细节及空间感，背景动效使画面更加丰富。单个图表的出场动画，使画面平衡而流畅。减少了图表在出现或数据变化时的生硬刻板。
-              </p>
-              <p>
-                  数据可视化动画在设计上重要的原则是恰当的展示数据。动画要尽量的简单，复杂的动画会导致用户对数据的理解错。动画要使用户可预期，可使用多次重复动画，让用户看到动画从哪里开始到哪里停止。
-              </p>
-              <h3>
-                  配色方案
-              </h3>
-              <p>
-                  由于图表的特殊性，数据可视化的配色方案和配色要求具有独特性。配色方案要充分考虑到特殊人群对数据图的可读性。丰富的色系，至少6种才可满足图表应用的各种场景。同时配色需要有可辨识性，色彩选择需要有跨度。
-              </p>
-              <p>
-                  <strong>
-                      1.
-                  </strong>
-                  <strong>
-                      背景色定义
-                  </strong>
-              </p>
-              <p>
-                  背景色的选择与可视化展示的设备相关，分为深色、浅色、彩色。
-              </p>
-              <p>
-                  a.大屏背景色
-              </p>
-              <p>
-                  在大屏设备中普遍用深色作为背景色，以减少屏幕拖尾，观众在视觉上也不会觉得刺眼。所有图表的配色需要以深色背景为基础。保证可视化图的清晰辨识度，色调与明度变化需要有跨度。
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25570" src="https://isux.tencent.com/wp-content/uploads/2017/07/063054-41166-590x442.png"
-                  alt="" width="590" height="442" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063054-41166-590x442.png 590w, https://isux.tencent.com/wp-content/uploads/2017/07/063054-41166.png 630w, https://isux.tencent.com/wp-content/uploads/2017/07/063054-41166-310x232.png 310w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25570" src="https://isux.tencent.com/wp-content/uploads/2017/07/063054-41166-590x442.png"
-                      alt="" width="590" height="442" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063054-41166-590x442.png
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/063054-41166.png
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/063054-41166-310x232.png
-                      310w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p style={{textAlign: 'center'}}>
-                  <em>
-                      淘宝双11大屏设计
-                  </em>
-              </p>
-              <p>
-                  b.中小屏背景色
-              </p>
-              <p>
-                  中小屏幕背景色选择范围就比较广，浅色、彩色、深色均可以做出很好的设计。相比之下，浅色背景更适合展示大量的数据信息，因为在浅色底上数据图表的识别度比较高。而深色、彩色背景更适合渲染简单的数据，用于烘托气氛。
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25574" src="https://isux.tencent.com/wp-content/uploads/2017/07/063059-96630-590x362.jpg"
-                  alt="" width="590" height="362" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063059-96630-590x362.jpg 590w, https://isux.tencent.com/wp-content/uploads/2017/07/063059-96630-768x471.jpg 768w, https://isux.tencent.com/wp-content/uploads/2017/07/063059-96630-630x387.jpg 630w, https://isux.tencent.com/wp-content/uploads/2017/07/063059-96630-770x472.jpg 770w, https://isux.tencent.com/wp-content/uploads/2017/07/063059-96630-310x190.jpg 310w, https://isux.tencent.com/wp-content/uploads/2017/07/063059-96630.jpg 960w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25574" src="https://isux.tencent.com/wp-content/uploads/2017/07/063059-96630-590x362.jpg"
-                      alt="" width="590" height="362" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063059-96630-590x362.jpg
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/063059-96630-768x471.jpg
-                      768w, https://isux.tencent.com/wp-content/uploads/2017/07/063059-96630-630x387.jpg
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/063059-96630-770x472.jpg
-                      770w, https://isux.tencent.com/wp-content/uploads/2017/07/063059-96630-310x190.jpg
-                      310w, https://isux.tencent.com/wp-content/uploads/2017/07/063059-96630.jpg
-                      960w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p style={{textAlign: 'center'}}>
-                  <em>
-                      中小屏幕浅色，深色，彩色设计
-                  </em>
-              </p>
-              <p>
-                  <strong>
-                      2.
-                  </strong>
-                  <strong>
-                      图表色定义
-                  </strong>
-              </p>
-              <p>
-                  在图表的颜色运用上，色彩是最直接的信息表达的方式，往往比图形和文字更加直观的传递信息，不同颜色的的组合也能体现数据的逻辑关系。颜色的表示方法有很多种，如RGB、CMYK等，在可视化设计中，颜色作为用于数据编码的视觉通道，HSV的颜色表示方式更加符合人类感知方式，同时也更加适合展示数据。
-              </p>
-              <p>
-                  a.色彩辨识度
-              </p>
-              <p>
-                  要确保配色非常容易辨识与区分，对于使用单一色相配色，明度差异需要全局考虑，明度跨度一定要够大才能更清晰的展示数据。明度跨度是否合适，可以通过在灰度模式下配色的辨识度来判断。
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25565" src="https://isux.tencent.com/wp-content/uploads/2017/07/063048-76657-590x738.jpg"
-                  alt="" width="590" height="738" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063048-76657-590x738.jpg 590w, https://isux.tencent.com/wp-content/uploads/2017/07/063048-76657-768x960.jpg 768w, https://isux.tencent.com/wp-content/uploads/2017/07/063048-76657-630x788.jpg 630w, https://isux.tencent.com/wp-content/uploads/2017/07/063048-76657-770x963.jpg 770w, https://isux.tencent.com/wp-content/uploads/2017/07/063048-76657-310x388.jpg 310w, https://isux.tencent.com/wp-content/uploads/2017/07/063048-76657.jpg 960w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25565" src="https://isux.tencent.com/wp-content/uploads/2017/07/063048-76657-590x738.jpg"
-                      alt="" width="590" height="738" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063048-76657-590x738.jpg
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/063048-76657-768x960.jpg
-                      768w, https://isux.tencent.com/wp-content/uploads/2017/07/063048-76657-630x788.jpg
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/063048-76657-770x963.jpg
-                      770w, https://isux.tencent.com/wp-content/uploads/2017/07/063048-76657-310x388.jpg
-                      310w, https://isux.tencent.com/wp-content/uploads/2017/07/063048-76657.jpg
-                      960w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p>
-                  b.色彩跨度
-              </p>
-              <p>
-                  多色相配色在数据可视化中是相当常见的，多色相配色使用户容易将数据与图像联系起来。如何有效利用色调的变化来传达数据信息？
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25569" src="https://isux.tencent.com/wp-content/uploads/2017/07/063053-49081-590x430.jpg"
-                  alt="" width="590" height="430" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063053-49081-590x430.jpg 590w, https://isux.tencent.com/wp-content/uploads/2017/07/063053-49081-768x560.jpg 768w, https://isux.tencent.com/wp-content/uploads/2017/07/063053-49081-630x459.jpg 630w, https://isux.tencent.com/wp-content/uploads/2017/07/063053-49081-770x561.jpg 770w, https://isux.tencent.com/wp-content/uploads/2017/07/063053-49081-310x226.jpg 310w, https://isux.tencent.com/wp-content/uploads/2017/07/063053-49081.jpg 960w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25569" src="https://isux.tencent.com/wp-content/uploads/2017/07/063053-49081-590x430.jpg"
-                      alt="" width="590" height="430" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063053-49081-590x430.jpg
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/063053-49081-768x560.jpg
-                      768w, https://isux.tencent.com/wp-content/uploads/2017/07/063053-49081-630x459.jpg
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/063053-49081-770x561.jpg
-                      770w, https://isux.tencent.com/wp-content/uploads/2017/07/063053-49081-310x226.jpg
-                      310w, https://isux.tencent.com/wp-content/uploads/2017/07/063053-49081.jpg
-                      960w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p style={{textAlign: 'center'}}>
-                  <em>
-                      带明度信息的色环
-                  </em>
-              </p>
-              <p>
-                  当需要的颜色较少时，避免使用相近的色相同类色和相近色。尽量选择对比色或互补色，这样可以使不同属性数据在图表中展示更加清晰。
-              </p>
-              <p>
-                  例如：美国大选使用红色和蓝色两种对比色，将清晰的将选票结果展示于地图上。
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25576" src="https://isux.tencent.com/wp-content/uploads/2017/07/063919-63123-590x524.jpg"
-                  alt="" width="590" height="524" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063919-63123-590x524.jpg 590w, https://isux.tencent.com/wp-content/uploads/2017/07/063919-63123-768x682.jpg 768w, https://isux.tencent.com/wp-content/uploads/2017/07/063919-63123-630x560.jpg 630w, https://isux.tencent.com/wp-content/uploads/2017/07/063919-63123-770x684.jpg 770w, https://isux.tencent.com/wp-content/uploads/2017/07/063919-63123-310x275.jpg 310w, https://isux.tencent.com/wp-content/uploads/2017/07/063919-63123.jpg 960w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25576" src="https://isux.tencent.com/wp-content/uploads/2017/07/063919-63123-590x524.jpg"
-                      alt="" width="590" height="524" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063919-63123-590x524.jpg
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/063919-63123-768x682.jpg
-                      768w, https://isux.tencent.com/wp-content/uploads/2017/07/063919-63123-630x560.jpg
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/063919-63123-770x684.jpg
-                      770w, https://isux.tencent.com/wp-content/uploads/2017/07/063919-63123-310x275.jpg
-                      310w, https://isux.tencent.com/wp-content/uploads/2017/07/063919-63123.jpg
-                      960w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p style={{textAlign: 'center'}}>
-                  <em>
-                      美国大选图
-                  </em>
-              </p>
-              <p>
-                  当图表需要的颜色较多时，建议最多不超过12种色相。通常情况下人在不连续的区域内可以分辨6〜12种不同色相。过多的颜色对传达数据是没有作用的，反而会让人产生迷惑如何让多种色相的颜色看来和谐有几种取色的方法？
-              </p>
-              <p>
-                  色环提取法：
-              </p>
-              <p>
-                  选择同一饱和度和明度的不同色调作为可视化图表的配色，这样可以使图表看起来协调统一。
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25575" src="https://isux.tencent.com/wp-content/uploads/2017/07/063100-37693-590x430.jpg"
-                  alt="" width="590" height="430" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063100-37693-590x430.jpg 590w, https://isux.tencent.com/wp-content/uploads/2017/07/063100-37693-768x560.jpg 768w, https://isux.tencent.com/wp-content/uploads/2017/07/063100-37693-630x459.jpg 630w, https://isux.tencent.com/wp-content/uploads/2017/07/063100-37693-770x561.jpg 770w, https://isux.tencent.com/wp-content/uploads/2017/07/063100-37693-310x226.jpg 310w, https://isux.tencent.com/wp-content/uploads/2017/07/063100-37693.jpg 960w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25575" src="https://isux.tencent.com/wp-content/uploads/2017/07/063100-37693-590x430.jpg"
-                      alt="" width="590" height="430" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063100-37693-590x430.jpg
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/063100-37693-768x560.jpg
-                      768w, https://isux.tencent.com/wp-content/uploads/2017/07/063100-37693-630x459.jpg
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/063100-37693-770x561.jpg
-                      770w, https://isux.tencent.com/wp-content/uploads/2017/07/063100-37693-310x226.jpg
-                      310w, https://isux.tencent.com/wp-content/uploads/2017/07/063100-37693.jpg
-                      960w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p>
-                  渐变色取色法：
-              </p>
-              <p>
-                  不同明度和色相的取色，淡紫到深黄的过渡，与淡黄到深紫的过渡，感觉是一样的配色，但是实际两种配色实际感觉却差别很大。
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25562" src="https://isux.tencent.com/wp-content/uploads/2017/07/063045-87575-590x161.png"
-                  alt="" width="590" height="161" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063045-87575-590x161.png 590w, https://isux.tencent.com/wp-content/uploads/2017/07/063045-87575-630x172.png 630w, https://isux.tencent.com/wp-content/uploads/2017/07/063045-87575-310x85.png 310w, https://isux.tencent.com/wp-content/uploads/2017/07/063045-87575.png 675w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25562" src="https://isux.tencent.com/wp-content/uploads/2017/07/063045-87575-590x161.png"
-                      alt="" width="590" height="161" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063045-87575-590x161.png
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/063045-87575-630x172.png
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/063045-87575-310x85.png
-                      310w, https://isux.tencent.com/wp-content/uploads/2017/07/063045-87575.png
-                      675w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p>
-                  淡黄到深紫的过渡看起来更加自然，这是因为我们在自然中大多存在的都是淡黄向深紫的过度。如下图，所以采用仿自然的配色方式会让图表更加自然。
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25557" src="https://isux.tencent.com/wp-content/uploads/2017/07/063042-26630-590x440.jpg"
-                  alt="" width="590" height="440" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063042-26630-590x440.jpg 590w, https://isux.tencent.com/wp-content/uploads/2017/07/063042-26630-630x470.jpg 630w, https://isux.tencent.com/wp-content/uploads/2017/07/063042-26630-310x231.jpg 310w, https://isux.tencent.com/wp-content/uploads/2017/07/063042-26630.jpg 688w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25557" src="https://isux.tencent.com/wp-content/uploads/2017/07/063042-26630-590x440.jpg"
-                      alt="" width="590" height="440" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063042-26630-590x440.jpg
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/063042-26630-630x470.jpg
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/063042-26630-310x231.jpg
-                      310w, https://isux.tencent.com/wp-content/uploads/2017/07/063042-26630.jpg
-                      688w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p>
-                  在取渐变色时，可以在Photoshop中制作出色相变化的色带并叠加明度渐变的色带，获得明度和色相均变化的色带。然后根据数据的数量，拉辅助线到取色点的位置，从断点处选取颜色，对渐变进行测试与调整，测试配色在实际运用中的效果，选取最优的配色。
-              </p>
-              <p>
-                  取色的实际应用：
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25568" src="https://isux.tencent.com/wp-content/uploads/2017/07/063052-91606-590x392.jpg"
-                  alt="" width="590" height="392" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063052-91606-590x392.jpg 590w, https://isux.tencent.com/wp-content/uploads/2017/07/063052-91606-768x510.jpg 768w, https://isux.tencent.com/wp-content/uploads/2017/07/063052-91606-630x419.jpg 630w, https://isux.tencent.com/wp-content/uploads/2017/07/063052-91606-770x512.jpg 770w, https://isux.tencent.com/wp-content/uploads/2017/07/063052-91606-310x206.jpg 310w, https://isux.tencent.com/wp-content/uploads/2017/07/063052-91606.jpg 960w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25568" src="https://isux.tencent.com/wp-content/uploads/2017/07/063052-91606-590x392.jpg"
-                      alt="" width="590" height="392" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063052-91606-590x392.jpg
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/063052-91606-768x510.jpg
-                      768w, https://isux.tencent.com/wp-content/uploads/2017/07/063052-91606-630x419.jpg
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/063052-91606-770x512.jpg
-                      770w, https://isux.tencent.com/wp-content/uploads/2017/07/063052-91606-310x206.jpg
-                      310w, https://isux.tencent.com/wp-content/uploads/2017/07/063052-91606.jpg
-                      960w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p style={{textAlign: 'center'}}>
-                  <em>
-                      渐变色取色
-                  </em>
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25563" src="https://isux.tencent.com/wp-content/uploads/2017/07/063046-24305-590x211.jpg"
-                  alt="" width="590" height="211" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063046-24305-590x211.jpg 590w, https://isux.tencent.com/wp-content/uploads/2017/07/063046-24305-768x274.jpg 768w, https://isux.tencent.com/wp-content/uploads/2017/07/063046-24305-630x225.jpg 630w, https://isux.tencent.com/wp-content/uploads/2017/07/063046-24305-770x275.jpg 770w, https://isux.tencent.com/wp-content/uploads/2017/07/063046-24305-310x111.jpg 310w, https://isux.tencent.com/wp-content/uploads/2017/07/063046-24305.jpg 960w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25563" src="https://isux.tencent.com/wp-content/uploads/2017/07/063046-24305-590x211.jpg"
-                      alt="" width="590" height="211" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063046-24305-590x211.jpg
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/063046-24305-768x274.jpg
-                      768w, https://isux.tencent.com/wp-content/uploads/2017/07/063046-24305-630x225.jpg
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/063046-24305-770x275.jpg
-                      770w, https://isux.tencent.com/wp-content/uploads/2017/07/063046-24305-310x111.jpg
-                      310w, https://isux.tencent.com/wp-content/uploads/2017/07/063046-24305.jpg
-                      960w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p style={{textAlign: 'center'}}>
-                  <em>
-                      渐变色应用案例
-                  </em>
-              </p>
-              <h3>
-                  字体设计
-              </h3>
-              <p>
-                  文字是数据可视化的核心内容之一，文字和数字是数据信息传达的重要组成部分，为了更加清晰精确的传达信息，增加信息的可读性，从字体选择，到字体大小，字体间距都有特定的要求。
-              </p>
-              <p>
-                  <strong>
-                      1.
-                  </strong>
-                  <strong>
-                      字体选择
-                  </strong>
-              </p>
-              <p>
-                  a.辨识度
-              </p>
-              <p>
-                  UI设计中使用无衬线字体是UI界的共识，但是对于数据可视化设计而言，字体大小的跨度可以非常大，所以在无衬线字体中需要选择辨识度更高的字体，大的宽度比值和较高的X高度值的字体有更高的辨识度，选择字母容易辨识不会产生奇异的字体更有利于用于数据可视化设计。
-              </p>
-              <p>
-                  <img className="alignnone size-full wp-image-25558" src="https://isux.tencent.com/wp-content/uploads/2017/07/063043-11286.jpg"
-                  alt="" width="518" height="226" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063043-11286.jpg 518w, https://isux.tencent.com/wp-content/uploads/2017/07/063043-11286-310x135.jpg 310w"
-                  sizes="(max-width: 518px) 100vw, 518px" />
-                  <noscript>
-                      &lt;img className="alignnone size-full wp-image-25558" src="https://isux.tencent.com/wp-content/uploads/2017/07/063043-11286.jpg"
-                      alt="" width="518" height="226" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063043-11286.jpg
-                      518w, https://isux.tencent.com/wp-content/uploads/2017/07/063043-11286-310x135.jpg
-                      310w" sizes="(max-width: 518px) 100vw, 518px" /&gt;
-                  </noscript>
-              </p>
-              <p>
-                  b.更加灵活的字体
-              </p>
-              <p>
-                  字体需要更加灵活，应该支持尽可能多的使用场景，数据可视化项目经常显示在不同大小，不同的终端上，需要选择更加灵活的字体可以在低分辨率的小屏或超大屏幕上运行良好。
-              </p>
-              <p>
-                  c.字间距
-              </p>
-              <p>
-                  宽松的字母间距（字母之间的间距应小于字偶间距）和合适的中文字间距。
-              </p>
-              <p>
-                  <img className="alignnone size-full wp-image-25561" src="https://isux.tencent.com/wp-content/uploads/2017/07/063045-96468.png"
-                  alt="" width="382" height="170" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063045-96468.png 382w, https://isux.tencent.com/wp-content/uploads/2017/07/063045-96468-310x138.png 310w"
-                  sizes="(max-width: 382px) 100vw, 382px" />
-                  <noscript>
-                      &lt;img className="alignnone size-full wp-image-25561" src="https://isux.tencent.com/wp-content/uploads/2017/07/063045-96468.png"
-                      alt="" width="382" height="170" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063045-96468.png
-                      382w, https://isux.tencent.com/wp-content/uploads/2017/07/063045-96468-310x138.png
-                      310w" sizes="(max-width: 382px) 100vw, 382px" /&gt;
-                  </noscript>
-              </p>
-              <p>
-                  <strong>
-                      2.
-                  </strong>
-                  <strong>
-                      字体大小
-                  </strong>
-              </p>
-              <p>
-                  文字的可读性对数据可视化起着至关重要的作用，设置小字体的极限值，以保证在最小显示时不影响对文字的辨认与阅读。
-              </p>
-              <p>
-                  <strong>
-                      3.
-                  </strong>
-                  <strong>
-                      中西文间隔
-                  </strong>
-              </p>
-              <p>
-                  中西文混排时，要注意中文和西文间的间隔，一般排版的情况都是中文中混排有西文，所以需要在中西文间留有间隔，帮助用户更快速的扫视文字内容。
-              </p>
-              <p>
-                  <img className="alignnone size-full wp-image-25761" src="https://isux.tencent.com/wp-content/uploads/2017/07/112640-44912.jpg"
-                  alt="" width="574" height="229" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/112640-44912.jpg 574w, https://isux.tencent.com/wp-content/uploads/2017/07/112640-44912-310x124.jpg 310w"
-                  sizes="(max-width: 574px) 100vw, 574px" />
-                  <noscript>
-                      &lt;img className="alignnone size-full wp-image-25761" src="https://isux.tencent.com/wp-content/uploads/2017/07/112640-44912.jpg"
-                      alt="" width="574" height="229" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/112640-44912.jpg
-                      574w, https://isux.tencent.com/wp-content/uploads/2017/07/112640-44912-310x124.jpg
-                      310w" sizes="(max-width: 574px) 100vw, 574px" /&gt;
-                  </noscript>
-              </p>
-              <h3>
-                  极限处理
-              </h3>
-              <p>
-                  数据是多种多样不可预知的，所以在可视化时需要处理各种极限问题，才能使数据清晰表达。
-              </p>
-              <p>
-                  <strong>
-                      1.
-                  </strong>
-                  <strong>
-                      数据展示细节处理
-                  </strong>
-              </p>
-              <p>
-                  如下图，当水平排列数据时，图表空间不够，导致数据不可辨识，对数据进行旋转处理，不利于阅读，可以选择简写的方式来排布展示数据，或通过改变图表形式来解决问题。
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25560" src="https://isux.tencent.com/wp-content/uploads/2017/07/063044-84795-590x735.jpg"
-                  alt="" width="590" height="735" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063044-84795-590x735.jpg 590w, https://isux.tencent.com/wp-content/uploads/2017/07/063044-84795-630x785.jpg 630w, https://isux.tencent.com/wp-content/uploads/2017/07/063044-84795-310x386.jpg 310w, https://isux.tencent.com/wp-content/uploads/2017/07/063044-84795.jpg 687w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25560" src="https://isux.tencent.com/wp-content/uploads/2017/07/063044-84795-590x735.jpg"
-                      alt="" width="590" height="735" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063044-84795-590x735.jpg
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/063044-84795-630x785.jpg
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/063044-84795-310x386.jpg
-                      310w, https://isux.tencent.com/wp-content/uploads/2017/07/063044-84795.jpg
-                      687w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p>
-                  <strong>
-                      2.
-                  </strong>
-                  <strong>
-                      选择合适的图表形式
-                  </strong>
-              </p>
-              <p>
-                  虽然饼图可以展示份额，但过多的分项已经使饼图不堪重负，不能很好的展示数据占比这个主题，所以使用横向柱状图可以更加清晰的表达这个主题。
-              </p>
-              <p>
-                  <img className="alignnone size-medium wp-image-25573" src="https://isux.tencent.com/wp-content/uploads/2017/07/063058-64914-590x286.jpg"
-                  alt="" width="590" height="286" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063058-64914-590x286.jpg 590w, https://isux.tencent.com/wp-content/uploads/2017/07/063058-64914-768x372.jpg 768w, https://isux.tencent.com/wp-content/uploads/2017/07/063058-64914-630x305.jpg 630w, https://isux.tencent.com/wp-content/uploads/2017/07/063058-64914-770x373.jpg 770w, https://isux.tencent.com/wp-content/uploads/2017/07/063058-64914-310x150.jpg 310w, https://isux.tencent.com/wp-content/uploads/2017/07/063058-64914.jpg 960w"
-                  sizes="(max-width: 590px) 100vw, 590px" />
-                  <noscript>
-                      &lt;img className="alignnone size-medium wp-image-25573" src="https://isux.tencent.com/wp-content/uploads/2017/07/063058-64914-590x286.jpg"
-                      alt="" width="590" height="286" srcSet="https://isux.tencent.com/wp-content/uploads/2017/07/063058-64914-590x286.jpg
-                      590w, https://isux.tencent.com/wp-content/uploads/2017/07/063058-64914-768x372.jpg
-                      768w, https://isux.tencent.com/wp-content/uploads/2017/07/063058-64914-630x305.jpg
-                      630w, https://isux.tencent.com/wp-content/uploads/2017/07/063058-64914-770x373.jpg
-                      770w, https://isux.tencent.com/wp-content/uploads/2017/07/063058-64914-310x150.jpg
-                      310w, https://isux.tencent.com/wp-content/uploads/2017/07/063058-64914.jpg
-                      960w" sizes="(max-width: 590px) 100vw, 590px" /&gt;
-                  </noscript>
-              </p>
-              <p>
-                  &nbsp;
-              </p>
-              <p>
-                  <strong>
-                      小结
-                  </strong>
-              </p>
-              <p>
-                  我们生活在大数据时代，越来越多的数据被可视化。在构建可视化体系时，无论图表、颜色、字体都是承载和传达数据信息的元素，设计的核心是“让数据清晰传达”。
-              </p>
-              <p>
-                  &nbsp;
-              </p>
-              <p>
-                  参考：
-                  <a href="https://blog.graphiq.com/finding-the-right-color-palettes-for-data-visualizations-fcd4e707a283">
-                      Finding the Right Color Palettes for Data Visualizations
-                  </a>
-              </p>
-              <p>
-                  &nbsp;
-              </p>
-              <p>
-              </p>
+              <h3>总结</h3>
+              <p>秋季 iOS11 才会正式推出，到完成市场占有还有挺长一段时间，但 iTunes Connect 已经可以提交这些新字段的内容了，各位 ASOer 做好如何准备准备，相信能够轻松平稳过渡到后 ASO 时代：</p>
+              <p>提交新字段「subtitle」，同时兼顾好副标题的展现效果</p>
+              <p>可以提供适配三张应用截图/三个应用视频的设计方案</p>
+              <p>根据运营节奏更新「宣传文本」字段</p>
+              <p>根据运营节奏更新「宣传文本」字段</p>
+              <p>笔者认为 App Store 的大改版至少看到了官方的两个态度：打击刷榜；强调营收。最终目的都是调整流量。</p>
+              <p>打击刷榜就好比游戏公司不许外挂了，人民币玩家会不爽，但对于从不用外挂的普通玩家而言，目前还算是好消息。</p>
+              <p>虽然独立的「游戏」，调整了入口的「类别」和「排行榜」多少都会影响到流量的导向，但新出的 subtitle、「宣传文本」和应用截图展现等等都扩大了运营空间。</p>
+              
               <div className="clear">
               </div>
               
               
             </div>
             
-            <h2>路由跳转：</h2>
-            <p style={{textAlign: 'center',}}>
-              <a href="http://www.317hu.com/" target="_blank">317护咯</a>
-            </p>
-            <div className=""><a href="javascript:;" onClick={()=>this.toPageList()}>动态跳转路由链接 - list</a></div>
-            <Link to="/detail.html">Link 标签跳转路由链接 - detail</Link>
+            <h2 style={{fontSize: 16, marginBottom: 15}}>路由跳转方式参考：</h2>
+            
+            <p><a href="http://www.317hu.com/" target="_blank">317护官网链接 - _blank</a></p>
+            <p><Link to="/detail.html">标签跳转路由链接 - Link</Link></p>
+            <p className=""><a href="javascript:;" onClick={()=>{
+              var loc = this.context.router.history;
+              loc.push({ pathname: `/hospital-admin/frontend-react-projects/list/100153/hospital.html`});
+            }}>动态跳转路由链接 - context.router.history-push</a></p>
             <p>
               <a href="javascript:;" onClick={()=>{
-                this.props.dispatch(push({ pathname: '/detail.html', state: this.props.detailState}));
-              }}>到详情界面</a>
+                console.log('this.props.history->', this.props.history);
+                this.props.dispatch(push({ pathname: '/hospital-admin/frontend-react-projects/detail.html', state: this.props.detailState}));
+              }}>动态跳转链接 - ConnectedRouter-push</a>
             </p>
+            <p>
+              <a href="javascript:;" onClick={()=>{
+                // 用于直接跳转
+                this.props.history.push({ pathname: '/hospital-admin/frontend-react-projects/detail.html', state: this.props.detailState});
+              }}>动态跳转链接 - createHistory()-push</a>
+            </p>
+            
           </div>
       )
   }
@@ -689,8 +212,7 @@ function select(store/*, ownProps*/){ // 1）第一个参数总是state对象，
 								  // 3）当使用了 ownProps 作为参数后，如果容器组件的参数发生变化，也会引发 UI 组件重新渲染。
 
 	return {
-    // detailState: store.router.location.detailState
-    detailState: 0
+    detailState: store.router.location&&store.router.location.detailState
 	}
 }
 

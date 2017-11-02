@@ -42,7 +42,7 @@ npm run build:dev -- master
 
 ```
 
-# 部署
+# 部署详解：
 
 ```
 1. 配置 package.json 的项目名称：
@@ -72,6 +72,7 @@ npm run build:dev -- master
 - Bone 操作界面
   - 同步hospital-admin仓库与Eweb工程的 index.vm 入口文件
 * 测试环境：
+  - http://galaxyw.317hu.com:8081/hospital-admin/frontend-react-projects/index.html
   - http://hospital.dev.317hu.com/hospital-admin/frontend-react-projects/index.html
 
 ## 部署生产环境版本：
@@ -123,45 +124,22 @@ server {
 - 配置：`http://hospital.[开发环境].317hu.com/[Eweb入口工程项目名称]/[前端工程项目名称]/*.html`
 - 如，`http://hospital.sit.317hu.com/hospital-admin/nurse-training-planning/planning/hospital.html`
 
-***
 
-## 开发记录：
+调试方式
+------------
 
-#### 1.Scroll Restoration
-- state 数据同步
+#### 断点设置
 
-#### 2.子路由组件里面，得到 this.props 两种方式：
-- withRouter: A public higher-order component to access the imperative API # react-router
-- module.exports = connect(select, actions)(ListView); # react-redux
+**1. 在 IDE 中设置断点：**
 
-#### 3.react-router-redux@5.0.0-alpha.6
-- Keep your state in sync with your router 
-- ConnectedRouter will use the store from Provider automatically
-
-#### 4.react-router-config
-- this.props.dispatch(replace({pathname: '/index.html', detailState: this.state})); # 所跳转的路由栈是不计入浏览器历史记录里面的？？
-
-#### 5.抽离基础通用脚本、样式：
-- react + react-dom + react-router + animation(pc端可以使用js引擎、移动端看css3为主吧) 
-- antd组件等第三方组件库使用
-  
-#### 6.Promise based HTTP client
-- npm install axios
-
-#### 7.after you execute the api method you should dispatch the result to the reducers.
-
-#### 8.[For async actions I'm using redux-thunk.](https://stackoverflow.com/questions/42872846/react-router-redux-setstate-warning-after-redirect/42915448#42915448)
-
-#### 9.阻塞父层级的请求发送，实现子组件 dom 数据同步：
-
-```javascript
-class PanningList extends Component{
-  async componentDidMount() {
-    await this.props.dispatch(get());// 
-    // 
-    
-  }
-}
+```js
+debugger;
+console.log(store.router.location.state);
 ```
 
-#### 10. basename 与 push 测试：
+**2. 在发布压缩运行版本中设置断点（开发者工具的 Sources 标签卡）：**
+
+- Sources 页卡选中 - 直接在源码显示框左侧行号上，点击添加。
+- `Pretty Print`，标识为一对大括号 `{}` - 格式化压缩后的js文件 
+
+

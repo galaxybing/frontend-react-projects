@@ -27,15 +27,19 @@ function RouterConfig({ history, app }) {
         {
           path: '/index.html',
           exact: true,
-          component: IndexView
+          component: IndexView   // require('./Index.js')
+          // component: (props, a, method) => {
+          //  return <IndexView />;
+          // }
         },
         { 
-          path: '/list/:id/:name.html',
+          path: '/hospital-admin/frontend-react-projects/list/:id/:name.html',
           component: (props, a, method) => {
             return createChildRouteComponent(ListViewContainer, props);
           },
           routes: [
-            { path: '/list/:id/:name/info.html',
+            { 
+              path: '/hospital-admin/frontend-react-projects/list/:id/:name/info.html',
               component: (props, a, method) => {
                 return createChildRouteComponent(ListViewContainer, props);
               }
@@ -43,7 +47,7 @@ function RouterConfig({ history, app }) {
           ]
         },
         { 
-          path: '/detail.html',
+          path: '/hospital-admin/frontend-react-projects/detail.html',
           component: () => createChildRouteComponent(require('./routes/DetailView.js')),// DetailViewContainer
         }
       ]
