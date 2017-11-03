@@ -50,20 +50,22 @@ var webpackConfig = merge(baseWebpackConfig, {
           /\.js$/.test(module.resource) && (
             module.resource.indexOf(
               path.join(__dirname, '../node_modules/antd/')
-            ) === 0 ||
+            ) === 0 /*||
             module.resource.indexOf(
               path.join(__dirname, '../node_modules/moment/')
             ) === 0 ||
             module.resource.indexOf(
               path.join(__dirname, '../node_modules/rc-calendar')
             ) === 0
+            */
           )
         )
       }
     }),
+    
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendorMoment',
-      chunks: ['vendorAntd'],
+      chunks: ['vendorLib'], // hash 文件更新以后：Uncaught (in promise) Error: Loading chunk 0 failed.
       minChunks: function (module, count) {
         return (
           module.resource &&
@@ -78,6 +80,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         )
       }
     }),
+    
     new HtmlWebpackPlugin({
       filename: process.env.NODE_ENV === 'testing'
         ? 'index.html'

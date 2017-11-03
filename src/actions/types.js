@@ -37,6 +37,7 @@ export type Action =
 
 
   | { type: 'LOADED_POST_DATA', list: Array<ParseObject>}
+  | { type: 'SET_ROUTER_BASENAME', data: { basename: string; } }
   ;
 
 export type Dispatch = (action: Action | ThunkAction | PromiseAction | Array<Action>) => any;

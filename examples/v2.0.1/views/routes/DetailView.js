@@ -7,6 +7,9 @@ import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
 import { push, replace } from 'react-router-redux';
 
+import { Progress, Input, Button,Modal } from 'antd';// 引用且渲染 产生文件量
+import moment from 'moment';
+
 class DetailView extends Component{
   // static propTypes = {
   //   match: PropTypes.object.isRequired,
@@ -44,9 +47,25 @@ class DetailView extends Component{
   render(){
       return (
         <div className="page-detail">
-          
+          <Progress width={40} gapPosition={'top'} type="circle" percent={80} format={() => `床`} />
+          {moment((new Date()).getTime()).format('YYYY-MM-DD HH:mm:ss')}
+          <Modal
+            title=""
+            width={330}
+            visible={false}
+            footer={
+              <div>
+                <Button key="back" size="large">尚未解答</Button>
+                <Button key="submit" type="primary" size="large">
+                  已解答
+                </Button>
+              </div>
+            }
+          >
+              <div>患者疑问：</div>
+          </Modal>
           <p>
-              多媒体资源演示 - galaxyw：
+              多媒体资源演示：
               <br />
               <iframe src="//v.qq.com/iframe/player.html?vid=c0353ehgq7k&amp;tiny=1&amp;auto=0"
               width="960" height="746" frameBorder="0" allowFullScreen="allowfullscreen">

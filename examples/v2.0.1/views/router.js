@@ -1,10 +1,12 @@
 import React from 'react';
 import IndexView from './Index.js';
-import ListViewContainer from './routes/ListView.js';
-import ScrollToTop from '../components/ScrollToTop';
-import Bundle from '../core/bundle.js';
-import { matchRoutes, renderRoutes } from 'react-router-config';
+import ListViewContainer from './routes/ListView.js'; // bundle-loader 返回
+import ScrollToTop from '../../../src/components/ScrollToTop';
 
+import Bundle from '../../../src/core/bundle.js';
+//import DetailViewContainer from 'bundle-loader?lazy&name=page-[name]!./routes/detailView.js';
+
+import { matchRoutes, renderRoutes } from 'react-router-config';
 const createChildRouteComponent = (container, props,) => (
     <Bundle load={container}>
         {(View) => <View {...props} />}
@@ -25,7 +27,10 @@ function RouterConfig({ history, app }) {
         {
           path: '/index.html',
           exact: true,
-          component: IndexView 
+          component: IndexView   // require('./Index.js')
+          // component: (props, a, method) => {
+          //  return <IndexView />;
+          // }
         },
         { 
           path: '/list/:id/:name.html',
@@ -43,7 +48,7 @@ function RouterConfig({ history, app }) {
         },
         { 
           path: '/detail.html',
-          component: () => createChildRouteComponent(require('./routes/DetailView.js')),
+          component: (props) => createChildRouteComponent(require('./routes/DetailView.js')),// DetailViewContainer
         }
       ]
     }

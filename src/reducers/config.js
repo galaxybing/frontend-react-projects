@@ -12,18 +12,24 @@ const initialState: Config = {
     baseURL: "",
 };
 
-function config(state: Config = initialState, action: Action) {
+function config(state: Config = initialState, action) {
   if (action.type === 'LOADED_CONFIG_DATA') {
-      return {
-          ...state,
-          tokenVerified: true,
-      };
+    return {
+      ...state,
+      tokenVerified: true,
+    };
   }
   if (action.type === 'LOGIN_ID_NAME') {
-      return {
-          id: action.data.id,
-          name: encodeURIComponent(action.data.name),
-      }
+    return {
+      id: action.data.id,
+      name: encodeURIComponent(action.data.name),
+    }
+  }
+  if (action.type === 'SET_ROUTER_BASENAME') {
+    return {
+      ...state,
+      basename: action.data
+    }
   }
   return state;
 }

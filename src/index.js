@@ -10,7 +10,8 @@ import PropTypes from 'prop-types';
 
 import createClass from 'create-react-class';
 import { configureStore, history } from './store/configureStore';
-import App from './views/app';
+// import App from './views/app';
+import App from '../examples/v2.0.1/views/app';
 // import AnimationExample from './views/AnimationExample';
 
 if ('scrollRestoration' in history) {

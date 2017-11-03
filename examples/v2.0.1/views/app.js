@@ -50,7 +50,7 @@ class App extends Component{// function??/
     </ConnectedRouter>
     */
     return (
-      <RouterContainer basename="/hospital-admin/frontend-react-projects" forceRefresh={!supportsHistory} keyLength={10}>
+      <RouterContainer basename="/frontend-react-projects/dist" forceRefresh={!supportsHistory} keyLength={10}>
         <RootRouter />
       </RouterContainer>
     );

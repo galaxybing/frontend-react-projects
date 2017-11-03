@@ -71,9 +71,10 @@ npm run build:dev -- master
   - git push origin develop:dev-develop
 - Bone 操作界面
   - 同步hospital-admin仓库与Eweb工程的 index.vm 入口文件
-* 测试环境：
-  - http://galaxyw.317hu.com:8081/hospital-admin/frontend-react-projects/index.html
-  - http://hospital.dev.317hu.com/hospital-admin/frontend-react-projects/index.html
+- 测试环境：
+  * http://galaxyw.317hu.com:8081/hospital-admin/frontend-react-projects/index.html
+  * http://historyroute.317hu.com/frontend-react-projects/dist/index.html
+  * http://hospital.dev.317hu.com/hospital-admin/frontend-react-projects/index.html
 
 ## 部署生产环境版本：
 - git checkout master
