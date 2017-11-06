@@ -19,13 +19,25 @@ fi
 
 echo "please enter your will build branch name:" 
 read branch_name
-echo -e "You has branch name: \c $branch_name";
+
 echo "please enter message for commit:" 
 read commit_msg
-echo -e "You has commit message: \c $commit_msg"
-sleep 1;
+echo -e "You has branch name: $branch_name , commit message: $commit_msg \n"
 
-echo "run build at $input..." 
+echo "(0) Y"  
+echo "(1) N"
+echo "(2) Exit"
+read comfirm_build
+case $comfirm_build in  
+    0)
+    echo "run build at $input..."
+    sleep 1;;
+    1)
+    echo "you will abort..."
+    sleep 2;;
+    2)
+    exit;;
+esac
 
 ./node_modules/.bin/cross-env VERSION_ENV="$input" node build/build.js "$branch_name"
 # env
