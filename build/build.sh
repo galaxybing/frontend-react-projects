@@ -34,7 +34,8 @@ case $comfirm_build in
     sleep 1;;
     1)
     echo "you will abort..."
-    sleep 2;;
+    sleep 1
+    exit;;
     2)
     exit;;
 esac
