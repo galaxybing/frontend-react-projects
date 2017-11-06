@@ -13,12 +13,15 @@ done
 sleep 1;
 if [ "$input" = "Exit" ];then
   exit;
+elif [ "$input" = "prod" ];then
+  echo "You have selected $input"
+  echo "please enter your will build version (eg, v*.*.*):" 
+  read branch_name
 else
   echo "You have selected $input"
+  echo "please enter your will build branch name:" 
+  read branch_name
 fi
-
-echo "please enter your will build branch name:" 
-read branch_name
 
 echo "please enter message for commit:" 
 read commit_msg
@@ -29,20 +32,25 @@ echo "(1) N"
 echo "(2) Exit"
 read comfirm_build
 case $comfirm_build in  
-    0|Y|y)
-    echo "run build at $input..."
-    sleep 1;;
-    1)
-    echo "you will abort..."
-    sleep 1
-    exit;;
-    *)
-    exit;;
+  0|Y|y)
+  echo "run build at $input..."
+  sleep 1;;
+  1|N|n)
+  echo "it will abort..."
+  sleep 1
+  exit;;
+  *)
+  exit;;
 esac
 
 ./node_modules/.bin/cross-env VERSION_ENV="$input" node build/build.js "$branch_name"
 # env
 
 git add .
-git commit -m "$input@$commit_msg"
-git push -f origin "$branch_name:$input-$branch_name"
+if [ "$input" = "prod" ];then
+  git commit -m "$branch_name@$commit_msg"
+  git push origin "master:master"
+else
+  git commit -m "$input@$commit_msg"
+  git push -f origin "$branch_name:$input-$branch_name"
+fi
