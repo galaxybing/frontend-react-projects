@@ -29,7 +29,7 @@ echo "(1) N"
 echo "(2) Exit"
 read comfirm_build
 case $comfirm_build in  
-    0)
+    0|Y|y)
     echo "run build at $input..."
     sleep 1;;
     1)
