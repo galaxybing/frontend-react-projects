@@ -20,7 +20,7 @@ var apiConfig;
 */
 const repository = require('../../package.json').name;
 // const ver = apiConfig['version'];
-const ver = branchEnv;
+const ver = versionEnv;
 
 if(/^v(\d){1,2}\.(\d){1,2}\.(\d){1,2}$/.test(ver)){
   apiConfig['assetsPublicPathConfig'] = `http://resources.317hu.com/${repository}/${ver}/static/`
