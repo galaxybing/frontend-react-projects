@@ -49,21 +49,6 @@ class DetailView extends Component{
         <div className="page-detail">
           <Progress width={40} gapPosition={'top'} type="circle" percent={80} format={() => `床`} />
           {moment((new Date()).getTime()).format('YYYY-MM-DD HH:mm:ss')}
-          <Modal
-            title=""
-            width={330}
-            visible={false}
-            footer={
-              <div>
-                <Button key="back" size="large">尚未解答</Button>
-                <Button key="submit" type="primary" size="large">
-                  已解答
-                </Button>
-              </div>
-            }
-          >
-              <div>患者疑问：</div>
-          </Modal>
           <p>
               多媒体资源演示：
               <br />

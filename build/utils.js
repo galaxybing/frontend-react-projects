@@ -72,7 +72,7 @@ exports.styleLoaders = function (options) {
     output.push({
       test: new RegExp('\\.' + extension + '$'),
       use: loader,
-      include: options.includeNodeModules? [resolve('node_modules')] : [resolve('src')],
+      include: options.includeNodeModules? [resolve('node_modules')] : [resolve('src'), resolve('examples')],
     });
     
     

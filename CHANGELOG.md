@@ -19,6 +19,7 @@
 
 * BrowserRouter 路由封装 basename={} 处理
 * 将分离的模块，重复代码进行再次抽取
+* 关于 entry 入口模块中是否一定要加入 antd 块，与按需加载冲突问题
 * antdesign 组件模块的 `<style type="text/css"` 更新为 `<link` 引用
 
 ## 2.0.0 (2017年09月02日)

@@ -10,6 +10,27 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 var DllLinkPlugin = require('dll-link-webpack-plugin');
 
+const extractLib = new ExtractTextPlugin({
+  filename: utils.assetsPath('css/lib-[name].css'),
+  disable: process.env.NODE_ENV === "development"
+});
+var join = path.join;
+var existsSync = require('fs').existsSync;
+const pkgPath = join(__dirname, '../package.json');
+const pkg = existsSync(pkgPath) ? require(pkgPath) : {};
+let theme = {};
+if (pkg.theme && typeof(pkg.theme) === 'string') {
+  let cfgPath = pkg.theme;
+  // relative path
+  if (cfgPath.charAt(0) === '.') {
+    cfgPath = resolve(args.cwd, cfgPath);
+  }
+  const getThemeConfig = require(cfgPath);
+  theme = getThemeConfig();
+} else if (pkg.theme && typeof(pkg.theme) === 'object') {
+  theme = pkg.theme;
+};
+
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
@@ -18,6 +39,26 @@ function resolve (dir) {
 }
 
 var webpackConfig = merge(baseWebpackConfig, {
+  module: {
+    /*
+    rules: [
+      {
+        test: /(\.css|\.less)$/, include: [resolve('src/views/routes'), resolve('examples/v2.0.1/views/routes')], use: extractLib.extract({
+          use: [{
+            loader: "css-loader",
+          },{
+            loader: "style-loader",
+          },{
+            loader: "less-loader",
+            options: {
+              modifyVars: theme
+            }
+          }]
+        })
+      },
+    ]
+    */
+  },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
     path: config.build.assetsRoot,

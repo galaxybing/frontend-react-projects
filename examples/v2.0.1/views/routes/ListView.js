@@ -17,23 +17,8 @@ class ListView extends Component{
   render(){
     return (
       <div>
-        <Progress width={40} gapPosition={'top'} type="circle" percent={80} format={() => `床`} />
+        <Progress width={40} gapPosition={'top'} type="circle" percent={80} format={() => `317护`} />
         {moment((new Date()).getTime()).format('YYYY-MM-DD HH:mm:ss')}
-        <Modal
-          title=""
-          width={330}
-          visible={false}
-          footer={
-            <div>
-              <Button key="back" size="large">尚未解答</Button>
-              <Button key="submit" type="primary" size="large">
-                已解答
-              </Button>
-            </div>
-          }
-        >
-            <div>患者疑问：</div>
-        </Modal>
         <div style={{textAlign: 'center', color: '#ff0000', cursor: 'pointer', width: 260, margin: '0 auto'}} onClick={()=>{
           this.context.router.history.goBack();
           // this.props.history.replace({ pathname: '/hospital-admin/frontend-react-projects/index.html'});
