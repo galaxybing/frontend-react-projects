@@ -5,7 +5,7 @@
 
 echo "----------------------------------"  
 echo "please select your build env:" 
-select input in dev  sit uat prod Exit;  
+select input in dev sit uat prod Exit;  
 do  
   break  
 done  
