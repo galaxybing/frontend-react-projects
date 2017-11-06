@@ -19,14 +19,17 @@ fi
 
 echo "please enter your will build branch name:" 
 read branch_name
-echo -e "You has branch name: \c $branch_name"
+echo -e "You has branch name: \c $branch_name";
+echo "please enter message for commit:" 
+read commit_msg
+echo -e "You has commit message: \c $commit_msg"
+sleep 1;
 
 echo "run build at $input..." 
 
 ./node_modules/.bin/cross-env VERSION_ENV="$input" node build/build.js "$branch_name"
 # env
-echo "please enter message for commit:" 
-read commit_msg
+
 git add .
 git commit -m "$input@$commit_msg"
 git push -f origin "$branch_name:$input-$branch_name"
