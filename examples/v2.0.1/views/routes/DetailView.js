@@ -21,6 +21,7 @@ class DetailView extends Component{
     
     this.state = {
       count: 0,
+      visible: true,
       ...props.stateData
     }
     /*
@@ -44,11 +45,29 @@ class DetailView extends Component{
       return { count: prevState.count + 1};
     })
   }
+  handleOk = (e) => {
+    this.setState({
+      visible: false,
+    });
+  }
+  handleCancel = (e) => {
+    this.setState({
+      visible: false,
+    });
+  }
   render(){
       return (
         <div className="page-detail">
           <Progress width={40} gapPosition={'top'} type="circle" percent={80} format={() => `床`} />
           {moment((new Date()).getTime()).format('YYYY-MM-DD HH:mm:ss')}
+          <Modal
+            title="基本弹层框"
+            visible={this.state.visible}
+            onOk={this.handleOk}
+            onCancel={this.handleCancel}
+          >
+            <p style={{textAlign: 'center'}}>弹层内容</p>
+          </Modal>
           <p>
               多媒体资源演示：
               <br />

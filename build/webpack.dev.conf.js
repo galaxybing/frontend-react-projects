@@ -11,7 +11,84 @@ Object.keys(baseWebpackConfig.entry).forEach(function (name) {
   baseWebpackConfig.entry[name] = ['./build/dev-client'].concat(baseWebpackConfig.entry[name])
 })
 
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
+
+var join = path.join;
+var existsSync = require('fs').existsSync;
+const pkgPath = join(__dirname, '../package.json');
+const pkg = existsSync(pkgPath) ? require(pkgPath) : {};
+let theme = {};
+if (pkg.theme && typeof(pkg.theme) === 'string') {
+  let cfgPath = pkg.theme;
+  // relative path
+  if (cfgPath.charAt(0) === '.') {
+    cfgPath = resolve(args.cwd, cfgPath);
+  }
+  const getThemeConfig = require(cfgPath);
+  theme = getThemeConfig();
+} else if (pkg.theme && typeof(pkg.theme) === 'object') {
+  theme = pkg.theme;
+};
+
 module.exports = merge(baseWebpackConfig, {
+  module: {
+    rules: [
+      {
+        test: /(\.css|\.less)$/, include: [resolve('src/components'), resolve('src/views/'), resolve('examples/v2.0.1/views/')], 
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+              modules: true,
+              url: true,
+              minimize: process.env.NODE_ENV === 'production',
+              sourceMap: config.build.productionSourceMap,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            }
+          },
+          {
+          loader: "less-loader"
+          },
+          {
+            loader: 'postcss-loader',
+            options: {
+              plugins: process.env.NODE_ENV === 'production' ? (loader) => [require('postcss-import')({ root: loader.resourcePath }), require('autoprefixer')(),] : []
+            }
+          }
+        ]
+      },
+      {
+        test: /(\.css|\.less)$/, exclude: [resolve('src/components'), resolve('src/views/'), resolve('examples/v2.0.1/views/')],
+        use: [
+          {
+            loader: 'style-loader'
+          },
+          {
+            loader: "css-loader",
+            options: {
+              modules: false,
+              url: true,
+              minimize: process.env.NODE_ENV === 'production',
+              sourceMap: config.build.productionSourceMap,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            }
+          },
+          {
+            loader: "less-loader",
+            options: {
+              modifyVars: theme
+            }
+          }
+        ]
+      },
+    ]
+  },
   devtool: '#cheap-module-eval-source-map',
   plugins: [
     new webpack.DefinePlugin({

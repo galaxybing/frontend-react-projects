@@ -10,10 +10,15 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 var OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 var DllLinkPlugin = require('dll-link-webpack-plugin');
 
+const extractCss = new ExtractTextPlugin({
+  filename: utils.assetsPath('css/[name].css'),
+  disable: process.env.NODE_ENV === "development"
+});
 const extractLib = new ExtractTextPlugin({
   filename: utils.assetsPath('css/lib-[name].css'),
   disable: process.env.NODE_ENV === "development"
 });
+
 var join = path.join;
 var existsSync = require('fs').existsSync;
 const pkgPath = join(__dirname, '../package.json');
@@ -40,24 +45,53 @@ function resolve (dir) {
 
 var webpackConfig = merge(baseWebpackConfig, {
   module: {
-    /*
     rules: [
+      {/* 自定义的组件，样式 css-modules 化？？如果需要使用其他的 css 预编译程序，则可以去除以下两条配置 */
+        test: /(\.css|\.less)$/, include: [resolve('src/components'), resolve('src/views/'), resolve('examples/v2.0.1/views/')], use: extractCss.extract({
+          use: [
+              {
+                loader: "css-loader",
+                options: {
+                  importLoaders: 1,
+                  modules: true,
+                  url: true,
+                  minimize: process.env.NODE_ENV === 'production',
+                  sourceMap: config.build.productionSourceMap,
+                  localIdentName: '[name]__[local]___[hash:base64:5]',
+                }
+            },{
+              loader: "less-loader"
+            },{
+              loader: 'postcss-loader',
+              options: {
+                plugins: process.env.NODE_ENV === 'production' ? (loader) => [require('postcss-import')({ root: loader.resourcePath }), require('autoprefixer')(),] : []
+              }
+            }
+          ],
+          fallback: "style-loader"
+        })
+      },
       {
-        test: /(\.css|\.less)$/, include: [resolve('src/views/routes'), resolve('examples/v2.0.1/views/routes')], use: extractLib.extract({
+        test: /(\.css|\.less)$/, exclude: [resolve('src/components'), resolve('src/views/'), resolve('examples/v2.0.1/views/')], use: extractLib.extract({
           use: [{
             loader: "css-loader",
-          },{
-            loader: "style-loader",
+            options: {
+              modules: false,
+              url: true,
+              minimize: process.env.NODE_ENV === 'production',
+              sourceMap: config.build.productionSourceMap,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            }
           },{
             loader: "less-loader",
             options: {
               modifyVars: theme
             }
-          }]
+          }],
+          fallback: "style-loader"
         })
       },
     ]
-    */
   },
   devtool: config.build.productionSourceMap ? '#source-map' : false,
   output: {
@@ -81,11 +115,12 @@ var webpackConfig = merge(baseWebpackConfig, {
     new OptimizeCSSPlugin(),
     
     // 分离插件配置：
-    new webpack.optimize.CommonsChunkPlugin({ name: 'vendorLib', filename: 'vendorLib.bundle.js' }),
+    new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendorAntd',
-      chunks: ['vendorLib'],
+      chunks: ['vendor'],
       minChunks: function (module, count) {
+        
         return (
           module.resource &&
           /\.js$/.test(module.resource) && (
@@ -106,16 +141,27 @@ var webpackConfig = merge(baseWebpackConfig, {
     
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendorMoment',
-      chunks: ['vendorLib'], // hash 文件更新以后：Uncaught (in promise) Error: Loading chunk 0 failed.
+      chunks: ['vendor'], // hash 文件更新以后：Uncaught (in promise) Error: Loading chunk 0 failed.
       minChunks: function (module, count) {
         return (
           module.resource &&
           /\.js$/.test(module.resource) && (
             module.resource.indexOf(
               path.join(__dirname, '../node_modules/moment/')
-            ) === 0 ||
+            ) === 0
+          )
+        )
+      }
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendorReact',
+      chunks: ['vendor'],
+      minChunks: function (module, count) {
+        return (
+          module.resource &&
+          /\.js$/.test(module.resource) && (
             module.resource.indexOf(
-              path.join(__dirname, '../node_modules/rc-calendar')
+              path.join(__dirname, '../node_modules/react-redux')
             ) === 0
           )
         )
@@ -145,7 +191,11 @@ var webpackConfig = merge(baseWebpackConfig, {
         to: config.build.assetsSubDirectory,
         ignore: ['.*']
       }
-    ])
+    ]),
+    
+    extractCss,
+    extractLib
+    // new ExtractTextPlugin(utils.assetsPath('css/[name].css'))
   ]
 })
 

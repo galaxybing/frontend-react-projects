@@ -9,15 +9,6 @@ var config = require('../config')
 function resolve (dir) {
   return path.join(__dirname, '..', dir)
 }
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
-const extractCss = new ExtractTextPlugin({
-  filename: utils.assetsPath('css/[name].css'),
-  disable: process.env.NODE_ENV === "development"
-});
-const extractLib = new ExtractTextPlugin({
-  filename: utils.assetsPath('css/lib-[name].css'),
-  disable: process.env.NODE_ENV === "development"
-});
 
 const pkgPath = join(__dirname, '../package.json');
 const pkg = existsSync(pkgPath) ? require(pkgPath) : {};
@@ -37,7 +28,7 @@ if (pkg.theme && typeof(pkg.theme) === 'string') {
 module.exports = {
   entry: {
     app: './src/index.js',
-    vendorLib: ['react', 'redux', 'react-redux','antd' ], // 'lodash' 'moment', 'rc-calendar' 
+    vendor: ['react', 'redux', 'react-redux', 'antd', 'moment' ], // 'lodash' 'moment', 'rc-calendar'  
   },
   output: {
     path: config.build.assetsRoot,
@@ -54,58 +45,12 @@ module.exports = {
     }
   },
   plugins: [
-    extractCss,
-    extractLib,
     new webpack.EnvironmentPlugin({
       VERSION_ENV: 'dev'
     })
   ],
   module: {
     rules: [
-      
-      {/* 自定义的组件，样式 css-modules 化？？如果需要使用其他的 css 预编译程序，则可以去除以下两条配置 */
-        test: /(\.css|\.less)$/, include: [resolve('src/components'), resolve('src/views/'), resolve('examples/v2.0.1/views/')], use: extractCss.extract({
-          use: [{
-              loader: "css-loader",
-              options: {
-                importLoaders: 1,
-                modules: true,
-                url: true,
-                minimize: process.env.NODE_ENV === 'production',
-                sourceMap: config.build.productionSourceMap,
-                localIdentName: '[name]__[local]___[hash:base64:5]',
-              }
-          },{
-            loader: "less-loader"
-          },{
-            loader: 'postcss-loader',
-            options: {
-              plugins: process.env.NODE_ENV === 'production' ? (loader) => [require('postcss-import')({ root: loader.resourcePath }), require('autoprefixer')(),] : []
-            }
-          }],
-          fallback: "style-loader"
-        })
-      },
-      {
-        test: /(\.css|\.less)$/, exclude: [resolve('src/components'), resolve('src/views/'), resolve('examples/v2.0.1/views/')], use: extractLib.extract({
-          use: [{
-            loader: "css-loader",
-            options: {
-              modules: false,
-              url: true,
-              minimize: process.env.NODE_ENV === 'production',
-              sourceMap: config.build.productionSourceMap,
-              localIdentName: '[name]__[local]___[hash:base64:5]',
-            }
-          },{
-            loader: "less-loader",
-            options: {
-              modifyVars: theme
-            }
-          }],
-          fallback: "style-loader"
-        })
-      },
       {
         test: /\.js[x]?$/,
         loader: 'babel-loader',

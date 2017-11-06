@@ -3,12 +3,17 @@ import { connect } from 'react-redux';
 import { PropTypes } from 'prop-types';
 // import {TweenMax} from 'gsap';
 import { Progress, Input, Button, Modal } from 'antd';// 引用且渲染 产生文件量
+// import 'antd/lib/progress/style/css';
+// require('antd/lib/progress/style/index.css');
 import moment from 'moment';
 
 class ListView extends Component{
   static contextTypes={
 		router: PropTypes.object.isRequired, // React.PropTypes.object.isRequired
 	};
+  constructor(props){
+    super(props);
+  }
   componentDidMount(){
     console.log('this.props.match.params->', this.props.match.params);
     console.log('this.context.router->', this.context.router);
@@ -19,6 +24,7 @@ class ListView extends Component{
       <div>
         <Progress width={40} gapPosition={'top'} type="circle" percent={80} format={() => `317护`} />
         {moment((new Date()).getTime()).format('YYYY-MM-DD HH:mm:ss')}
+        
         <div style={{textAlign: 'center', color: '#ff0000', cursor: 'pointer', width: 260, margin: '0 auto'}} onClick={()=>{
           this.context.router.history.goBack();
           // this.props.history.replace({ pathname: '/hospital-admin/frontend-react-projects/index.html'});

@@ -2,13 +2,13 @@ var path = require('path')
 
 var apiConfig = require('../src/store/api.js');
 const versionEnv = process.env.VERSION_ENV || 'dev';
-const exectureEnv = process.env.EXECUTE_ENV || 'build';
+const runEnv = process.env.RUN_ENV || 'build';
 var assetsPublicPathConfig = apiConfig['assetsPublicPathConfig'];
 if(versionEnv=='dev-local'||versionEnv=='sit-local'){
   assetsPublicPathConfig = 'http://historyroute.317hu.com/static/';
 }
 
-if(exectureEnv=='build'){
+if(runEnv=='build'){
   console.log('静态资源目录：%s', assetsPublicPathConfig);
 }
 
