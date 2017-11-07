@@ -49,7 +49,7 @@ esac
 git add .
 if [ "$input" = "prod" ];then
   git commit -m "$branch_name@$commit_msg"
-  git push origin "master:master"
+  git push origin "HEAD:$input-$branch_name"
 else
   git commit -m "$input@$commit_msg"
   git push -f origin "$branch_name:$input-$branch_name"
