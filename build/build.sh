@@ -43,8 +43,12 @@ case $comfirm_build in
   exit;;
 esac
 
-./node_modules/.bin/cross-env VERSION_ENV="$input" node build/build.js "$branch_name"
+if [ "$input" = "prod" ];then
+  ./node_modules/.bin/cross-env VERSION_ENV="$branch_name" node build/build.js "$branch_name"
+else
+  ./node_modules/.bin/cross-env VERSION_ENV="$input" node build/build.js "$branch_name"
 # env
+fi
 
 git add .
 if [ "$input" = "prod" ];then
