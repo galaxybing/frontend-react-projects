@@ -82,7 +82,8 @@ module.exports = merge(baseWebpackConfig, {
           {
             loader: "less-loader",
             options: {
-              modifyVars: theme
+              modifyVars: theme // 使用了 antd 的全局样式配置时，.babelrc 仅支持 import 导入 "style": true
+                                // ["import", { "libraryName": "antd", "style": true, "comment": "true for .less, css for .css"}]
             }
           }
         ]

@@ -68,6 +68,12 @@ npm run build:sit-local # 本机
   - http://galaxyw.317hu.com/hospital-admin/frontend-react-projects/index.html
 
 
+# 升级版本
+
+- git remote add frontend-react-projects git@gitlab.317hu.com:dev-web/frontend-react-projects.git
+- git pull frontend-react-projects master --allow-unrelated-histories
+
+
 # 如何使用：
 
 #### 1.本机起 nginx 环境：
