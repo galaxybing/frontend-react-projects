@@ -118,6 +118,9 @@ export function run(query) {
   if(options){ // && options.method !== 'GET'
     if(api.split('_')[0]==='www' || api.split('_')[0]==='mock'){
       params = typeof body == 'string' ? body : (typeof body == 'undefined' ? '': Object.keys(body).map(function(k){
+        if(!body[k]){
+          return encodeURIComponent(k) + '='
+        }
         return encodeURIComponent(k) + '=' + encodeURIComponent(JSON.stringify(body[k]))
       }).join('&'));
       headers = {

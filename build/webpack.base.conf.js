@@ -57,7 +57,6 @@ module.exports = {
         query: {
             presets: ['es2015','stage-2', 'react']
         },
-        exclude: /node_modules/,
         include: [resolve('lib_modules'), resolve('src'), resolve('test'), resolve('examples')] // include: path.join(__dirname, './src')
       },
       {
