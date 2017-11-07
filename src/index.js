@@ -2,7 +2,8 @@
 
 require('./assets/css/lib.css');
 require('./assets/css/app.css');
-require('../examples/v2.0.1/views/app-antd.js');// 以允许应用不同版本的 antd 样式（引用以入口为准，属于 lib-app.css）
+// require('../examples/v2.0.1/views/app-antd.js');// 以允许应用不同版本的 antd 样式（引用以入口为准，属于 lib-app.css）
+require('./views/app-antd.js');
 // import { Progress } from 'antd';
 
 import React, { Component } from 'react';
@@ -13,8 +14,9 @@ import PropTypes from 'prop-types';
 
 import createClass from 'create-react-class';
 import { configureStore, history } from './store/configureStore';
-// import App from './views/app';
-import App from '../examples/v2.0.1/views/app';
+// import App from '../examples/v2.0.1/views/app';
+import App from './views/app';
+
 // import AnimationExample from './views/AnimationExample';
 
 
@@ -37,10 +39,7 @@ class Root extends Component{
         var props = this.props;
         return (
           <Provider store={this.state.store}>
-            <div>
-              
   			    <App history={history} />
-            </div>
           </Provider>
         );
     }
