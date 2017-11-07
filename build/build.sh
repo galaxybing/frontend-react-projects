@@ -27,9 +27,9 @@ echo "please enter message for commit:"
 read commit_msg
 
 if [ "$input" = "prod" ];then
-  echo -e "You will publish version: $branch_name , commit message: $commit_msg ? \n"
+  echo -e "\nYou will publish version: $branch_name , commit message: $commit_msg ?"
 else
-  echo -e "You has branch name: $branch_name , commit message: $commit_msg ? \n"
+  echo -e "\nYou has branch name: $branch_name , commit message: $commit_msg ?"
 fi
 
 echo "(0) Y"  
