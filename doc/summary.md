@@ -25,20 +25,10 @@ npm run start:uat
 
 # 构建
 # 生产环境的部署代码(默认应用 dev 服务数据)
-npm run build 
-npm run build:dev -- develop
+npm run build
 npm run build:dev-local # 本机
 # 应用 sit 服务数据
-npm run build:sit -- develop
 npm run build:sit-local # 本机
-# 应用 uat 服务数据
-npm run build:uat -- develop
-# 应用 prod 服务数据
-npm run build:prod -- develop
-
-# 构建master分支dev环境
-# npm run build:[环境标示] -- [分支名称]
-npm run build:dev -- master
 
 ```
 
@@ -48,29 +38,18 @@ npm run build:dev -- master
 1. 配置 package.json 的项目名称：
   - 如 "name": "frontend-react-projects"
 2. 指定 push 推送消息格式（切换至发布分支上）：
-
-  - npm run build:[环境名] -- [发布分支]
-  - git commit -m '[环境名]@配置发布的版本号（以备 qsync 使用）'
-    - git push origin 当前所在分支名:[环境名]-[发布分支]
-  
-  - git checkout master
-  - 配置发布的版本号（以备 index.html 页面结构使用）：/src/store/api.prod.js 
-    - "version": "v[版本号]",
-  - npm run build:prod
-  - git commit -m 'v[版本号]@配置发布的版本号（以备 qsync 使用）'
-    - git push origin master:master
-  
+  - npm run build # 按步骤操作
 3. [Bone部署系统](http://bone.317hu.com/task/submit/)，将环境分支，同步到对应的 Eweb 工程 webapps 目录
 4. 完成部署。
 ```
 
 ## 部署 dev|sit|uat 环境版本：
+- 配置 package.json 的项目名称：
+  - 如 "name": "frontend-react-projects"
 - git checkout develop
-- npm run build:dev -- develop （声明发布 dev 环境，且当前所在主发布分支为 develop 的情况；以备 index.html 页面结构使用，即 dev-develop）
-- git commit -m 'dev@配置发布的版本号（以备 qsync 使用）'
-  - git push origin develop:dev-develop
+- npm run build # 按步骤操作
 - Bone 操作界面
-  - 同步hospital-admin仓库与Eweb工程的 index.vm 入口文件
+  - 同步 hospital-admin_vm-* 仓库与Eweb工程的 index.vm 入口文件
 - 测试环境：
   * http://galaxyw.317hu.com:8081/hospital-admin/frontend-react-projects/index.html
   * http://historyroute.317hu.com/frontend-react-projects/dist/index.html
