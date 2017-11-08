@@ -118,10 +118,11 @@ export function run(query) {
   if(options){ // && options.method !== 'GET'
     if(api.split('_')[0]==='www' || api.split('_')[0]==='mock'){
       params = typeof body == 'string' ? body : (typeof body == 'undefined' ? '': Object.keys(body).map(function(k){
-        if(!body[k]){
+        let val = body[k];
+        if(!val){
           return encodeURIComponent(k) + '='
         }
-        return encodeURIComponent(k) + '=' + encodeURIComponent(JSON.stringify(body[k]))
+        return encodeURIComponent(k) + '=' + encodeURIComponent( typeof val === 'string' ? val :JSON.stringify(val))
       }).join('&'));
       headers = {
         'Content-Type': 'application/x-www-form-urlencoded'
@@ -132,6 +133,9 @@ export function run(query) {
         'Content-Type': 'application/json'
       };
     }
+    
+    // if((options.method=='GET' || options.method == 'PUT')&&params){
+    //  后端接口如果未针对 PUT 请求传参作处理时，需要拼接传参形式
     if(options.method=='GET'&&params){
       url += '?'+params;
     }
