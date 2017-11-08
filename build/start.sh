@@ -17,6 +17,6 @@ else
   echo "run start at $input..." 
 fi
 
-./node_modules/.bin/cross-env VERSION_ENV="$input-local" RUN_ENV=start node build/dev-server.js
+./node_modules/.bin/cross-env VERSION_ENV="$input" RUN_ENV=start node build/dev-server.js
 # env
 # export VERSION_ENV=dev-local
