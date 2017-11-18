@@ -8,7 +8,7 @@ var apiConfig;
     apiConfig = require('./api.sit.js');
   }else if(versionEnv=='uat'){
     apiConfig = require('./api.uat.js');
-  }else if(versionEnv=='prod'){
+  }else if(/^v(\d){1,2}\.(\d){1,2}\.(\d){1,2}$/.test(versionEnv)){ // versionEnv=='prod'
     apiConfig = require('./api.prod.js');
   }else{// 包含 dev-local
     apiConfig = require('./api.dev.js');
