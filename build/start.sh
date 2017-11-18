@@ -4,7 +4,7 @@
 
 echo "----------------------------------"  
 echo "please select your execute env:" 
-select input in dev  sit uat prd Exit;  
+select input in dev  sit uat Exit;  
 do  
   break  
 done  

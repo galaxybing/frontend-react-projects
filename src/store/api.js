@@ -1,6 +1,7 @@
 var apiConfig;
 // if(!window['VMCONFIG']){
   const versionEnv = process.env.VERSION_ENV || 'dev';
+  consolel.log('versionEnv->', versionEnv);
   // const branchEnv = process.env.BRANCH_ENV || 'master';
   const paramsEnv = process.argv;
   const branchEnv = paramsEnv[2] || 'master';
