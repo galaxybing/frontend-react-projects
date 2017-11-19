@@ -2,7 +2,14 @@ const path = require('path');
 var join = path.join;
 var resolve = path.resolve;
 var existsSync = require('fs').existsSync;
-var webpack = require('webpack')
+var webpack = require('webpack');
+// process.noDeprecation = true;
+// 
+// loaderUtils Warning:
+//  https://github.com/webpack/loader-utils/issues/56
+//  https://segmentfault.com/a/1190000010186847
+process.traceDeprecation = true;
+
 var utils = require('./utils')
 var config = require('../config')
 
