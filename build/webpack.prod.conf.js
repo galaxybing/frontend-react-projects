@@ -36,6 +36,11 @@ if (pkg.theme && typeof(pkg.theme) === 'string') {
   theme = pkg.theme;
 };
 
+let examplesVersion = '';
+if (pkg.examplesVersion && typeof(pkg.examplesVersion) === 'string') {
+  examplesVersion = pkg.examplesVersion;
+};
+
 var env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : config.build.env
@@ -47,7 +52,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   module: {
     rules: [
       {/* 自定义的组件，样式 css-modules 化？？如果需要使用其他的 css 预编译程序，则可以去除以下两条配置 */
-        test: /(\.css|\.less)$/, include: [resolve('src/components'), resolve('src/views/'), resolve('examples/v2.0.1/views/')], use: extractCss.extract({
+        test: /(\.css|\.less)$/, include: [resolve('src/components'), resolve('src/views/'), resolve(`examples/v${examplesVersion}/views/`)], use: extractCss.extract({
           use: [
               {
                 loader: "css-loader",
@@ -72,7 +77,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         })
       },
       {
-        test: /(\.css|\.less)$/, exclude: [resolve('src/components'), resolve('src/views/'), resolve('examples/v2.0.1/views/')], use: extractLib.extract({
+        test: /(\.css|\.less)$/, exclude: [resolve('src/components'), resolve('src/views/'), resolve(`examples/v${examplesVersion}/views/`)], use: extractLib.extract({
           use: [{
             loader: "css-loader",
             options: {

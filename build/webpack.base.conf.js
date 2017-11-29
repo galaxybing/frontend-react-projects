@@ -32,6 +32,11 @@ if (pkg.theme && typeof(pkg.theme) === 'string') {
   theme = pkg.theme;
 };
 
+let examplesVersion = '';
+if (pkg.examplesVersion && typeof(pkg.examplesVersion) === 'string') {
+  examplesVersion = pkg.examplesVersion;
+};
+
 module.exports = {
   entry: {
     app: './src/index.js',
@@ -72,7 +77,7 @@ module.exports = {
             'bundle-loader?lazy&name=[name]',
             'babel-loader?presets=es2015&presets=stage-2&presets=react',
         ],
-        include: [path.resolve(__dirname, '../src/views/routes/'), resolve('./examples/v2.0.1/views/routes/')],
+        include: [path.resolve(__dirname, '../src/views/routes/'), resolve(`./examples/v${examplesVersion}/views/routes/`)],
       },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,

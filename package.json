@@ -1,6 +1,6 @@
 {
   "name": "frontend-react-projects",
-  "version": "2.0.0",
+  "version": "2.1.1",
   "main": "index.js",
   "private": true,
   "scripts": {
@@ -25,6 +25,7 @@
     "es6-promise": "^3.2.1",
     "gsap": "^1.20.2",
     "history": "^4.5.1",
+    "immutability-helper": "^2.5.1",
     "isomorphic-fetch": "^2.2.1",
     "moment": "^2.18.1",
     "object-assign": "^4.1.1",
@@ -123,5 +124,6 @@
   "engines": {
     "node": ">=5.0",
     "npm": ">=3.0"
-  }
+  },
+  "examplesVersion": "2.1.1"
 }

@@ -32,11 +32,16 @@ if (pkg.theme && typeof(pkg.theme) === 'string') {
   theme = pkg.theme;
 };
 
+let examplesVersion = '';
+if (pkg.examplesVersion && typeof(pkg.examplesVersion) === 'string') {
+  examplesVersion = pkg.examplesVersion;
+};
+
 module.exports = merge(baseWebpackConfig, {
   module: {
     rules: [
       {
-        test: /(\.css|\.less)$/, include: [resolve('src/components'), resolve('src/views/'), resolve('examples/v2.0.1/views/')], 
+        test: /(\.css|\.less)$/, include: [resolve('src/components'), resolve('src/views/'), resolve(`examples/v${examplesVersion}/views/`)], 
         use: [
           {
             loader: 'style-loader'
@@ -64,7 +69,7 @@ module.exports = merge(baseWebpackConfig, {
         ]
       },
       {
-        test: /(\.css|\.less)$/, exclude: [resolve('src/components'), resolve('src/views/'), resolve('examples/v2.0.1/views/')],
+        test: /(\.css|\.less)$/, exclude: [resolve('src/components'), resolve('src/views/'), resolve(`examples/v${examplesVersion}/views/`)],
         use: [
           {
             loader: 'style-loader'

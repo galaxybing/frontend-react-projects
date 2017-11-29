@@ -6,12 +6,19 @@
   <section>
     <ul>
       <li>单元测试模块</li>
-      <li>自动化执行 .sh</li>
     </ul>
   </section>
   
 </details>
 
+
+## 2.1.1 (2017年11月01日)
+
+### 自动化执行
+
+### 只读数据插件引入
+
+* immutability-helper
 
 ## 2.1.0 (2017年11月01日)
 
