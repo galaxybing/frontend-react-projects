@@ -1,25 +1,20 @@
-var apiConfig;
-// if(!window['VMCONFIG']){
-  const versionEnv = process.env.VERSION_ENV || 'dev';
-  // const branchEnv = process.env.BRANCH_ENV || 'master';
-  const paramsEnv = process.argv;
-  const branchEnv = paramsEnv[2] || 'master';
-  if(versionEnv=='sit'||versionEnv=='sit-local'){
-    apiConfig = require('./api.sit.js');
-  }else if(versionEnv=='uat'){
-    apiConfig = require('./api.uat.js');
-  }else if(/^v(\d){1,2}\.(\d){1,2}\.(\d){1,2}$/.test(versionEnv)){ // versionEnv=='prod'
-    apiConfig = require('./api.prod.js');
-  }else{// 包含 dev-local
-    apiConfig = require('./api.dev.js');
-  }
-/*
-}else{
-  apiConfig = window['VMCONFIG'];
+var apiConfig = {};
+const versionEnv = process.env.VERSION_ENV || 'dev';
+// const branchEnv = process.env.BRANCH_ENV || 'master';
+const paramsEnv = process.argv;
+const branchEnv = paramsEnv[2] || 'master';
+
+if(versionEnv=='sit'||versionEnv=='sit-local'){
+  apiConfig = require('./api.sit.js');
+}else if(versionEnv=='uat'){
+  apiConfig = require('./api.uat.js');
+}else if(/^v(\d){1,2}\.(\d){1,2}\.(\d){1,2}$/.test(versionEnv)){ // versionEnv=='prod'
+  apiConfig = require('./api.prod.js');
+}else{// 包含 dev-local
+  apiConfig = require('./api.dev.js');
 }
-*/
+
 const repository = require('../../package.json').name;
-// const ver = apiConfig['version'];
 const ver = versionEnv;
 
 if(/^v(\d){1,2}\.(\d){1,2}\.(\d){1,2}$/.test(ver)){

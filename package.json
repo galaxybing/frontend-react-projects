@@ -102,6 +102,7 @@
     "ts-loader": "^2.3.1",
     "url-loader": "^0.5.8",
     "vinyl-paths": "^2.1.0",
+    "warning": "^3.0.0",
     "webpack": "^2.3.3",
     "webpack-bundle-analyzer": "^2.8.2",
     "webpack-dev-middleware": "^1.10.2",

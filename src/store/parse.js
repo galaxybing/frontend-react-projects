@@ -5,12 +5,10 @@ if (!window.Promise) {
 }
 import axios from 'axios';
 import objectAssign from 'object-assign';
-
 var apiConfig = require('./api.js');
+export { apiConfig };
 
-export {
-  apiConfig
-};
+import warning from '../core/_utils/warning';
 
 export function saveCache(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
@@ -83,6 +81,10 @@ messageCustomerOptionList = messageCustomerOptionList.filter((s)=>s!==-1)
  */
 
 export function deepClone(data) {
+  warning(
+    false, 
+    `工具函数 deepClone 即将迁移，推荐 import deepClone from '../core/_utils/deepClone'; 引用方式`
+  );
   /**
    * 返回的类型字符串表示
    */
@@ -171,53 +173,11 @@ export function localApiConfig() {
   return apiConfig
 }
 
-/*
- * 一）定义接口类型：
- * www_form_urlencoded_nurseTrainApi| mock_nurseTrainApi | nurseTrainApi
- * 
- * 二）支持的请求类型：
- * const Parse = require('../store/parse');
- * 1.发起Get请求：
- * Parse.run({
-        url: '/nurse-train-web/nursetrain/web/read/standard/train/user/v2.5.9/allUserInfo',
-        options: {
-            method: 'GET',
-            data
-        },
-        api: 'www_form_urlencoded_nurseTrainApi'
-    });
- *
- * 2. 发起Post请求：
- * Parse.run({
-        url: '/nurse-train-web/nursetrain/web/write/standardTrain/v2.5.9/basicTrainPlan',
-        options: {
-            method: 'POST',
-            data
-        },
-        api: 'www_form_urlencoded_nurseTrainApi'
-    });
-  *
-  * 3.发起Put请求：
-  * Parse.run({
-        url: '/nurse-train-web/nursetrain/web/write/standardTrain/v2.5.9/updateBasicTrainPlan',
-        options: {
-            method: 'PUT',
-            data
-        },
-        api: 'www_form_urlencoded_nurseTrainApi'
-    });
-  *
-  * 4.发起Delete请求：
-  * Parse.run({
-        url: `/nurse-train-web/nursetrain/web/write/standardTrain/v2.5.9/trainPlan/${id}`,
-        options: {
-            method: 'DELETE',
-            data: {}
-        },
-        api: 'www_form_urlencoded_nurseTrainApi'
-    });
- */
 export function run(query) {
+  warning(
+    false, 
+    `run 函数即将迁移，推荐 import request from '../core/_utils/request'; 引用方式`
+  );
   let {
     url,
     options,

@@ -8,18 +8,13 @@ import { push } from 'react-router-redux';
 // 
 // var request = require('request');
 import { push as basenamePush } from '../../../lib_modules/router-basename';
-import { deepClone } from '../../../src/store/parse';
+import { fetch } from '../../../src/core/_utils/request';
 
 class IndexView extends Component{
   static contextTypes={
 		router: PropTypes.object.isRequired,
 	};
   componentDidMount(){
-    var a = {'name': 'galaxyw'};
-    var b = deepClone(a);
-    a.name = 'bing';
-    console.log('a->', a,' b->', b);
-    // console.log(typeof b);
   }
   render(){
     return (
