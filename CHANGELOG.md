@@ -11,6 +11,13 @@
   
 </details>
 
+**升级版本注意事项:**
+
+- /src/index.js
+  * 确认 `require('./views/app-antd.js');` 为 antd 主样式入口
+  * 确认 `import App from './views/app';` 为主路由入口
+- 特定版本升级，需要安装依赖包命令：`npm install`
+
 
 ## 2.1.2 (2017年12月08日)
 
