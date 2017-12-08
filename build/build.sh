@@ -52,9 +52,21 @@ if [ "$input" = "prod" ];then
   ./node_modules/.bin/cross-env VERSION_ENV="$branch_name" node build/build.js "$branch_name"
 else
   ./node_modules/.bin/cross-env VERSION_ENV="$input" node build/build.js "$branch_name"
-# env
 fi
 
+# 处理发布目录
+cd pub
+checked_git_dir () {
+  local dir=. origin
+  if [ ! -d "$dir/.git" ]; then
+    origin=$(git remote -v | grep origin | head -1 | awk '{print $2}')
+    git init
+    git remote add origin $origin
+  fi
+}
+checked_git_dir
+
+# if false;then
 git add .
 if [ "$input" = "prod" ];then
   git commit -m "$branch_name@$commit_msg"
@@ -63,3 +75,6 @@ else
   git commit -m "$input@$commit_msg"
   git push -f origin "$branch_name:$input-$branch_name"
 fi
+
+cd ../
+echo "...构建完成"

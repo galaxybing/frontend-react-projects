@@ -15,6 +15,8 @@ if(versionEnv=='sit'||versionEnv=='sit-local'){
 }
 
 const repository = require('../../package.json').name;
+// apiConfig['repository'] = repository;
+
 const ver = versionEnv;
 
 if(/^v(\d){1,2}\.(\d){1,2}\.(\d){1,2}$/.test(ver)){

@@ -15,8 +15,8 @@ if(runEnv=='build'){
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../dist/index.html'),
-    assetsRoot: path.resolve(__dirname, '../dist/static/'),
+    index: path.resolve(__dirname, `../pub/dist/index.html`),
+    assetsRoot: path.resolve(__dirname, `../pub/dist/static/`),
     assetsSubDirectory: 'assets',// static
     assetsPublicPath: assetsPublicPathConfig, // /static/
     productionSourceMap: false,
