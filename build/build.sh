@@ -51,6 +51,19 @@ case $comfirm_build in
   exit;;
 esac
 
+
+
+# 处理发布目录
+checked_git_dir () {
+  local dir=. origin
+  if [ ! -d "$dir/.git" ]; then
+    origin=$(git remote -v | grep origin | head -1 | awk '{print $2}')
+    git init
+    git remote add origin $origin
+  fi
+}
+
+# 构建源码发布
 if [ "$Pub" = "publish" ];then
   echo "no build..."
 else
@@ -61,28 +74,29 @@ else
   fi
 fi
 
-
-# 处理发布目录
-cd pub
-checked_git_dir () {
-  local dir=. origin
-  if [ ! -d "$dir/.git" ]; then
-    origin=$(git remote -v | grep origin | head -1 | awk '{print $2}')
-    git init
-    git remote add origin $origin
+if [ -d "dist" ];then
+  if [ -d "pub" ];then
+    rm -rf pub/dist
+  else
+    mkdir -m 7777 pub
   fi
-}
-checked_git_dir
+  cp -a dist pub
+  cd pub
+  
+  checked_git_dir
 
-# if false;then
-git add .
-if [ "$input" = "prod" ];then
-  git commit -m "$branch_name@$commit_msg"
-  git push origin "HEAD:$input-$branch_name"
+  # if false;then
+  git add .
+  if [ "$input" = "prod" ];then
+    git commit -m "$branch_name@$commit_msg"
+    git push -f origin "HEAD:$input-$branch_name"
+  else
+    git commit -m "$input@$commit_msg"
+    git push -f origin "$branch_name:$input-$branch_name"
+  fi
+
+  cd ../
+  echo "...构建完成"
 else
-  git commit -m "$input@$commit_msg"
-  git push -f origin "$branch_name:$input-$branch_name"
+  echo "...构建目录不存在"
 fi
-
-cd ../
-echo "...构建完成"
