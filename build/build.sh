@@ -92,7 +92,8 @@ if [ -d "dist" ];then
     git push -f origin "HEAD:$input-$branch_name"
   else
     git commit -m "$input@$commit_msg"
-    git push -f origin "$branch_name:$input-$branch_name"
+    # git push -f origin "$branch_name:$input-$branch_name"
+    git push -f origin "HEAD:$input-$branch_name"
   fi
 
   cd ../
