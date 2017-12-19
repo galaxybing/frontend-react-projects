@@ -14,7 +14,7 @@
     "start": "./build/start.sh",
     "start:sit": "cross-env VERSION_ENV=sit RUN_ENV=start node build/dev-server.js",
     "start:uat": "cross-env VERSION_ENV=uat RUN_ENV=start node build/dev-server.js",
-    "pub": "/bin/bash ./build/publish.sh publish",
+    "pub": "/bin/bash ./build/build.sh publish",
     "watch": ""
   },
   "dependencies": {

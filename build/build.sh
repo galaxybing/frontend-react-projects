@@ -2,10 +2,11 @@
 # build.sh
 #
 # chmod +x  build/*.sh
+# http://resources.317hu.com/frontend-react-projects/v2.0.3/static/assets/css/lib-app.css
+# 
+Pub=$1
+echo "----------------------------------"
 
-BuildEnv=$1
-
-echo "----------------------------------"  
 echo "please select your build env:" 
 select input in dev sit uat prod Exit;  
 do  
@@ -50,10 +51,14 @@ case $comfirm_build in
   exit;;
 esac
 
-if [ "$input" = "prod" ];then
-  ./node_modules/.bin/cross-env VERSION_ENV="$branch_name" node build/build.js "$branch_name"
+if [ "$Pub" = "publish" ];then
+  echo "no build..."
 else
-  ./node_modules/.bin/cross-env VERSION_ENV="$input" node build/build.js "$branch_name"
+  if [ "$input" = "prod" ];then
+    ./node_modules/.bin/cross-env VERSION_ENV="$branch_name" node build/build.js "$branch_name"
+  else
+    ./node_modules/.bin/cross-env VERSION_ENV="$input" node build/build.js "$branch_name"
+  fi
 fi
 
 
