@@ -86,7 +86,7 @@ module.exports = {
           limit: 10000,
           name: utils.assetsPath('img/[name].[hash:7].[ext]')
         },
-        include: [resolve('src'), resolve('examples')],
+        include: [resolve('src'), resolve('examples'), resolve('node_modules/@317hu')],
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
