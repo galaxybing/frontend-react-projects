@@ -111,6 +111,9 @@
     "webpack-hot-middleware": "^2.18.0",
     "webpack-merge": "^4.1.0"
   },
+  "@317huDependencies": {
+    "@317hu/rangedatepicker": "^0.0.8"
+  },
   "jest": {
     "haste": {
       "defaultPlatform": "ios",
