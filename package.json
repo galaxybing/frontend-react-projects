@@ -24,6 +24,13 @@
     "cross-env": "^5.0.5",
     "dll-link-webpack-plugin": "^2.0.3",
     "es6-promise": "^3.2.1",
+    "eslint": "4.10.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-config-react-app": "^2.1.0",
+    "eslint-plugin-flowtype": "2.39.1",
+    "eslint-plugin-import": "2.8.0",
+    "eslint-plugin-jsx-a11y": "5.1.1",
+    "eslint-plugin-react": "7.4.0",
     "gsap": "^1.20.2",
     "history": "^4.5.1",
     "immutability-helper": "^2.5.1",
@@ -33,6 +40,7 @@
     "prop-types": "^15.5.7",
     "rc-calendar": "^9.0.1",
     "react": "^15.6.1",
+    "react-dev-utils": "^5.0.0",
     "react-dom": "^15.6.1",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
@@ -125,6 +133,9 @@
         "react-native"
       ]
     }
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   },
   "engines": {
     "node": ">=5.0",

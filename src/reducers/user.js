@@ -1,4 +1,3 @@
-'use strict';
 const initialState = {
   data: null,
   isLoading: false

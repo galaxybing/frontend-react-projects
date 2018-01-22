@@ -6,7 +6,7 @@ import ScrollToTop from '../../../src/components/ScrollToTop';
 import Bundle from '../../../src/core/bundle.js';
 //import DetailViewContainer from 'bundle-loader?lazy&name=page-[name]!./routes/detailView.js';
 
-import { matchRoutes, renderRoutes } from 'react-router-config';
+import { /* matchRoutes, */ renderRoutes } from 'react-router-config';
 const createChildRouteComponent = (container, props,) => (
     <Bundle load={container}>
         {(View) => <View {...props} />}

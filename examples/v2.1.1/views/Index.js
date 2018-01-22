@@ -7,8 +7,8 @@ import { push } from 'react-router-redux';
 // import { TweenMax } from 'gsap';// 动画
 // 
 // var request = require('request');
-import { push as basenamePush } from '../../../lib_modules/router-basename';
-import { fetch } from '../../../src/core/_utils/request';
+// import { push as basenamePush } from '../../../lib_modules/router-basename';
+// import { fetch } from '../../../src/core/_utils/request';
 
 class IndexView extends Component{
   static contextTypes={
@@ -21,21 +21,21 @@ class IndexView extends Component{
       <div className="page-index">
         
         <h2 style={{fontSize: 16, marginBottom: 15}}>路由跳转方式参考：</h2>
-        <p><a href="http://www.317hu.com/" target="_blank">317护官网链接 - _blank</a></p>
+        <p><a href="http://www.317hu.com/" target="_blank" rel="noopener noreferrer">317护官网链接 - _blank</a></p>
         <p><Link to="/detail.html">标签跳转路由链接 - Link</Link></p>
-        <p className=""><a href="javascript:;" onClick={()=>{
+        <p className=""><span onClick={()=>{
           this.context.router.history.push({ pathname: `/list/100153/hospital.html`}); // 会自带将 dispatch history location match 传递给下一个路由组件的 props
           // 
           // basenamePush({ pathname: '/list/100153/hospital.html', props: this.props})(this.context.router.history);
-        }}>动态跳转路由链接 - context.router.history-push</a></p>
+        }}>动态跳转路由链接 - context.router.history-push</span></p>
         <p>
-          <a href="javascript:;" onClick={()=>{
+          <a href="eval(javascript:;)" onClick={()=>{
             // 支持在 ConnectedRouter 路由封装生效
             this.props.dispatch(push({ pathname: '/hospital-admin/frontend-react-projects/detail.html', state: this.props.detailState}));
           }}>动态跳转链接 - ConnectedRouter-push</a>
         </p>
         <p>
-          <a href="javascript:;" onClick={()=>{
+          <a href="eval(javascript:;)" onClick={()=>{
             // 用于直接跳转
             // this.props.history.push({ pathname: '/detail.html', state: this.props.detailState});
             this.context.router.history.push({ pathname: '/detail.html', state: this.props.detailState});
@@ -45,7 +45,7 @@ class IndexView extends Component{
         
         <h2 style={{fontSize: 16, marginBottom: 15}}>immutability-helper 使用参考：</h2>
         <p>
-          <a href="javascript:;" onClick={()=>{
+          <a href="eval(javascript:;)" onClick={()=>{
             this.context.router.history.push({ pathname: '/immutability-demo-push.html'});
           }}>$push</a>
         </p>

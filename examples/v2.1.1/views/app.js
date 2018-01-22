@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { BrowserRouter as RouterContainer, Router, HashRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { BrowserRouter as RouterContainer, /* Router, HashRouter, Switch, Route, Redirect */ } from 'react-router-dom';
 
 //const RouterContainer = require('react-router-dom').BrowserRouter;
 
-import { ConnectedRouter } from 'react-router-redux';
+// import { ConnectedRouter } from 'react-router-redux';
 // import { CSSTransitionGroup } from 'react-transition-group';
 
 import RootRouter from './router';

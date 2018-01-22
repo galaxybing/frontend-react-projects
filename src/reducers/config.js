@@ -1,7 +1,4 @@
-'use strict';
-
-import type { Action, ThunkAction } from '../actions/types';
-const storage = window.localStorage;
+import type { /* Action, ThunkAction */ } from '../actions/types';
 
 export type Config = {
   wifiNetwork: string;

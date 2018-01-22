@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
+// import PropTypes from 'prop-types';
+// import { bindActionCreators } from 'redux';
+// import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 // import {TweenMax} from 'gsap';
 import { Link } from 'react-router-dom';
-import { push, replace } from 'react-router-redux';
+// import { push, replace } from 'react-router-redux';
 
-import { Progress, Input, Button,Modal } from 'antd';// 引用且渲染 产生文件量
+import { Progress, /* Input, Button, */ Modal } from 'antd';// 引用且渲染 产生文件量
 import moment from 'moment';
 
 class DetailView extends Component{
@@ -72,17 +72,17 @@ class DetailView extends Component{
               多媒体资源演示：
               <br />
               <iframe src="//v.qq.com/iframe/player.html?vid=c0353ehgq7k&amp;tiny=1&amp;auto=0"
-              width="960" height="746" frameBorder="0" allowFullScreen="allowfullscreen">
+              width="960" height="746" frameBorder="0" allowFullScreen="allowfullscreen" title="galaxyw">
               </iframe>
           </p>
           
           <p>
-            <a href="javascript:;" onClick={()=>{this.addStateNumber()}}>点击操作</a>
+            <a href="eval(javascript:;)" onClick={()=>{this.addStateNumber()}}>点击操作</a>
           </p>
           <div >显示操作次数：{this.state.count}</div>
           <Link to='/index.html'>[Link链接到首页界面]</Link>
           <p>
-            <a href="javascript:;" onClick={()=>{
+            <a href="eval(javascript:;)" onClick={()=>{
               // this.props.dispatch(push({pathname: '/index.html', state: this.state}));
               // [A location object](https://github.com/ReactTraining/history/blob/v3/docs/Location.md)
               // 
@@ -98,23 +98,23 @@ class DetailView extends Component{
   }
 }
 
-function select(store/*, ownProps*/){ // 1）第一个参数总是state对象，还可以使用第二个参数，代表容器组件的props对象
+// function select(store, ownProps){ // 1）第一个参数总是state对象，还可以使用第二个参数，代表容器组件的props对象
 								  // 2) 侦听 Store，每当state更新的时候，就会自动执行，重新计算 UI 组件的参数，从而触发 UI 组件的重新渲染。
 								  // 3）当使用了 ownProps 作为参数后，如果容器组件的参数发生变化，也会引发 UI 组件重新渲染。
 	// 
   // debugger;
   // console.log(store.router.location.state);
   
-	return {
-    stateData: store.router.location&&store.router.location.state
-	}
-}
+//	return {
+//    stateData: store.router.location&&store.router.location.state
+//	}
+// }
 
-function actions(dispatch, ownProps){
-	return {
-		dispatch,
-	};
-}
+// function actions(dispatch, ownProps){
+// 	return {
+// 		dispatch,
+// 	};
+// }
 
 // module.exports = withRouter(connect(select, actions)(DetailView));
 module.exports = withRouter(DetailView);

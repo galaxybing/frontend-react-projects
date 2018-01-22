@@ -3,6 +3,7 @@ var join = path.join;
 var resolve = path.resolve;
 var existsSync = require('fs').existsSync;
 var webpack = require('webpack');
+const eslintFormatter = require('react-dev-utils/eslintFormatter');
 // process.noDeprecation = true;
 // 
 // loaderUtils Warning:
@@ -67,9 +68,22 @@ module.exports = {
         test: /\.js[x]?$/,
         loader: 'babel-loader',
         query: {
-            presets: ['es2015','stage-2', 'react']
+          presets: ['es2015','stage-2', 'react']
         },
         include: [resolve('lib_modules'), resolve('src'), resolve('test'), resolve('examples')] // include: path.join(__dirname, './src')
+      },
+      {
+        test: /\.(js|jsx)?$/,
+        enforce: 'pre', // fix: # Do not use import syntax to configure webpack loaders
+        use: [{
+          options: {
+            formatter: eslintFormatter,
+            eslintPath: require.resolve('eslint'),
+            
+          },
+          loader: require.resolve('eslint-loader'),
+        }],
+        include: [resolve('lib_modules'), resolve('src'), resolve('test'), resolve('examples')]
       },
       {
         test: /([^/]+)\/?([^/]*)\.(js|jsx)?$/,

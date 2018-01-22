@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { bindActionCreators } from 'redux';
+// import PropTypes from 'prop-types';
+// import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+// import { withRouter } from 'react-router';
 
-import { Link } from 'react-router-dom';
-import { push, replace } from 'react-router-redux';
+// import { Link } from 'react-router-dom';
+// import { push, replace } from 'react-router-redux';
 
 import update from 'immutability-helper';
 

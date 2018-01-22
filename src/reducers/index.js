@@ -1,7 +1,7 @@
-'use strict';
+import { routerReducer } from 'react-router-redux';
 
 var { combineReducers } = require('redux');
-import { routerReducer } from 'react-router-redux';
+
 /*
 function routeReducer(state = routeInitialState, action) {
   switch (action.type) {

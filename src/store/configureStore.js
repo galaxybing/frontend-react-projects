@@ -1,17 +1,17 @@
-'use strict';
-
 import { applyMiddleware, createStore, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
-import { createLogger } from 'redux-logger';
-import { ConnectedRouter, routerMiddleware, push, } from 'react-router-redux';
+// import { createLogger } from 'redux-logger';
+import { /* ConnectedRouter,*/ routerMiddleware, /* push, */ } from 'react-router-redux';
+import promiseMiddleware from 'redux-promise-middleware';
+import createHistory from 'history/createBrowserHistory';
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
  
 // 配置自定义的中间件
-import createHistory from 'history/createBrowserHistory';
+
 const history = createHistory();
 
 // var promise = require('./promise');
-import promiseMiddleware from 'redux-promise-middleware';
 var promise = promiseMiddleware();
 
 var array = require('./array');

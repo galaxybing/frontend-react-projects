@@ -1,4 +1,3 @@
-'use strict';
 const Promise = require('es6-promise').polyfill();
 if (!window.Promise) {
   window.Promise = Promise;

@@ -1,6 +1,4 @@
-'use strict';
-
-import type { Action, ThunkAction } from '../actions/types';
+import type { Action, /* ThunkAction */ } from '../actions/types';
 
 export type Config = {
   wifiNetwork: string;
