@@ -18,6 +18,26 @@
   * 确认 `import App from './views/app';` 为主路由入口
 - 特定版本升级，需要安装依赖包命令：`npm install`
 
+## 2.1.3 (2018年01月26日)
+
+1. 新增本地发布命令： 
+
+- npm run build:uat-local
+
+2. 更正 prod 域名字段：
+
+```
+  loginConfig: '//317hu.com/care-central/page/login',
+  mock_nurseTrainApi: '//rap.api.317hu.com/app/mock/17',
+  nurseTrainApi: '//nursetrain.prd.317hu.com',
+  www_form_urlencoded_nurseTrainApi: '//nursetrain.prd.317hu.com',
+  www_form_urlencoded_usercentralApi: '//usercentral.317hu.com',
+  careCentralApi: '//317hu.com',
+  privilegeApi: '//privilege.317hu.com',
+  tradeApi: '//tradecenter.317hu.com',
+  qiniuDomain: '//image.317hu.com',
+```
+
 
 ## 2.1.2 (2017年12月08日)
 

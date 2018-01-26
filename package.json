@@ -1,14 +1,15 @@
 {
   "name": "frontend-react-projects",
-  "version": "2.1.1",
+  "version": "2.1.3",
   "main": "index.js",
   "private": true,
   "scripts": {
     "build": "./build/build.sh",
     "build:dev": "node build/build.js",
     "build:dll": "webpack --config build/webpack.dll.config.js",
-    "build:dev-local": "cross-env VERSION_ENV=dev-local node build/build.js",
-    "build:sit-local": "cross-env VERSION_ENV=sit-local node build/build.js",
+    "build:dev-local": "cross-env VERSION_ENV=dev VERSION_LOC=local node build/build.js",
+    "build:sit-local": "cross-env VERSION_ENV=sit VERSION_LOC=local node build/build.js",
+    "build:uat-local": "cross-env VERSION_ENV=uat VERSION_LOC=local node build/build.js",
     "test": "jest",
     "lint": "eslint",
     "start": "./build/start.sh",
