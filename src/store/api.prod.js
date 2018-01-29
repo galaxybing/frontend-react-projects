@@ -9,5 +9,8 @@ module.exports = {
   privilegeApi: '//privilege.317hu.com',
   tradeApi: '//tradecenter.317hu.com',
   qiniuDomain: '//image.317hu.com',
+  // 用户中心
+  'userCentralApi': '//usercentral.317hu.com',
+  'www_form_urlencoded_userCentralApi': '//usercentral.317hu.com',
 };
 

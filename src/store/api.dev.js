@@ -3,13 +3,16 @@ module.exports = {
   // mock
   // 'withCredentials': false,// 是因为使用了 mock_nurseTrainApi 所以不能携带 cookie
   "mock_nurseTrainApi": "//rap.317hu.com/mockjsdata/4",
-  // proxy
+  // 护士培训产品线
   "nurseTrainApi": "//nursetraindev.317hu.com",
-    // 172.16.120.18  shengbing.317hu.com
-    // 172.16.120.32  hongkangjie.317hu.com
-    // 172.16.110.54  liuxianliang.317hu.com
   "www_form_urlencoded_nurseTrainApi": "//nursetraindev.317hu.com",
+  // 课程中心
   "careCentralApi": "//dev.317hu.com",
+  // 权限中心
   "privilegeApi": "//privilegesit.317hu.com:8081",
-  "tradeApi": "//tc.dev.317hu.com"
+  // 交易中心
+  "tradeApi": "//tc.dev.317hu.com",
+  // 用户中心
+  'userCentralApi': '//usercentral.dev.317hu.com:8081',
+  'www_form_urlencoded_userCentralApi': '//usercentral.dev.317hu.com:8081',
 }
