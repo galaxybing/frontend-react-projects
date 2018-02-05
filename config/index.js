@@ -5,7 +5,7 @@ const versionEnv = process.env.VERSION_ENV || 'dev';
 const runEnv = process.env.RUN_ENV || 'build';
 var assetsPublicPathConfig = apiConfig['assetsPublicPathConfig'];
 if(versionEnv=='dev-local'||versionEnv=='sit-local'){
-  assetsPublicPathConfig = 'http://historyroute.317hu.com/static/';
+//  assetsPublicPathConfig = 'http://historyroute.317hu.com/static/';
 }
 
 if(runEnv=='build'){
