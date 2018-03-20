@@ -1,14 +1,16 @@
 import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
 // import { bindActionCreators } from 'redux';
-// import { connect } from 'react-redux';
-import { withRouter } from 'react-router';
+import { connect } from 'react-redux';
+// import { withRouter } from 'react-router';
 // import {TweenMax} from 'gsap';
 import { Link } from 'react-router-dom';
 // import { push, replace } from 'react-router-redux';
 
-import { Progress, /* Input, Button, */ Modal } from 'antd';// 引用且渲染 产生文件量
+import { Progress, /* Input, Button, */ Modal, Select } from 'antd';// 引用且渲染 产生文件量
 import moment from 'moment';
+
+const { Option, OptGroup } = Select;
 
 class DetailView extends Component{
   // static propTypes = {
@@ -93,30 +95,47 @@ class DetailView extends Component{
               // goBack routerActions
             }}>切换到首页界面</a>
           </p>
+          <div>
+            <Select
+              defaultValue="lucy"
+              style={{ width: 200 }}
+              onChange={() => {
+                
+              }}
+            >
+              <OptGroup label="Manager">
+                <Option value="jack">Jack</Option>
+                <Option value="lucy">Lucy</Option>
+              </OptGroup>
+              <OptGroup label="Engineer">
+                <Option value="Yiminghe">yiminghe</Option>
+              </OptGroup>
+            </Select>
+          </div>
         </div>
       );
   }
 }
 
-// function select(store, ownProps){ // 1）第一个参数总是state对象，还可以使用第二个参数，代表容器组件的props对象
+function select(store, ownProps){ // 1）第一个参数总是state对象，还可以使用第二个参数，代表容器组件的props对象
 								  // 2) 侦听 Store，每当state更新的时候，就会自动执行，重新计算 UI 组件的参数，从而触发 UI 组件的重新渲染。
 								  // 3）当使用了 ownProps 作为参数后，如果容器组件的参数发生变化，也会引发 UI 组件重新渲染。
 	// 
   // debugger;
   // console.log(store.router.location.state);
   
-//	return {
-//    stateData: store.router.location&&store.router.location.state
-//	}
-// }
+	return {
+   stateData: store.router.location&&store.router.location.state
+	}
+}
 
-// function actions(dispatch, ownProps){
-// 	return {
-// 		dispatch,
-// 	};
-// }
+function actions(dispatch, ownProps){
+	return {
+		dispatch,
+	};
+}
 
 // module.exports = withRouter(connect(select, actions)(DetailView));
-module.exports = withRouter(DetailView);
-// module.exports = connect(select, actions)(DetailView);
+// module.exports = withRouter(DetailView);
+module.exports = connect(select, actions)(DetailView);
 // module.exports = DetailView; // Cannot read property 'replace' of undefined

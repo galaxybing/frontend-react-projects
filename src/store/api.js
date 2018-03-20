@@ -32,6 +32,4 @@ if(/^v(\d){1,2}\.(\d){1,2}\.(\d){1,2}$/.test(ver)){
   apiConfig['loginConfig'] = `http://${ver}.317hu.com/care-central/page/login`;
 }
 
-console.log('apiConfig->', apiConfig);
-
 module.exports = apiConfig;

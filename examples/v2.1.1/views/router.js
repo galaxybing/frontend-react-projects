@@ -2,7 +2,7 @@ import React from 'react';
 import IndexView from './Index.js';
 import ListViewContainer from './routes/ListView.js'; // bundle-loader 返回
 import ScrollToTop from '../../../src/components/ScrollToTop';
-
+import DetailView from './routes/DetailView.js';
 import Bundle from '../../../src/core/bundle.js';
 //import DetailViewContainer from 'bundle-loader?lazy&name=page-[name]!./routes/detailView.js';
 
@@ -48,7 +48,7 @@ function RouterConfig({ history, app }) {
         },
         { 
           path: '/detail.html',
-          component: (props) => createChildRouteComponent(require('./routes/DetailView.js')),// DetailViewContainer
+          component: (props) => createChildRouteComponent(DetailView),// DetailViewContainer
         },
         { 
           path: '/immutability-demo-push.html',

@@ -7,7 +7,7 @@
       "regenerator": true,
       "moduleName": "babel-runtime"
     }],
-    ["import", { "libraryName": "antd", "style": false, "comment": "true for .less, css for .css"}]
+    ["import", { "libraryName": "antd", "style": true, "comment": "true for .less, css for .css"}]
   ],
   "comments": false,
   "env": {

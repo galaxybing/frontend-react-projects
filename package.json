@@ -18,6 +18,12 @@
     "pub": "/bin/bash ./build/build.sh publish",
     "watch": ""
   },
+  "theme": {
+    "@font-size-base": "14px",
+    "@border-radius-base": "2px",
+    "@primary-color": "#1A92FF",
+    "@layout-body-background": "#F4F7FB"
+  },
   "dependencies": {
     "antd": "^2.13.0",
     "axios": "^0.16.2",

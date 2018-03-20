@@ -29,25 +29,25 @@ class IndexView extends Component{
           // basenamePush({ pathname: '/list/100153/hospital.html', props: this.props})(this.context.router.history);
         }}>动态跳转路由链接 - context.router.history-push</span></p>
         <p>
-          <a href="eval(javascript:;)" onClick={()=>{
+          <span onClick={()=>{
             // 支持在 ConnectedRouter 路由封装生效
             this.props.dispatch(push({ pathname: '/hospital-admin/frontend-react-projects/detail.html', state: this.props.detailState}));
-          }}>动态跳转链接 - ConnectedRouter-push</a>
+          }}>动态跳转链接 - ConnectedRouter-push</span>
         </p>
         <p>
-          <a href="eval(javascript:;)" onClick={()=>{
+          <span onClick={()=>{
             // 用于直接跳转
             // this.props.history.push({ pathname: '/detail.html', state: this.props.detailState});
             this.context.router.history.push({ pathname: '/detail.html', state: this.props.detailState});
             // basenamePush({ pathname: '/detail.html', props: this.props})();
-          }}>动态跳转链接 - createHistory()-push</a>
+          }}>动态跳转链接 - createHistory()-push</span>
         </p>
         
         <h2 style={{fontSize: 16, marginBottom: 15}}>immutability-helper 使用参考：</h2>
         <p>
-          <a href="eval(javascript:;)" onClick={()=>{
+          <span onClick={()=>{
             this.context.router.history.push({ pathname: '/immutability-demo-push.html'});
-          }}>$push</a>
+          }}>$push</span>
         </p>
       </div>
     )
