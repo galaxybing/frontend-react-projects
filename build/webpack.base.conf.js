@@ -72,6 +72,7 @@ module.exports = {
         },
         include: [resolve('lib_modules'), resolve('src'), resolve('test'), resolve('examples')] // include: path.join(__dirname, './src')
       },
+      /*
       {
         test: /\.(js|jsx)?$/,
         enforce: 'pre', // fix: # Do not use import syntax to configure webpack loaders
@@ -85,6 +86,8 @@ module.exports = {
         }],
         include: [resolve('lib_modules'), resolve('src'), resolve('test'), resolve('examples')]
       },
+      */
+
       {
         test: /([^/]+)\/?([^/]*)\.(js|jsx)?$/,
         use: [

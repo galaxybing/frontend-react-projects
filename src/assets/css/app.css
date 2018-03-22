@@ -1,5 +1,8 @@
+.page-container{
+  font-size: 14px;
+}
 .page-base{
-    line-height: 220%;
+  line-height: 220%;
   display: flex;
 }
 .page-base .pic-sprite{
@@ -57,4 +60,8 @@
 
 .w-100{
   width: 100%;
+}
+
+.link{
+  cursor: pointer;
 }
