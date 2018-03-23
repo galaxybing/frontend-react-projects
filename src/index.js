@@ -1,9 +1,9 @@
+require('string.prototype.startswith');
+// require('String.prototype.startsWith');
 import React, { Component } from 'react';
-
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 // import PropTypes from 'prop-types';
-
 // import createClass from 'create-react-class';
 import { configureStore, history } from './store/configureStore';
 import App from '../examples/v2.1.4/views/app';

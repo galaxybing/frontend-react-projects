@@ -41,7 +41,7 @@ if (pkg.examplesVersion && typeof(pkg.examplesVersion) === 'string') {
 module.exports = {
   entry: {
     app: './src/index.js',
-    vendor: ['react', 'redux', 'react-redux', 'antd', 'moment' ], // 'lodash' 'moment', 'rc-calendar'  
+    vendor: ['string.prototype.startswith', 'react', 'redux', 'react-redux', 'antd', 'moment' ], // 'lodash' 'moment', 'rc-calendar'  
   },
   output: {
     path: config.build.assetsRoot,

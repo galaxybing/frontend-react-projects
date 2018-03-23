@@ -72,7 +72,22 @@ export default function request(query) {
   objectAssign(optionConfig, options);
 
   return axios((api ? API_CONFIG[api] : '') + url, optionConfig)
-    .then((response) => response.data)
+    // .then((response) => response.data)
+    .then((response) => {
+      let res = response.data;
+      if (res && !res.success && res.errCode === 'IS_NOT_LOGIN') {
+        checkIn();
+      }
+      if (res) {
+        return res;
+      } else if (response.request && response.request.responseText){ // ??兼容处理 ie9 后端返回的数据格式情况
+        res = JSON.parse(response.request.responseText);
+        if (res && !res.success && res.errCode === 'IS_NOT_LOGIN') {
+          checkIn();
+        }
+        return res;
+      }
+    })
     .catch(() => {
       checkIn(); // 登录状态已过期，请重新登录
     });

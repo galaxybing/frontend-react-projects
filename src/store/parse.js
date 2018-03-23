@@ -1,7 +1,10 @@
-const Promise = require('es6-promise').polyfill();
-if (!window.Promise) {
-  window.Promise = Promise;
+var Promise = require('es6-promise').polyfill();
+var win = window;
+if (!win.Promise) {
+    win.Promise = Promise;
+    window = win;
 }
+
 import axios from 'axios';
 import objectAssign from 'object-assign';
 var apiConfig = require('./api.js');

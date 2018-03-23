@@ -10,6 +10,15 @@ import { BrowserRouter as RouterContainer, /* Router, HashRouter, Switch, Route,
 import RootRouter from './router';
 // import { setBasename } from '../../lib_modules/router-basename';
 
+// Promise 对象
+// 
+var Promise = require('es6-promise').polyfill();
+var win = window;
+if (!win.Promise) {
+    win.Promise = Promise;
+    window = win;
+}
+
 class App extends Component{// function??/
   render() {
     // Router switch to [ ConnectedRouter ] will use the store from Provider automatically ??
