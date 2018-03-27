@@ -1,6 +1,6 @@
 import locationHelperBuilder from 'redux-auth-wrapper/history4/locationHelper'
 // apply it to the component we want to protect
-import { connectedRouterRedirect } from 'redux-auth-wrapper/history4/redirect'
+import { connectedRouterRedirect, connectedReduxRedirect } from 'redux-auth-wrapper/history4/redirect'
 import connectedAuthWrapper from 'redux-auth-wrapper/connectedAuthWrapper'
 
 import Loading from '../components/Loading'
@@ -43,6 +43,13 @@ export const userIsNotAuthenticated = connectedAuthWrapper(userIsNotAuthenticate
 /* <Route path="login" component={userIsNotAuthenticatedRedir(Login)}/> */
 export const userIsNotAuthenticatedRedir = connectedRouterRedirect({
   ...userIsNotAuthenticatedDefaults,
+  redirectPath: (state, ownProps) => locationHelper.getRedirectQueryParam(ownProps) || '/login-after.html',
+  allowRedirectBack: false
+})
+
+export const userIsNotAuthenticatedRedir2 = connectedReduxRedirect({
+  ...userIsNotAuthenticatedDefaults,
+  redirectPath: '/hospital-admin/frontend-react-projects/index.html',
   redirectPath: (state, ownProps) => locationHelper.getRedirectQueryParam(ownProps) || '/index.html',
   allowRedirectBack: false
 })

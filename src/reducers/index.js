@@ -1,5 +1,6 @@
-import { routerReducer } from 'react-router-redux';
-import config from './config';
+import { routerReducer } from 'react-router-redux'
+import config from './config'
+import user from './user' // ? require('./user')
 /*
 // function routeReducer(state = routeInitialState, action) {
   switch (action.type) {
@@ -19,6 +20,6 @@ var { combineReducers } = require('redux');
 module.exports = combineReducers({
   config,
   main: require('./main'),
-  // user,
+  user,
   router: routerReducer //将 reducer 声明到 store 里面的 router 键
 });

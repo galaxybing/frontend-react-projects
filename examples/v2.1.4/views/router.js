@@ -5,32 +5,45 @@ import ScrollToTop from '../../../src/components/ScrollToTop';
 import DetailView from './routes/DetailView.js';
 import Bundle from '../../../src/core/bundle.js';
 //import DetailViewContainer from 'bundle-loader?lazy&name=page-[name]!./routes/detailView.js';
-
+import { userIsAuthenticatedRedir, userIsNotAuthenticatedRedir, userIsNotAuthenticatedRedir2, userIsAdministratorRedir, userIsAuthenticated, userIsNotAuthenticated } from '../../../src/core/auth';
 import { /* matchRoutes, */ renderRoutes } from 'react-router-config';
+// const LoginView = userIsNotAuthenticatedRedir(require('./routes/Login'));
+import LoginView from './routes/Login'
+import LoginAfterView from './routes/LoginAfter'
 
-import { userIsAuthenticatedRedir, userIsNotAuthenticatedRedir, userIsAdministratorRedir, userIsAuthenticated, userIsNotAuthenticated } from '../../../src/core/auth';
-         
 const createChildRouteComponent = (container, props,) => (
-    <Bundle load={container}>
-        {(View) => <View {...props} />}
-    </Bundle>
+  <Bundle load={container}>
+    {(View) => <View {...props} />}
+  </Bundle>
 );
-
 const Root = ({ route }) => (
   <ScrollToTop>{/* <div> */}
     {renderRoutes(route.routes)}
   </ScrollToTop>
 );
 
+// const LoginAuthenticatedView = userIsNotAuthenticatedRedir2(createChildRouteComponent(LoginView));
+const LoginAuthenticatedView = createChildRouteComponent(LoginView);
+
 function RouterConfig({ history, app }) {
   const routes = [
     {
       component: Root,
       routes: [
+        { // 分离 与 路由鉴权
+          path: '/login.html',
+          exact: true,
+          component: userIsNotAuthenticatedRedir(props => createChildRouteComponent(LoginView, props))
+        },
         {
+          path: '/login-after.html',
+          component: userIsAuthenticatedRedir(props => createChildRouteComponent(LoginAfterView, props))
+        },
+
+        {// 非 routes 路由
           path: '/index.html',
           exact: true,
-          component: IndexView   // require('./Index.js')
+          component: IndexView // require('./Index.js')
           // component: (props, a, method) => {
           //  return <IndexView />;
           // }
@@ -49,7 +62,7 @@ function RouterConfig({ history, app }) {
             }
           ]
         },
-        { 
+        {
           path: '/detail.html',
           component: (props) => createChildRouteComponent(DetailView),// DetailViewContainer
         },

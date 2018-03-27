@@ -28,8 +28,9 @@ export default class Bundle extends Component {
     })
   }
   render() {
-    if (!this.state.mod)
-      return false
+    if (!this.state.mod) {
+      return null
+    }
     return this.props.children(this.state.mod) // 子组件为函数形式
   }
 }
