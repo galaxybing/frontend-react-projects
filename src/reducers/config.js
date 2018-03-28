@@ -1,29 +1,15 @@
-/* 
-  es6
-    import config from './config';
-*/
 const initialState = {
-  user: null,
-  isLoading: false
+  data: null,
+  version: undefined,
 }
 
-export default function config(state = initialState, action){ // {type, source}
-  if(action.type === 'USER_LOGGING_IN') {
+export default function config(state = initialState, action){
+  if (action.type === 'APP_VERSION_UPDATE') {
+    const version = action.data;
     return {
-      ...initialState,
-      isLoading: true,
+      ...state,
+      version,
     }
-  }
-  // 
-  if(action.type === 'USER_LOGGED_IN') {
-    let data = action.data
-    return {
-      user: data,
-      isLoading: false,
-    }
-  }
-  if(action.type === 'USER_LOGGED_OUT') {
-    return initialState
   }
   return state
 }

@@ -26,7 +26,6 @@ class DetailView extends Component{
       visible: true,
       ...props.stateData
     }
-    console.log('user->', this.props)
     /*
     let history = this.props.history;
     this.state = {

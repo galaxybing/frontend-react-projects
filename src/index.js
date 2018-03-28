@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 // import PropTypes from 'prop-types';
 // import createClass from 'create-react-class';
 import { configureStore, history } from './store/configureStore';
+import { saveCache } from './core/_utils/storage';
 import App from '../examples/v2.1.4/views/app';
 // import App from './views/app';
 
@@ -29,7 +30,21 @@ class Root extends Component {
     this.state = {
         author: "galaxyw",
         store: configureStore(),
-    };
+    }
+
+    if (typeof this.state.store !== 'undefined') {
+      const version = process.env.VERSION_ENV || 'dev';
+      window.onbeforeunload = () => { // 在刷新界面之前 存储 state ui 模型对象
+        const store = this.state.store;
+        store.dispatch({
+          type: 'APP_VERSION_UPDATE',
+          data: version
+        })
+        const state = store.getState();
+        console.log('state.config->', JSON.stringify(state.config));
+        saveCache('state', state);
+      }
+    }
   }
   render(){
     // var props = this.props;

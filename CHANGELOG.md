@@ -22,7 +22,11 @@
 
 1. 应用 redux-auth-wrapper 权限配置
 
-- auth 的高阶组件 与 bundle 分割文件冲突？
+- auth 的高阶组件 与 bundle 分割文件
+
+2. 持久化 登录账号 的数据对象(影响的流程包括：用户刷新、用户登出、后端服务Cookie验证过期)
+
+- localStorage
 
 ## 2.1.3 (2018年01月26日)
 

@@ -1,5 +1,6 @@
 import axios from 'axios';
 import objectAssign from 'object-assign';
+import { clearCacheAll } from './storage';
 const API_CONFIG = require('../../store/api.js');
 
 /** @发起请求
@@ -89,6 +90,7 @@ export default function request(query) {
       }
     })
     .catch(() => {
+      clearCacheAll()
       checkIn(); // 登录状态已过期，请重新登录
     });
 }
