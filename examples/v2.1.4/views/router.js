@@ -70,6 +70,13 @@ function RouterConfig({ history, app }) {
           path: '/immutability-demo-push.html',
           exact: true,
           component: (props) => createChildRouteComponent(require('./routes/ImmutabilityHelperPushView.js'), props),
+        },
+        {
+          path:'*', // 置于所有路由匹配的最后一项 有效
+          exact: true,
+          component: (props) => {
+            return createChildRouteComponent(require('./routes/error/404.js'), props);
+          },
         }
       ]
     }
