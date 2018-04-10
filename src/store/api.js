@@ -27,6 +27,9 @@ if(/^v(\d){1,2}\.(\d){1,2}\.(\d){1,2}$/.test(ver)){
   // apiConfig['assetsPublicPathConfig'] = `http://historyroute.317hu.com/static/`
   apiConfig['assetsPublicPathConfig'] = `/static/`;
   apiConfig['loginConfig'] = `http://${ver}.317hu.com/care-central/page/login`;
+}else if(versionLoc === 'dll'){
+  apiConfig['assetsPublicPathConfig'] = `/static`;
+  apiConfig['loginConfig'] = '';
 }else{// dev sit uat
   apiConfig['assetsPublicPathConfig'] = `http://172.16.150.169:8012/${repository}/${ver}-${branchEnv}/${repository}/${ver}-${branchEnv}/static/`
   apiConfig['loginConfig'] = `http://${ver}.317hu.com/care-central/page/login`;

@@ -4,19 +4,18 @@ const path = require('path')
 var config = require('../config')
 module.exports = {
   entry: {
-    vendorsReact: ['react', 'redux'],
-    // vendorsAntd: ['antd'],
-    vendorsLib: [ 'moment', 'rc-calendar']
+    vendors: ['moment', 'rc-calendar', 'echarts'],
+    vendorsReact: [ 'react', 'redux', 'react-redux', 'antd']
   },
   output: {
     filename: '[name].dll.js',
-    path: config.build.assetsPublicPath,
-    publicPath: config.build.assetsPublicPath,
+    path: path.resolve(__dirname, '../dist' + config.build.assetsPublicPath),
+    publicPath: path.resolve(__dirname, '../dist' + config.build.assetsPublicPath), // 
     library
   },
   plugins: [
     new webpack.DllPlugin({
-      path: path.join(__dirname, './dist/[name]-manifest.json'),
+      path: path.join(__dirname, '../dist/[name]-manifest.json'),
       // This must match the output.library option above
       name: library
     }),

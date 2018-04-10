@@ -118,7 +118,16 @@ var webpackConfig = merge(baseWebpackConfig, {
     }),
     
     new OptimizeCSSPlugin(),
-    
+    new webpack.DllReferencePlugin({
+      manifest: require('../dist/vendors-manifest.json'), // json
+      name: 'vendors' // 当前 Dll 的所有内容都会存放在这个参数指定变量名的一个全局变量下；
+                      // 注意与 webpack.dll.conf 配置文件内的 DllPlugin 的 name 参数保持一致
+    }),
+    new webpack.DllReferencePlugin({
+      manifest: require('../dist/vendorsReact-manifest.json'),
+      name: 'vendorsReact'
+    }),
+    /*
     // 分离插件配置：
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
     new webpack.optimize.CommonsChunkPlugin({
@@ -131,14 +140,7 @@ var webpackConfig = merge(baseWebpackConfig, {
           /\.js$/.test(module.resource) && (
             module.resource.indexOf(
               path.join(__dirname, '../node_modules/antd/')
-            ) === 0 /*||
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules/moment/')
-            ) === 0 ||
-            module.resource.indexOf(
-              path.join(__dirname, '../node_modules/rc-calendar')
             ) === 0
-            */
           )
         )
       }
@@ -172,7 +174,7 @@ var webpackConfig = merge(baseWebpackConfig, {
         )
       }
     }),
-    
+    */
     new HtmlWebpackPlugin({
       filename: process.env.NODE_ENV === 'testing'
         ? 'index.html'

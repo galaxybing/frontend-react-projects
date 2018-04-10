@@ -6,7 +6,7 @@
   "scripts": {
     "build": "./build/build.sh",
     "build:dev": "node build/build.js",
-    "build:dll": "webpack --config build/webpack.dll.config.js",
+    "build:dll": "cross-env VERSION_ENV=dev VERSION_LOC=dll node build/dll.js",
     "build:dev-local": "cross-env VERSION_ENV=dev VERSION_LOC=local node build/build.js",
     "build:sit-local": "cross-env VERSION_ENV=sit VERSION_LOC=local node build/build.js",
     "build:uat-local": "cross-env VERSION_ENV=uat VERSION_LOC=local node build/build.js",
@@ -30,6 +30,7 @@
     "create-react-class": "^15.5.3",
     "cross-env": "^5.0.5",
     "dll-link-webpack-plugin": "^2.0.3",
+    "echarts": "^4.0.4",
     "es6-promise": "^3.2.1",
     "eslint": "4.10.0",
     "eslint-config-react-app": "^2.1.0",
