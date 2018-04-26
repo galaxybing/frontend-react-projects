@@ -4,7 +4,8 @@ const path = require('path')
 var config = require('../config')
 module.exports = {
   entry: {
-    vendors: ['moment', 'rc-calendar', 'echarts'],
+    // vendors: ['moment', 'rc-calendar', 'echarts'],
+    vendors: ['moment', 'rc-calendar'],
     vendorsReact: [ 'react', 'redux', 'react-redux', 'antd']
   },
   output: {

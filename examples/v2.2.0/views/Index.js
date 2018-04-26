@@ -20,7 +20,7 @@ class IndexView extends Component{
     const { logout, dispatch } = this.props;
     return (
       <div className="page-index page-container">
-        <h1>版本：v2.1.4</h1>
+        <h1>版本：v2.2.0</h1>
         <a href="#" onClick={() => logout()}>登出</a>
         <h2 style={{fontSize: 16, marginBottom: 15}}>路由跳转方式参考：</h2>
         <p><a href="http://www.317hu.com/" target="_blank" rel="noopener noreferrer">317护官网链接 - _blank</a></p>
