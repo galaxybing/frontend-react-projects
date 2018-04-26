@@ -1,29 +1,24 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta name="author" content="www.317hu.com">
-        <meta name="format-detection" content="telephone=no" />
-        <meta http-equiv="content-type" content="text/html; charset=utf-8"  />
-    	<meta name="apple-mobile-web-app-title" content="ReactGalaxyw" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-        <meta name="apple-mobile-web-app-capable" content="yes" />
-        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-        <!-- 如果不存在 meta viewport 才doc.createElement('meta')-->
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.5, user-scalable=no" />
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="www.317hu.com">
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8"  />
+	  <meta name="apple-mobile-web-app-title" content="ReactGalaxyw" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <!-- 如果不存在 meta viewport 才doc.createElement('meta')-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.5, user-scalable=no" />
 
-        <meta name="Keywords" content="demo-react" />
-        <meta name="Description" content="demo-react" />
-        <title>【测试】frontend-react-projects</title>
-        <!--
-        <link rel="stylesheet" href="http://resources.317hu.com/lib_modules/antd/antd-v2.13.0-min.css" />
-        
-        <script type="text/javascript" src="/static/vendors.dll.js"></script>
-        <script type="text/javascript" src="/static/vendorsReact.dll.js"></script>
-      -->
-      
-    </head>
-    <body class="app-container" data-app-id="1.0.1-0">
-        <div id="app"></div>
-    </body>
+    <meta name="Keywords" content="demo-react" />
+    <meta name="Description" content="demo-react" />
+    <title>【测试】frontend-react-projects</title>
+    <%= htmlWebpackPlugin.options.vendors %>
+    <%= htmlWebpackPlugin.options.vendorsReact %>
+  </head>
+  <body class="app-container" data-app-id="1.0.1-0">
+    <div id="app"></div>
+  </body>
 </html>

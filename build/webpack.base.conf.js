@@ -91,7 +91,7 @@ module.exports = {
       {
         test: /([^/]+)\/?([^/]*)\.(js|jsx)?$/,
         use: [
-            'bundle-loader?lazy&name=[name]',
+            'bundle-loader?lazy', // &name=[name]
             'babel-loader?presets=es2015&presets=stage-2&presets=react',
         ],
         include: [path.resolve(__dirname, '../src/views/routes/'), resolve(`./examples/v${examplesVersion}/views/routes/`)],

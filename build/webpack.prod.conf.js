@@ -102,7 +102,7 @@ var webpackConfig = merge(baseWebpackConfig, {
   output: {
     path: config.build.assetsRoot,
     filename: utils.assetsPath('js/[name].js'),
-    chunkFilename: utils.assetsPath('js/[name]/[chunkhash].js')
+    chunkFilename: utils.assetsPath('js/[name]/[chunkhash].js') // [name] bundle-loader 的name配置值
   },
   plugins: [
     new webpack.DefinePlugin({
@@ -123,10 +123,10 @@ var webpackConfig = merge(baseWebpackConfig, {
       name: 'vendors' // 当前 Dll 的所有内容都会存放在这个参数指定变量名的一个全局变量下；
                       // 注意与 webpack.dll.conf 配置文件内的 DllPlugin 的 name 参数保持一致
     }),
-    // new webpack.DllReferencePlugin({
-    //   manifest: require('../dist/vendorsReact-manifest.json'),
-    //   name: 'vendorsReact'
-    // }),
+    new webpack.DllReferencePlugin({
+      manifest: require('../dist/vendorsReact-manifest.json'),
+      name: 'vendorsReact'
+    }),
 
     /*
     // 分离插件配置：
@@ -180,9 +180,11 @@ var webpackConfig = merge(baseWebpackConfig, {
       filename: process.env.NODE_ENV === 'testing'
         ? 'index.html'
         : config.build.index,
+      vendors: `<script type="text/javascript" src="${config.build.assetsPublicPath}vendors.dll.js"></script>`,
+      vendorsReact: `<script type="text/javascript" src="${config.build.assetsPublicPath}vendorsReact.dll.js"></script>`,
       template: path.resolve(__dirname, '../src/index.html'),
       inject: true,
-
+      // config.build.assetsPublicPath <- apiConfig['assetsPublicPathConfig']
       minify: {
         removeComments: true,
         collapseWhitespace: false,
