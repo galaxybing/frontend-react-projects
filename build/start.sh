@@ -1,5 +1,8 @@
 #!/bin/bash
 # start.sh
+# 
+# http://hospital.dev.317hu.com/hospital-admin/
+# http://admin.dev.317hu.com/bz-admin/
 #
 
 echo "----------------------------------"  
