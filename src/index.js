@@ -7,8 +7,8 @@ import { Provider } from 'react-redux';
 // import createClass from 'create-react-class';
 import { configureStore, history } from './store/configureStore';
 import { saveCache } from './core/_utils/storage';
-import App from '../examples/v2.2.0/views/app';
-// import App from './views/app';
+// import App from '../examples/v2.2.0/views/app';
+import App from './views/app';
 
 // import AnimationExample from './views/AnimationExample';
 
