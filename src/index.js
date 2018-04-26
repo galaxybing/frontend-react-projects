@@ -41,7 +41,6 @@ class Root extends Component {
           data: version
         })
         const state = store.getState();
-        console.log('state.config->', JSON.stringify(state.config));
         saveCache('state', state);
       }
     }

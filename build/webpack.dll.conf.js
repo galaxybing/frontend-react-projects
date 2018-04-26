@@ -5,8 +5,8 @@ var config = require('../config')
 module.exports = {
   entry: {
     // vendors: ['moment', 'rc-calendar', 'echarts'],
-    vendors: ['moment', 'rc-calendar'],
-    vendorsReact: [ 'react', 'redux', 'react-redux', 'antd']
+    vendors: ['moment', 'rc-calendar', 'redux', 'react-redux', 'antd', 'react','react-dom'],
+    // vendorsReact: ['redux', 'react-redux', 'antd', 'react','react-dom']
   },
   output: {
     filename: '[name].dll.js',

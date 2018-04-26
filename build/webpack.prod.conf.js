@@ -123,10 +123,11 @@ var webpackConfig = merge(baseWebpackConfig, {
       name: 'vendors' // 当前 Dll 的所有内容都会存放在这个参数指定变量名的一个全局变量下；
                       // 注意与 webpack.dll.conf 配置文件内的 DllPlugin 的 name 参数保持一致
     }),
-    new webpack.DllReferencePlugin({
-      manifest: require('../dist/vendorsReact-manifest.json'),
-      name: 'vendorsReact'
-    }),
+    // new webpack.DllReferencePlugin({
+    //   manifest: require('../dist/vendorsReact-manifest.json'),
+    //   name: 'vendorsReact'
+    // }),
+
     /*
     // 分离插件配置：
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', filename: 'vendor.bundle.js' }),
