@@ -117,7 +117,11 @@ var webpackConfig = merge(baseWebpackConfig, {
       sourceMap: true
     }),
     
-    new OptimizeCSSPlugin(),
+    new OptimizeCSSPlugin({
+      cssProcessorOptions: {
+        safe: true
+      }
+    }),
     new webpack.DllReferencePlugin({
       manifest: require('../dist/vendors-manifest.json'), // json
       name: 'vendors' // 当前 Dll 的所有内容都会存放在这个参数指定变量名的一个全局变量下；
