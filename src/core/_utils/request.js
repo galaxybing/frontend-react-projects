@@ -25,6 +25,8 @@ const API_CONFIG = require('../../store/api.js');
  */
 
 export default function request(query) {
+  const $Raven = window[`$Raven`];
+
   let {url, options, api} = query;
   let headers = {};
   let params;
@@ -88,10 +90,26 @@ export default function request(query) {
         }
         return res;
       }
+      if (res.data && !res.success && res.errMsg) { // success: false
+        $Raven.captureException(new Error(res.errMsg), {
+          level: 'info', // one of 'info', 'warning', or 'error'
+          logger: 'request.js',
+          tags: { git_commit: 'request.js' }
+        });
+      }
     })
-    .catch(() => {
+    .catch((error) => {
       clearCacheAll()
-      checkIn(); // 登录状态已过期，请重新登录
+        // checkIn(); // 登录状态已过期，请重新登录
+      $Raven.captureBreadcrumb({
+        message: '请求方法或者参数，出现错误',
+        category: 'function',
+      });
+      $Raven && $Raven.captureException(error, {
+        level: 'error', // one of 'info', 'warning', or 'error'
+        logger: 'request.js',
+        tags: { git_commit: 'request.js' }
+      });
     });
 }
 

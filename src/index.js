@@ -40,9 +40,7 @@ class Root extends Component {
         author: "galaxyw",
         store: configureStore(),
     }
-    // galaxyw();
     if (typeof this.state.store !== 'undefined') {
-      bing();
       const version = process.env.VERSION_ENV || 'dev';
       window.onbeforeunload = () => { // 在刷新界面之前 存储 state ui 模型对象
         const store = this.state.store;
@@ -69,6 +67,6 @@ function startApp() {
   ReactDOM.render(<Root name="demo-react-router-redux" />, document.getElementById('app'));
 }
 
-// $Raven.context(function() {
+window[`$Raven`].context(function() {
   startApp();
-// });
+});
