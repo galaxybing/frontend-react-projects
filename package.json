@@ -107,6 +107,7 @@
     "ora": "^1.2.0",
     "postcss-import": "11.1.0",
     "postcss-loader": "^2.0.6",
+    "raven-js": "^3.26.3",
     "react-style-loader": "^1.0.1",
     "redux-logger": "^3.0.6",
     "rimraf": "^2.6.1",
@@ -131,6 +132,7 @@
     "webpack-merge": "^4.1.0"
   },
   "@317huDependencies": {
+    "@317hu/GlobalRavenCaptureException": "^0.0.2",
     "@317hu/rangedatepicker": "^0.0.8"
   },
   "jest": {

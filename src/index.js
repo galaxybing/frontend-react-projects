@@ -1,5 +1,14 @@
 require('string.prototype.startswith');
 // require('String.prototype.startsWith');
+// 
+// import $Raven from './core/_utils/globalRavenCaptureException';
+// $Raven
+//      .config('http://993be79068aa427295767e9bcda03c1c@sentry.317hu.com/15')
+//      .install();
+//      
+window[`url$Raven`] = `http://993be79068aa427295767e9bcda03c1c@sentry.317hu.com/15`;
+require('@317hu/GlobalRavenCaptureException');
+
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -25,14 +34,15 @@ class Root extends Component {
   static defaultProps = {
     demo: false,
   };
-  constructor(props){
+  constructor (props) {
     super(props);
     this.state = {
         author: "galaxyw",
         store: configureStore(),
     }
-
+    // galaxyw();
     if (typeof this.state.store !== 'undefined') {
+      bing();
       const version = process.env.VERSION_ENV || 'dev';
       window.onbeforeunload = () => { // 在刷新界面之前 存储 state ui 模型对象
         const store = this.state.store;
@@ -45,7 +55,7 @@ class Root extends Component {
       }
     }
   }
-  render(){
+  render () {
     // var props = this.props;
     return (
       <Provider store={this.state.store}>
@@ -55,8 +65,10 @@ class Root extends Component {
   }
 };
 
-function startApp(){
+function startApp() {
   ReactDOM.render(<Root name="demo-react-router-redux" />, document.getElementById('app'));
 }
 
-startApp();
+// $Raven.context(function() {
+  startApp();
+// });
