@@ -1,0 +1,35 @@
+.page {
+  
+}
+.loginSprite{
+  text-align: center;
+  padding: 30px 0;
+}
+
+.userName{
+  width: 200px;
+  display: block;
+  padding: 10px 0;
+  margin: 0 auto;
+  text-align: center;
+}
+.checkboxSprite{
+  display: block;
+  padding: 10px 0;
+}
+.checkboxSprite .cb{
+  display: inline-block;
+  margin-right: 3px;
+}
+.btnSprite{
+  background-color: #1570b4;
+  padding: 10px 0px;
+  margin: 0 auto;
+  color: #43355e;
+  display: block;
+  width: 200px;
+}
+.btnSprite{
+  color: #ffffff;
+  text-decoration: none;
+}

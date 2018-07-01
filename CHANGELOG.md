@@ -1,4 +1,14 @@
-## [开发记录]
+---
+order: 6
+title: 更新日志 [开发记录]
+toc: false
+timeline: true
+---
+
+`projects` 遵循 [Semantic Versioning 2.0.0](http://semver.org/lang/zh-CN/) 语义化版本规范。
+
+#### 项目目标
+
 <details>
   <summary>
     这里主要记录开发过程主要的功能点、及升级版本，`点击这里`来查看未发布但计划或正在处理的部分内容：
@@ -18,10 +28,51 @@
   * 确认 `import App from './views/app';` 为主路由入口
 - 特定版本升级，需要安装依赖包命令：`npm install`
 
+
+## 2.2.1
+
+`2018-05-09`
+
+1. 配置链接式的路由跳转形式，以方便 `浏览器回退定位、界面面包屑导航回退定位` 操作：
+
+```javascript
+  // query 查询参数的处理
+  let filter = this.state.filter;
+  filter = Object.assign({}, filter, query);
+
+  // push操作
+  this.props.history.push({
+    pathname: '/hospital-admin/back-parent/demo.html',
+    search: `?${serialize(filter)}`
+  });
+  
+  componentDidMount() {
+    // 在初始化页面 + push操作 之后，进行load数据操作：
+    this.load(this.query);
+  }
+```
+
+2. 引入 前端应用告警配置：
+
+- window[`url$Raven`] = `http://993be79068aa427295767e9bcda03c1c@sentry.317hu.com/15`;
+- require('@317hu/GlobalRavenCaptureException');
+- 及接口异常报警
+
+3. 目录、文件名称规范： 目录、根文件名称为 大写驼峰 开头，目录内部的文件名称为 小写驼峰 开头
+
+- components组件目录
+- routes路由目录
+
+4. antd3.x 系列的兼容性测试： antd@2.13.13 | antd@latest
+
+- 相关需求，由 江苏省人民医院部署版 引出
+
+
 ## 2.2.0 (2018年04月19日)
 
 1. 整合，圈复杂度、单元测试、集成测试（负载测试、性能测试）
 2. 生成，注释文档化、性能平台（Sonar）
+
 
 ## 2.1.4 (2018年03月21日)
 
@@ -29,9 +80,12 @@
 
 - auth 的高阶组件 与 bundle 分割文件
 
-2. 持久化 登录账号 的数据对象(影响的流程包括：用户刷新、用户登出、后端服务Cookie验证过期)
+2. 登录态控制： 
+
+- 持久化 登录账号 的数据对象(影响的流程包括：用户刷新、用户登出、后端服务Cookie验证过期)
 
 - localStorage
+
 
 ## 2.1.3 (2018年01月26日)
 

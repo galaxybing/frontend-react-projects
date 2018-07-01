@@ -66,3 +66,16 @@
   cursor: pointer;
   color: #1A92FF;
 }
+
+.boz-table-form {
+    .ant-table {
+        .ant-table-thead>tr>th:last-child,
+        .ant-table-tbody>tr>td:last-child {
+            text-align: left !important;
+        }
+    }
+}
+.ant-table-center-pagination {
+  text-align: center;
+  padding: 20px 0;
+}
