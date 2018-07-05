@@ -5,8 +5,10 @@ require('string.prototype.startswith');
 // $Raven
 //      .config('http://993be79068aa427295767e9bcda03c1c@sentry.317hu.com/15')
 //      .install();
-//      
-// window[`url$Raven`] = `http://993be79068aa427295767e9bcda03c1c@sentry.317hu.com/15`;
+const ver = process.env.VERSION_ENV || 'dev';
+if (/^v(\d){1,2}\.(\d){1,2}\.(\d){1,2}$/.test(ver)) {
+  window[`url$Raven`] = `http://993be79068aa427295767e9bcda03c1c@sentry.317hu.com/15`;
+}
 require('@317hu/GlobalRavenCaptureException');
 require('./assets/css/lib.css');
 require('./assets/css/app.css');

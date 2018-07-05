@@ -90,7 +90,7 @@ export default function request(query) {
         }
         return res;
       }
-      if (res.data && !res.success && res.errMsg) { // success: false
+      if (res && !res.success && res.errMsg) { // success: false
         $Raven.captureException(new Error(res.errMsg), {
           level: 'info', // one of 'info', 'warning', or 'error'
           logger: 'request.js',
