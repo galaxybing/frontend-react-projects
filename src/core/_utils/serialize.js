@@ -1,3 +1,8 @@
+/*
+ * request payload方式转为form data 
+ *   - http://www.cnblogs.com/kristain/articles/4350669.html
+ *   {releaseId: [{name: 'galaxyw'}], studentId: 'bing'}
+ */
 export default function serialize(obj) {
   var query = '', name, value, fullSubName, subName, subValue, innerObj, i;
 
@@ -10,7 +15,7 @@ export default function serialize(obj) {
         fullSubName = name + '[' + i + ']';
         innerObj = {};
         innerObj[fullSubName] = subValue;
-        query += param(innerObj) + '&';
+        query += serialize(innerObj) + '&';
       }
     } else if (value instanceof Object) {
       for (subName in value) {

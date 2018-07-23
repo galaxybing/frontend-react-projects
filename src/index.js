@@ -6,7 +6,7 @@ require('string.prototype.startswith');
 //      .config('http://993be79068aa427295767e9bcda03c1c@sentry.317hu.com/15')
 //      .install();
 const ver = process.env.VERSION_ENV || 'dev';
-if (/^v(\d){1,2}\.(\d){1,2}\.(\d){1,2}$/.test(ver)) {
+if (/^v(\d){1,2}\.(\d){1,2}\.(\d){1,4}$/.test(ver)) {
   window[`url$Raven`] = `http://993be79068aa427295767e9bcda03c1c@sentry.317hu.com/15`;
 }
 require('@317hu/GlobalRavenCaptureException');
@@ -14,6 +14,15 @@ require('./assets/css/lib.css');
 require('./assets/css/app.css');
 // require('../examples/v2.1.1/views/app-antd.js'); // 以允许应用不同版本的 antd 样式（引用以入口为准，属于 lib-app.css）
 // require('./views/app-antd.js');
+
+
+// shouldComponentUpdate (nextProps, nextState) {
+//   if (!_.isEqual(this.props, nextProps) || !_.isEqual(this.state, nextState)) {
+//     return true
+//   } else {
+//     return false
+//   }
+// }
 
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';

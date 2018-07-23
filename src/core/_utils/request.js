@@ -78,6 +78,15 @@ export default function request(query) {
     // .then((response) => response.data)
     .then((response) => {
       let res = response.data;
+      
+      if (res && !res.success && res.errMsg) { // success: false
+        $Raven.captureException(new Error(res.errMsg), {
+          level: 'info', // one of 'info', 'warning', or 'error'
+          logger: 'request.js',
+          tags: { git_commit: 'request.js' }
+        });
+      }
+      
       if (res && !res.success && res.errCode === 'IS_NOT_LOGIN') {
         checkIn();
       }
@@ -90,13 +99,7 @@ export default function request(query) {
         }
         return res;
       }
-      if (res && !res.success && res.errMsg) { // success: false
-        $Raven.captureException(new Error(res.errMsg), {
-          level: 'info', // one of 'info', 'warning', or 'error'
-          logger: 'request.js',
-          tags: { git_commit: 'request.js' }
-        });
-      }
+      
     })
     .catch((error) => {
       clearCacheAll()

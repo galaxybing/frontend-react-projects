@@ -9,7 +9,7 @@ if(versionEnv=='sit'){
   apiConfig = require('./api.sit.js');
 }else if(versionEnv=='uat'){
   apiConfig = require('./api.uat.js');
-}else if(/^v(\d){1,2}\.(\d){1,2}\.(\d){1,2}$/.test(versionEnv)){ // versionEnv=='prod'
+}else if(/^v(\d){1,2}\.(\d){1,2}\.(\d){1,4}$/.test(versionEnv)){ // versionEnv=='prod'
   apiConfig = require('./api.prod.js');
 }else{// 包含 dev-local
   apiConfig = require('./api.dev.js');
@@ -20,7 +20,7 @@ const repository = require('../../package.json').name;
 
 const ver = versionEnv;
 
-if(/^v(\d){1,2}\.(\d){1,2}\.(\d){1,2}$/.test(ver)){
+if(/^v(\d){1,2}\.(\d){1,2}\.(\d){1,4}$/.test(ver)){
   apiConfig['assetsPublicPathConfig'] = `http://resources.317hu.com/${repository}/${ver}/static/`
   apiConfig['loginConfig'] = "http://317hu.com/care-central/page/login";
 }else if(versionLoc === 'local'){// dev sit uat
