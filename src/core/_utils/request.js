@@ -80,7 +80,7 @@ export default function request(query) {
       let res = response.data;
       
       if (res && !res.success && res.errMsg) { // success: false
-        $Raven.captureException(new Error(res.errMsg), {
+        $Raven && $Raven.captureException(new Error(res.errMsg), {
           level: 'info', // one of 'info', 'warning', or 'error'
           logger: 'request.js',
           tags: { git_commit: 'request.js' }
@@ -104,7 +104,7 @@ export default function request(query) {
     .catch((error) => {
       clearCacheAll()
         // checkIn(); // 登录状态已过期，请重新登录
-      $Raven.captureBreadcrumb({
+      $Raven && $Raven.captureBreadcrumb({
         message: '请求方法或者参数，出现错误',
         category: 'function',
       });

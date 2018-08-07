@@ -5,7 +5,8 @@ var config = require('../config')
 module.exports = {
   entry: {
     vendors: ['moment', 'echarts'],
-    vendorsReact: ['rc-calendar', 'react', 'redux', 'react-redux', 'antd']
+    vendorsReact: ['rc-calendar', 'react', 'redux', 'react-redux', 'antd'],
+    vendorsRaven: ['raven-js', '@317hu/GlobalRavenCaptureException'],
   },
   output: {
     filename: '[name].dll.js',
