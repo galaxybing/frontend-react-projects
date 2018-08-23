@@ -1,0 +1,4 @@
+[gerrit]
+host=171.16.150.141
+port=29418
+project=frontend-react-projects.git
