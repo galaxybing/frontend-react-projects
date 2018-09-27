@@ -1,38 +1,35 @@
-var apiConfig = {};
-const versionEnv = process.env.VERSION_ENV || 'dev';
-const versionLoc = process.env.VERSION_LOC || 'publish'; // local
-// const branchEnv = process.env.BRANCH_ENV || 'master';
-const paramsEnv = process.argv;
-const branchEnv = paramsEnv[2] || 'master';
+var boz = require('@317hu/BOZ')
+var versionEnv = process.env.RUN_ENV === 'start' ? process.env.VERSION_ENV : boz.env
+var branchEnv = process.argv[2] || 'master'
+boz['RUN_ENV'] = process.env.RUN_ENV || 'build';
 
-if(versionEnv=='sit'){
-  apiConfig = require('./api.sit.js');
-}else if(versionEnv=='uat'){
-  apiConfig = require('./api.uat.js');
+if(versionEnv == 'sit'){
+  boz['api'] = require('./api.sit.js');
+}else if(versionEnv == 'uat'){
+  boz['api'] = require('./api.uat.js');
 }else if(/^v(\d){1,2}\.(\d){1,2}\.(\d){1,4}$/.test(versionEnv)){ // versionEnv=='prod'
-  apiConfig = require('./api.prod.js');
+  boz['api'] = require('./api.prod.js');
 }else{// 包含 dev-local
-  apiConfig = require('./api.dev.js');
+  boz['api'] = require('./api.dev.js');
 }
 
-const repository = require('../../package.json').name;
-// apiConfig['repository'] = repository;
+var repository = require('../../package.json').name;
+var ver = versionEnv;
+boz['env'] = versionEnv;
 
-const ver = versionEnv;
-
-if(/^v(\d){1,2}\.(\d){1,2}\.(\d){1,4}$/.test(ver)){
-  apiConfig['assetsPublicPathConfig'] = `http://resources.317hu.com/${repository}/${ver}/static/`
-  apiConfig['loginConfig'] = "http://317hu.com/care-central/page/login";
-}else if(versionLoc === 'local'){// dev sit uat
-  // apiConfig['assetsPublicPathConfig'] = `http://historyroute.317hu.com/static/`
-  apiConfig['assetsPublicPathConfig'] = `/static/`;
-  apiConfig['loginConfig'] = `http://${ver}.317hu.com/care-central/page/login`;
-}else if(versionLoc === 'dll'){
-  apiConfig['assetsPublicPathConfig'] = `/static`;
-  apiConfig['loginConfig'] = '';
-}else{// dev sit uat
-  apiConfig['assetsPublicPathConfig'] = `http://172.16.150.169:8012/${repository}/${ver}-${branchEnv}/${repository}/${ver}-${branchEnv}/static/`
-  apiConfig['loginConfig'] = `http://${ver}.317hu.com/care-central/page/login`;
+if (/^v(\d){1,2}\.(\d){1,2}\.(\d){1,4}$/.test(ver)) {
+  // boz['assetsPublicPathConfig'] = '//resources.317hu.com/' + repository + '/' + ver + '/static/';
+  // ???
+  boz['assetsPublicPathConfig'] = '//resources.317hu.com/' + repository + '/' + ver + '/static/';
+  boz['loginConfig'] = '//317hu.com/care-central/page/login';
+} else if (boz[`RUN_ENV`] === 'dll') {
+  boz['assetsPublicPathConfig'] = '/static';
+  boz['loginConfig'] = '';
+} else { // dev sit uat
+  // boz['assetsPublicPathConfig'] = '//172.16.150.169:8012/' + repository + '/' + ver + '-' + branchEnv + '/' + repository + '/' + ver + '-' + branchEnv + '/static/';
+  // 环境变量 移除
+  boz['assetsPublicPathConfig'] = '//172.16.150.169:8012/' + repository + '/' + branchEnv + '/' + repository + '/' + branchEnv + '/static/';
+  boz['loginConfig'] = '//' + ver + '.317hu.com/care-central/page/login';
 }
 
-module.exports = apiConfig;
+module.exports = boz;

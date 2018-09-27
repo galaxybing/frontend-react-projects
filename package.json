@@ -6,15 +6,10 @@
   "scripts": {
     "build": "./build/build.sh",
     "build:dev": "node build/build.js",
-    "build:dll": "cross-env VERSION_ENV=dev VERSION_LOC=dll node build/dll.js",
-    "build:dev-local": "cross-env VERSION_ENV=dev VERSION_LOC=local node build/build.js",
-    "build:sit-local": "cross-env VERSION_ENV=sit VERSION_LOC=local node build/build.js",
-    "build:uat-local": "cross-env VERSION_ENV=uat VERSION_LOC=local node build/build.js",
+    "build:dll": "cross-env VERSION_ENV=dev RUN_ENV=dll node build/dll.js",
     "test": "jest",
     "lint": "eslint",
     "start": "./build/start.sh",
-    "start:sit": "cross-env VERSION_ENV=sit RUN_ENV=start node build/dev-server.js",
-    "start:uat": "cross-env VERSION_ENV=uat RUN_ENV=start node build/dev-server.js",
     "pub": "/bin/bash ./build/build.sh publish",
     "watch": ""
   },
@@ -132,7 +127,9 @@
     "webpack-merge": "^4.1.0"
   },
   "@317huDependencies": {
+    "@317hu/BOZ": "^0.0.1",
     "@317hu/GlobalRavenCaptureException": "^0.0.2",
+    "@317hu/MainTemplateLayout": "^2.2.2",
     "@317hu/rangedatepicker": "^0.0.8"
   },
   "jest": {

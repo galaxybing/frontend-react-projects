@@ -1,3 +1,5 @@
+const boz = require('../config').BOZ;
+
 // 每页条数
 export const PAGE_SIZE = 10; // 10
 
@@ -53,7 +55,7 @@ export const DEFAULT_SUBJECT_CODE = '32';
 export const DEFAULT_LEVEL_CODE = 'N99';
 
 // 重附一医院ID
-const versionEnv = process.env.VERSION_ENV || 'dev';
+const versionEnv = boz[`VERSION_ENV`];
 let cfyHosId = 376;
 if (versionEnv == 'dev') {
   cfyHosId = 376;

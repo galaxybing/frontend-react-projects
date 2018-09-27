@@ -1,36 +1,19 @@
 require('string.prototype.startswith');
-// require('String.prototype.startsWith');
-// 
-// import $Raven from './core/_utils/globalRavenCaptureException';
-// $Raven
-//      .config('http://993be79068aa427295767e9bcda03c1c@sentry.317hu.com/15')
-//      .install();
-const ver = process.env.VERSION_ENV || 'dev';
-if (/^v(\d){1,2}\.(\d){1,2}\.(\d){1,4}$/.test(ver)) {
-  window[`url$Raven`] = `http://993be79068aa427295767e9bcda03c1c@sentry.317hu.com/15`;
-  require('@317hu/GlobalRavenCaptureException');
-}
-
 require('./assets/css/lib.css');
 require('./assets/css/app.css');
-// require('../examples/v2.1.1/views/app-antd.js'); // 以允许应用不同版本的 antd 样式（引用以入口为准，属于 lib-app.css）
-// require('./views/app-antd.js');
-
-
-// shouldComponentUpdate (nextProps, nextState) {
-//   if (!_.isEqual(this.props, nextProps) || !_.isEqual(this.state, nextState)) {
-//     return true
-//   } else {
-//     return false
-//   }
-// }
-
+const boz = require('../config').BOZ;
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { configureStore, history } from './store/configureStore';
 import { saveCache } from './core/_utils/storage';
-import App from '../examples/v2.2.1/views/app'; // import App from './views/app';
+// import App from '../examples/v2.2.1/views/app'; // import App from './views/app';
+import App from './views/app';
+
+if (/^v(\d){1,2}\.(\d){1,2}\.(\d){1,4}$/.test(boz[`VERSION_ENV`])) {
+  window[`url$Raven`] = `http://993be79068aa427295767e9bcda03c1c@sentry.317hu.com/15`;
+  require('@317hu/GlobalRavenCaptureException');
+}
 
 if ('scrollRestoration' in history) {
   // history.scrollRestoration = 'manual';
@@ -47,12 +30,11 @@ class Root extends Component {
         store: configureStore(),
     }
     if (typeof this.state.store !== 'undefined') {
-      const version = process.env.VERSION_ENV || 'dev';
       window.onbeforeunload = () => { // 在刷新界面之前 存储 state ui 模型对象
         const store = this.state.store;
         store.dispatch({
           type: 'APP_VERSION_UPDATE',
-          data: version
+          data: boz[`VERSION_ENV`]
         })
         const state = store.getState();
         saveCache('state', state);

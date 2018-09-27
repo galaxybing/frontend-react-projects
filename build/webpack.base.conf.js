@@ -100,8 +100,8 @@ module.exports = {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
         query: {
-          limit: 10000,
-          name: utils.assetsPath('img/[name].[hash:7].[ext]')
+          // limit: 10000,
+          name: utils.assetsPath('img/[name].[ext]')
         },
         include: [resolve('src'), resolve('examples'), resolve('node_modules/@317hu')],
       },

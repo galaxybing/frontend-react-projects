@@ -1,22 +1,15 @@
 var path = require('path')
-
-var apiConfig = require('../src/store/api.js');
-const versionEnv = process.env.VERSION_ENV || 'dev';
-const runEnv = process.env.RUN_ENV || 'build';
-var assetsPublicPathConfig = apiConfig['assetsPublicPathConfig'];
-if(versionEnv=='dev-local'||versionEnv=='sit-local'){
-//  assetsPublicPathConfig = 'http://historyroute.317hu.com/static/';
-}
-
-if(runEnv=='build'){
+var boz = require('../src/store/api.js');
+var assetsPublicPathConfig = boz['assetsPublicPathConfig'];
+if(boz['RUN_ENV'] === 'build' && assetsPublicPathConfig) {
   console.log('静态资源目录：%s', assetsPublicPathConfig);
 }
 
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, `../dist/index.html`),
-    assetsRoot: path.resolve(__dirname, `../dist/static/`),
+    index: path.resolve(__dirname, '../dist/index.html'),
+    assetsRoot: path.resolve(__dirname, '../dist/static/'),
     assetsSubDirectory: 'assets',// static
     assetsPublicPath: assetsPublicPathConfig, // /static/
     productionSourceMap: false,
@@ -32,5 +25,6 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {},
     cssSourceMap: false
-  }
+  },
+  BOZ: boz,
 }

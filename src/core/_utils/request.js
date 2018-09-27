@@ -1,8 +1,7 @@
 import axios from 'axios';
 import objectAssign from 'object-assign';
 import { clearCacheAll } from './storage';
-const API_CONFIG = require('../../store/api.js');
-
+const boz = require('../config').BOZ;
 /** @发起请求
  * 支持请求方式： GET | POST | PUT | DELETE
  *
@@ -74,7 +73,7 @@ export default function request(query) {
   
   objectAssign(optionConfig, options);
 
-  return axios((api ? API_CONFIG[api] : '') + url, optionConfig)
+  return axios((api ? boz[api] : '') + url, optionConfig)
     // .then((response) => response.data)
     .then((response) => {
       let res = response.data;
@@ -117,7 +116,7 @@ export default function request(query) {
 }
 
 export function checkIn() {
-  window.location.href = API_CONFIG['loginConfig'] ? `${API_CONFIG['loginConfig']}` : 'http://www.317hu.com/';
+  window.location.href = boz['loginConfig'] ? `${boz['loginConfig']}` : 'http://www.317hu.com/';
 }
 
 export var run = request;

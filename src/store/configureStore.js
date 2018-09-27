@@ -5,6 +5,7 @@ import { /* ConnectedRouter,*/ routerMiddleware, /* push, */ } from 'react-route
 import promiseMiddleware from 'redux-promise-middleware';
 import createHistory from 'history/createBrowserHistory';
 
+const boz = require('../../config').BOZ;
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
  
 // 配置自定义的中间件
@@ -37,7 +38,7 @@ const loadInitializingState = () => { // 获取 持久化的数据对象
       return undefined
     } else {
       const state = JSON.parse(serializedState);
-      const version = process.env.VERSION_ENV || 'dev';
+      const version = boz[`VERSION_ENV`]; // process.env.VERSION_ENV || 'dev';
       if (state.config && state.config.version !== version ) {
         return undefined
       } else {
