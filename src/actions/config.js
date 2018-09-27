@@ -1,7 +1,4 @@
-'use strict';
-import type { Action, ThunkAction } from './types';
-const storage = window.localStorage;
-const Parse = require('../store/parse');
+import request from '../core/_utils/request';
 
 export function logout() {
   return {
@@ -9,6 +6,23 @@ export function logout() {
   }
 }
 
-
+export function getAdminInfo() {
+  return (dispatch) => {
+    return request({
+      url: '/nurse-train-web/nursetrain/web/user/getAdminInfo',
+      options: {
+        method: 'POST',
+        data: {}
+      },
+      api: 'nurseTrainApi'
+    }).then((res) => {
+      if (res && res.success) {
+        dispatch({ type: "GET_ADMIN_INFO", data: { profile: res.data } });
+      }
+      return res;
+    })
+    //return null;
+  }
+}
 
 

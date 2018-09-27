@@ -2,16 +2,11 @@ var boz = require('@317hu/BOZ')
 var versionEnv = process.env.RUN_ENV === 'start' ? process.env.VERSION_ENV : boz.env
 var branchEnv = process.argv[2] || 'master'
 boz['RUN_ENV'] = process.env.RUN_ENV || 'build';
-
-if(versionEnv == 'sit'){
-  boz['api'] = require('./api.sit.js');
-}else if(versionEnv == 'uat'){
-  boz['api'] = require('./api.uat.js');
-}else if(/^v(\d){1,2}\.(\d){1,2}\.(\d){1,4}$/.test(versionEnv)){ // versionEnv=='prod'
-  boz['api'] = require('./api.prod.js');
-}else{// 包含 dev-local
-  boz['api'] = require('./api.dev.js');
-}
+boz['api'] = {};
+boz['api']['dev'] = require('./api.dev.js');
+boz['api']['sit'] = require('./api.sit.js');
+boz['api']['uat'] = require('./api.uat.js');
+boz['api']['prod'] = require('./api.prod.js');
 
 var repository = require('../../package.json').name;
 var ver = versionEnv;

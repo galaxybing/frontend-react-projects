@@ -1,10 +1,9 @@
 'use strict';
 
-// const configActions = require('./config');
-import config from './config';
+// import configActions from './config';
 const mainActions = require('./main');
 
 module.exports = {
-  ...config,
-  ...mainActions,
+  // ...configActions,
+  ...mainActions, // 针对 module.exports = {
 };

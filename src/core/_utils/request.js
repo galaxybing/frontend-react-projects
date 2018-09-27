@@ -1,7 +1,7 @@
 import axios from 'axios';
 import objectAssign from 'object-assign';
 import { clearCacheAll } from './storage';
-const boz = require('../config').BOZ;
+const boz = require('../../../config').BOZ;
 /** @发起请求
  * 支持请求方式： GET | POST | PUT | DELETE
  *
@@ -73,7 +73,7 @@ export default function request(query) {
   
   objectAssign(optionConfig, options);
 
-  return axios((api ? boz[api] : '') + url, optionConfig)
+  return axios((api ? boz['api'][`${boz.env}`][api] : '') + url, optionConfig)
     // .then((response) => response.data)
     .then((response) => {
       let res = response.data;
