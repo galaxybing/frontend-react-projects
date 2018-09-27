@@ -7,52 +7,6 @@
 Pub=$1
 echo "----------------------------------"
 
-echo "please select your build env:" 
-select input in dev sit uat prod Exit;  
-do  
-  break  
-done  
-
-sleep 1;
-if [ "$input" = "Exit" ];then
-  exit;
-elif [ "$input" = "prod" ];then
-  echo "You have selected $input"
-  echo "please enter your will build version (eg, v*.*.*):" 
-  read branch_name
-else
-  echo "You have selected $input"
-  echo "please enter your will build branch name:" 
-  read branch_name
-fi
-
-echo "please enter message for commit:" 
-read commit_msg
-
-if [ "$input" = "prod" ];then
-  echo -e "\nYou will publish version: $branch_name , commit message: $commit_msg ?"
-else
-  echo -e "\nYou has branch name: $branch_name , commit message: $commit_msg ?"
-fi
-
-echo "(0) Y"  
-echo "(1) N"
-echo "(2) Exit"
-read comfirm_build
-case $comfirm_build in  
-  0|Y|y)
-  echo "run build at $input..."
-  sleep 1;;
-  1|N|n)
-  echo "it will abort..."
-  sleep 1
-  exit;;
-  *)
-  exit;;
-esac
-
-
-
 # 处理发布目录
 checked_git_dir () {
   local dir=. origin
@@ -63,41 +17,53 @@ checked_git_dir () {
   fi
 }
 
-# 构建源码发布
-if [ "$Pub" = "publish" ];then
-  echo "no build..."
+checked_git_status () {
+  local dir=. msg branch_name commit_msg_status
+  if [ -d "$dir/.git" ]; then
+    msg=$(git status | grep 'Changes not staged for commit' | awk '{print $3}')
+    branch_name=$(git branch -v | grep '*' | awk '{print $2}')
+    # echo -e "$env_name"
+    if [ "$msg" = 'staged' ]; then
+      commit_msg_status="...提交发布服务器，请先暂存本地修改？" # 因为，当前为发布服务器构建；所以需要本地源码必需暂存
+    else
+      # 统一发布
+      git add .
+      git commit -m "$branch_name@$commit_msg@$env_name"
+      git push -f origin "HEAD:pub-$branch_name"
+    fi
+    echo -e "$commit_msg_status"
+  fi
+}
+
+if [ ! "$Pub" = "local" ];then
+  echo -e "please enter your will build env version, \n split with one space (eg, dev sit uat v*.*.*):" 
+  read env_name
+
+  sleep 1
+ 
+  echo "please enter message for commit:" 
+  read commit_msg
+
+  echo -e "\nYou will publish env version: $env_name , commit message: $commit_msg ?"
+
+  echo "(0) Y"
+  echo "(1) N"
+  echo "(2) Exit"
+  read comfirm_build
+  case $comfirm_build in  
+    0|Y|y)
+    echo "run build at $env_name..."
+    sleep 1;;
+    1|N|n)
+    echo "it will abort..."
+    sleep 1
+    exit;;
+    *)
+    exit;;
+  esac
+ 
+  checked_git_status
 else
-  if [ "$input" = "prod" ];then
-    ./node_modules/.bin/cross-env VERSION_ENV="$branch_name" node build/build.js "$branch_name"
-  else
-    ./node_modules/.bin/cross-env VERSION_ENV="$input" node build/build.js "$branch_name"
-  fi
-fi
-
-if [ -d "dist" ];then
-  if [ -d "pub" ];then
-    rm -rf pub/dist
-  else
-    mkdir -m 7777 pub
-  fi
-  cp -a dist pub
-  cd pub
-  
-  checked_git_dir
-
-  # if false;then
-  git add .
-  if [ "$input" = "prod" ];then
-    git commit -m "$branch_name@$commit_msg"
-    git push -f origin "HEAD:$input-$branch_name"
-  else
-    git commit -m "$input@$commit_msg"
-    # git push -f origin "$branch_name:$input-$branch_name"
-    git push -f origin "HEAD:$input-$branch_name"
-  fi
-
-  cd ../
-  echo "...构建完成"
-else
-  echo "...构建目录不存在"
+  ./node_modules/.bin/cross-env VERSION_ENV="$Pub" node build/build.js "$Pub"
+  echo -e "...本地构建成功"
 fi
