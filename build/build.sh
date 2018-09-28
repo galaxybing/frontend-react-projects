@@ -24,12 +24,28 @@ checked_git_status () {
     branch_name=$(git branch -v | grep '*' | awk '{print $2}')
     # echo -e "$env_name"
     if [ "$msg" = 'staged' ]; then
-      commit_msg_status="...提交发布服务器，请先暂存本地修改？" # 因为，当前为发布服务器构建；所以需要本地源码必需暂存
+      commit_msg_status="...请先暂存本地修改？" # 因为，当前为发布服务器构建；所以需要本地源码必需暂存
     else
       # 统一发布
+      if [ -d "tmp" ];then
+        rm -rf tmp
+      fi
+      mkdir -m 7777 tmp
+      git clone ./ ./tmp
+      rm -rf tmp/.git
+      
+      if [ ! -d "pub" ];then
+        mkdir -m 7777 pub
+      fi
+      cd ./pub
+      checked_git_dir
+
+      cp -a ../tmp/* .
+ 
       git add .
       git commit -m "$branch_name@$commit_msg@$env_name"
       git push -f origin "HEAD:pub-$branch_name"
+      commit_msg_status="...构建完成，请查看钉钉消息"
     fi
     echo -e "$commit_msg_status"
   fi
