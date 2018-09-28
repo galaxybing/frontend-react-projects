@@ -41,7 +41,7 @@ checked_git_status () {
       checked_git_dir
 
       cp -a ../tmp/* .
- 
+      rm -rf ../tmp
       git add .
       git commit -m "$branch_name@$commit_msg@$env_name"
       git push -f origin "HEAD:pub-$branch_name"
@@ -80,6 +80,6 @@ if [ ! "$Pub" = "local" ];then
  
   checked_git_status
 else
-  ./node_modules/.bin/cross-env VERSION_ENV="$Pub" node build/build.js "$Pub"
+  ./node_modules/.bin/cross-env VERSION_ENV="$Pub" RUN_ENV="$Pub" node build/build.js "$Pub"
   echo -e "...本地构建成功"
 fi

@@ -7,7 +7,7 @@
     "build": "./build/build.sh",
     "build:dev": "node build/build.js",
     "build:dll": "cross-env VERSION_ENV=dev RUN_ENV=dll node build/dll.js",
-    "build:local": "/bin/bash ./build/build.sh local",
+    "build:local": "./build/build.sh local",
     "test": "jest",
     "lint": "eslint",
     "start": "./build/start.sh",
