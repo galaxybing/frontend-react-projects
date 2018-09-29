@@ -43,13 +43,15 @@ checked_git_status () {
       cp -a ../tmp/* .
       rm -rf ../tmp
       git add .
-      git commit -m "$branch_name@$commit_msg@$env_list"
+      git commit -m "$branch_name@$commit_msg@$env_list@$update_node_modules_status"
       git push -f origin "HEAD:pub-$branch_name"
       commit_msg_status="...构建完成。"
     fi
     echo -e "$commit_msg_status"
   fi
 }
+
+update_node_modules_status=1
 
 if [ ! "$Pub" = "local" ];then
   echo -e "please enter your will build env version, \n split with one space (eg, dev sit uat v*.*.*):" 
@@ -64,6 +66,7 @@ if [ ! "$Pub" = "local" ];then
   case $update_node_modules in  
     0|Y|y)
     update_node_modules_dir=", server npm install "
+    update_node_modules_status=0
     sleep 1;;
     1|N|n)
     sleep 1;;
