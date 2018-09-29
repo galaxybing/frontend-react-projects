@@ -56,11 +56,25 @@ if [ ! "$Pub" = "local" ];then
   read env_list
 
   sleep 1
- 
+  
+  echo "Whether the node_modules dir will updating or not ?" 
+  echo "(0) Y"
+  echo "(1) N"
+  read update_node_modules
+  case $update_node_modules in  
+    0|Y|y)
+    update_node_modules_dir=", server npm install "
+    sleep 1;;
+    1|N|n)
+    sleep 1;;
+    *)
+    exit;;
+  esac
+  
   echo "please enter message for commit:" 
   read commit_msg
 
-  echo -e "\nYou will publish env version: $env_list , commit message: $commit_msg ?"
+  echo -e "\nYou will publish env version: $env_list $update_node_modules_dir, commit message: $commit_msg ?"
 
   echo "(0) Y"
   echo "(1) N"
