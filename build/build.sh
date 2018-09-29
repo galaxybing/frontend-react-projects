@@ -2,7 +2,7 @@
 # build.sh
 #
 # chmod +x  build/*.sh
-# http://resources.317hu.com/frontend-react-projects/v2.0.3/static/assets/css/lib-app.css
+# fe-pub.317hu.com  resources.317hu.com
 # 
 Pub=$1
 echo "----------------------------------"
@@ -22,9 +22,9 @@ checked_git_status () {
   if [ -d "$dir/.git" ]; then
     msg=$(git status | grep 'Changes not staged for commit' | awk '{print $3}')
     branch_name=$(git branch -v | grep '*' | awk '{print $2}')
-    # echo -e "$env_name"
+    # echo -e "$env_list"
     if [ "$msg" = 'staged' ]; then
-      commit_msg_status="...请先暂存本地修改？" # 因为，当前为发布服务器构建；所以需要本地源码必需暂存
+      commit_msg_status="...请暂存本地修改？" # 因为，当前为发布服务器源码构建；所以需要本地源码必需暂存
     else
       # 统一发布
       if [ -d "tmp" ];then
@@ -33,7 +33,7 @@ checked_git_status () {
       mkdir -m 7777 tmp
       git clone ./ ./tmp
       rm -rf tmp/.git
-      
+
       if [ ! -d "pub" ];then
         mkdir -m 7777 pub
       fi
@@ -43,7 +43,7 @@ checked_git_status () {
       cp -a ../tmp/* .
       rm -rf ../tmp
       git add .
-      git commit -m "$branch_name@$commit_msg@$env_name"
+      git commit -m "$branch_name@$commit_msg@$env_list"
       git push -f origin "HEAD:pub-$branch_name"
       commit_msg_status="...构建完成。"
     fi
@@ -53,14 +53,14 @@ checked_git_status () {
 
 if [ ! "$Pub" = "local" ];then
   echo -e "please enter your will build env version, \n split with one space (eg, dev sit uat v*.*.*):" 
-  read env_name
+  read env_list
 
   sleep 1
  
   echo "please enter message for commit:" 
   read commit_msg
 
-  echo -e "\nYou will publish env version: $env_name , commit message: $commit_msg ?"
+  echo -e "\nYou will publish env version: $env_list , commit message: $commit_msg ?"
 
   echo "(0) Y"
   echo "(1) N"
@@ -68,7 +68,7 @@ if [ ! "$Pub" = "local" ];then
   read comfirm_build
   case $comfirm_build in  
     0|Y|y)
-    echo "run build at $env_name..."
+    echo "run build at $env_list..."
     sleep 1;;
     1|N|n)
     echo "it will abort..."

@@ -1,0 +1,19 @@
+
+.timePickerBox {
+  overflow: hidden;
+  border-bottom: 1px solid #e9e9e9;
+}
+.timePickerBox > div {
+  width: 50%;
+  float: left;
+  padding: 5px 14px;
+}
+.renderExtraFooter .timePicker {
+  width: 50%;
+  float: left;
+  padding: 5px 14px;
+}
+.footerBtn {
+  text-align: right;
+  padding: 5px 15px;
+}

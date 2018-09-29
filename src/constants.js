@@ -1,5 +1,3 @@
-const boz = require('../config').BOZ;
-
 // 每页条数
 export const PAGE_SIZE = 10; // 10
 
@@ -45,6 +43,17 @@ export const QUESTION_TYPE = [
 		type: 'fillBlank'
 	}
 ];
+// 数据字典类型
+export const DIC_TYPE = [{
+	key: 1,
+	name: '层级',
+},{
+	key: 2,
+	name: '职称',
+},{
+	key: 3,
+	name: '职务',
+}]
 
 // 附件预览地址
 export const PREVIEWURL = 'http://widget.317hu.com/viewer/index.html';
@@ -55,7 +64,7 @@ export const DEFAULT_SUBJECT_CODE = '32';
 export const DEFAULT_LEVEL_CODE = 'N99';
 
 // 重附一医院ID
-const versionEnv = boz[`VERSION_ENV`];
+const versionEnv = process.env.VERSION_ENV || 'dev';
 let cfyHosId = 376;
 if (versionEnv == 'dev') {
   cfyHosId = 376;
@@ -65,3 +74,21 @@ if (versionEnv == 'dev') {
   cfyHosId = 716;
 }
 export const CHONGFUTI_HOSPITALID = cfyHosId;
+
+//返回数据字典（1-层级;2-职称;3-职务）
+export function getDataByDicName(dic,name){
+	let key = '';
+	for (let j in DIC_TYPE){
+		if (DIC_TYPE[j].name === name){
+			key = DIC_TYPE[j].key;
+			break;
+		}
+	}
+	for (let i in dic){
+		if (dic[i].type == key){
+			return dic[i].list;
+		}
+	}
+}
+
+

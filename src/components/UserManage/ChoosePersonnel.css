@@ -1,0 +1,55 @@
+.choosePersonnelFiltrate {
+  padding-right: 40px;
+  position: relative;
+  margin: 20px 30px 0;
+  height: 30px;
+  overflow: hidden;
+}
+.choosePersonnelFiltrateAuto {
+  height: auto;
+  overflow: hidden;
+}
+.moreSearch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 28px;
+  line-height: 28px;
+  cursor: pointer;
+  color: #1A92FF;
+}
+.filtrateContent > div {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 15px;
+  margin-bottom: 10px;
+}
+.searchInput {
+  /*position: absolute;
+  right: 0;
+  top: 0;*/
+  vertical-align: top
+}
+.selectTitle {
+  margin: 3px 10px 0 0;
+  display: inline-block;
+  vertical-align: top
+}
+.floatright {
+  float: right
+}
+.choosePersonnelTable {
+  padding: 0 30px 30px;
+}
+.page {
+  padding: 12px 0;
+  position: relative;
+}
+.page .pageRight {
+  position: absolute;
+  right: 0;
+  top: 12px;
+}
+.allCheckLink{
+  padding-left: 10px;
+}

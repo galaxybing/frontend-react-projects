@@ -1,0 +1,363 @@
+.normal{
+  background: #fff;
+  margin: 20px 0 0;
+  padding: 0 0 20px;
+}
+.tab:first-child{
+  padding-bottom:10px;
+}
+.commontable {
+  /*margin: 0 20px;
+  border: 1px solid #e5e5e5;*/
+  border-bottom: none;
+}
+
+.options {
+  margin: 20px 20px;
+}
+.options p {
+  margin-bottom: 24px;
+}
+
+.selectSearch {
+  margin: 20px 0px;
+  padding: 20px 20px 0 20px;
+  /*padding-left: 16px;*/
+  border-top: 1px solid #ccc;
+}
+.title{
+  margin-top:10px;
+  padding-right: 10px;
+  font-size:14px;
+  color: #A5A5A5;
+}
+.clearTime {
+  padding-left: 20px;
+  font-size: 14px;
+  color: #333;
+}
+.selectPerson {
+  padding: 10px 20px 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+.selectText {
+  padding-left: 16px;
+  border-left: 3px solid #1A92FF;
+  display: inline-block;
+}
+.filterCheck {
+  float: right;
+  color: #333;
+}
+.optionIcon{
+  font-size:12px;
+  color:#a3a3a3;
+  display: inlinline-block;
+}
+.uploadCourse, .courseBtnSprite{
+  display: inline-block;
+  background: #1A92FF;
+  width:100px;
+  height:32px;
+  line-height:32px;
+  color:#fff;
+  border-radius: 2px;
+  text-align: center;
+  /*font-size: 16px*/
+}
+.uploadCourse:hover, .courseBtnSprite:hover{
+  color:#fff;
+  opacity: 0.8;
+}
+.courseNameWidth {
+  max-width: 220px
+}
+.readySelected {
+  display: inline-block;
+  /*margin-left: 20px;*/
+  padding-top: 16px;
+}
+.readySelected b {
+  padding: 0 4px;
+  font-size: 16px;
+  color: #ffe33a;
+}
+.pageBox {
+  float: right;
+}
+.checkWord {
+  margin: 30px;
+  font-size: 18px;
+  text-align: center;
+}
+.releaseBtn {
+  height: 40px!important;
+  margin: 0 10px;
+  min-width: 160px;
+  /*padding: 6px 15px 7px 15px;*/
+  font-size: 16px;
+}
+
+.trainingsList{
+  text-align: left;
+  border-bottom: 1px solid #eeeeee;
+  padding: 10px 8px;
+  color: #333;
+  margin-bottom: 15px;
+}
+.trainingsTitleSprite{
+  margin-bottom: 10px;
+}
+.trainingsTitle {
+  font-size: 16px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.icoStatus{
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid #00B990;
+  color: #00B990;
+  padding: 2px 6px;
+  margin-right: 15px;
+  font-size: 12px;
+}
+.icoOfflineStatus{
+  display: inline-block;
+  vertical-align: middle;
+  border: 1px solid #ff8c40;
+  color: #ff8c40;
+  padding: 2px 6px;
+  margin-right: 15px;
+  font-size: 12px;
+}
+.trainingsList .icoVideoEdit{
+  font-size: 16px;
+  color: #0088cc;
+  cursor: pointer;
+}
+.trainingsList .icoVideoDisabled{
+  font-size: 16px;
+  color: #b3b3b3;
+  cursor: not-allowed;
+}
+.trainingsList .tagSource{
+  line-height: 140%;
+}
+.trainingsList .tagSource .tag{
+  display: inline-block;
+  white-space: nowrap;
+  overflow: hidden;
+  width: 33%;
+  color: #555555;
+}
+.trainingsList .tagSource .tag .tit, .courseListVideo--tit{
+  color: #555555;
+}
+
+.overlayVideo :global(.ant-tooltip-inner) {
+  background-color: rgba(232, 232, 232, 0.2);
+  color: #333333;
+}
+.overlayVideo :global(.ant-tooltip-arrow){
+  border-top-color: #e8e8e8;
+}
+
+.tab :global(.ant-table-tbody > tr > td){
+  border-bottom: 0;
+}
+.tab :global(.ant-table-tbody > tr> td:hover){
+  background-color: transparent;
+}
+
+.commontable :global(.ant-table-tbody > tr > td){
+  padding: 0;
+}
+.tab :global(div.ant-table .ant-table-tbody > tr:nth-of-type(even)){
+  background-color: transparent;
+  
+}
+.tab :global(div.ant-table .ant-table-tbody > tr:nth-of-type(even)) .trainingsList{
+  background-color: transparent;
+}
+
+.tipsNew{
+  /*position: absolute;
+  top: -5px;*/
+  padding: 0 3px;
+  display: inline-block;
+  height: 15px;
+  line-height: 13px;
+  vertical-align: top;
+  background: #FC5E5E;
+  border-radius: 10px;
+  color: #fff;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 100;
+}
+
+.news{
+  position:relative;
+  margin-right: 20px;
+}
+
+.editInsertQIcon {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.share{
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  text-align: right;
+  border-bottom: 1px solid rgb(217, 217, 217);
+}
+.share a{
+  margin-left: 30px;
+}
+
+
+.trainingsMessageModalTips{
+  color: #b3b3b3;
+}
+.checkMemberSprite{
+  margin-top: 10px;
+}
+.checkMemberSprite .checkMemberTitle{
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+.checkMemberSprite .memberCount{
+  color: #fd8609;
+}
+.checkMemberSprite .memberRemoveAll{
+  display: inline-block;
+  margin-left: 5px;
+}
+.checkMemberSprite .checkMemberMoreBar{
+  cursor: pointer;
+  display: inline-block;
+  padding-right: 15px;
+  position: relative;
+  left: 0;
+  top: 0;
+}
+.checkMemberSprite .checkMemberMoreBar .icoArrowOpen{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -2px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  
+  border-width: 0 5px 5px;
+  border-color: transparent;
+  border-bottom-color: #000;
+}
+.checkMemberSprite .checkMemberMoreBar .icoArrow{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -2px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  
+  border-width: 5px 5px 0;
+  border-color: transparent;
+  border-top-color: #000;
+}
+
+.formItemBlankLabel :global(.ant-form-item-label){
+  opacity: 0;
+}
+
+.memberReleaseStudentList{
+  overflow-y: auto;
+  max-height: 320px;
+  /* height: 96px; */
+  transition: height 1s;
+  -webkit-transition: height 1s;
+  -moz-transition: height 2s;
+  -o-transition: height 2s;
+}
+
+.trainingsManageModalContent :global(.anticon-exclamation-circle){
+  vertical-align: middle;
+  margin-top: -5px;
+  font-size: 18px;
+  color: #FF8C40;
+  cursor: pointer;
+}
+
+
+/* 发布培训 */
+
+.formSet {
+  background: rgba(242,243,246,0.50);
+  /* box-shadow: 0 1px 0 0 #EBECEF; */
+  padding: 0 15px 15px;
+  /* 
+  height: 0px;
+  overflow: hidden;
+  */
+  display: none;
+  
+  transition: height .5s;
+  border-top: 1px solid #EBECEF;
+  margin-bottom: 20px;
+  :global{
+    .ant-form-item{
+      margin-bottom: 15px;
+    }
+  }
+}
+.formSetTitle {
+  height: 50px;
+  line-height: 50px;
+  cursor: pointer;
+}
+.formSetTitle{
+  :global{
+    h2 {
+      display: inline-block;
+      font-size: 16px;
+      font-weight: 500;
+      color: #333333;
+    }
+  }
+}
+.scoreExplain{
+  margin-left:10px;
+  color:#999;
+  font-size:12px;
+  display: inline-block;
+}
+.tipsIcon {
+  font-size: 16px;
+  color: #ffbf00;
+  cursor: pointer;
+}
+.tooltip {
+  :global{
+    h3{
+      margin-bottom: 5px;
+      font-size: 14px;
+      font-weight: 200;
+      color: #FFBD15
+    }
+    p {
+      font-size: 12px;
+    }
+  }
+}
+
+.formDateTimePicker{
+  ::after{
+    display: block;
+    content: '\20';
+    clear: both;
+    zoom: 1;
+  }
+}

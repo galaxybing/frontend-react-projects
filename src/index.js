@@ -1,6 +1,8 @@
-require('string.prototype.startswith');
+// require('string.prototype.startswith');
 require('./assets/css/lib.css');
 require('./assets/css/app.css');
+import 'babel-polyfill';
+const Promise = require('es6-promise').Promise;
 const boz = require('../config').BOZ;
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';

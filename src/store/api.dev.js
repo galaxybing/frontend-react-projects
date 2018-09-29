@@ -12,7 +12,13 @@ module.exports = {
   "privilegeApi": "//privilegesit.317hu.com:8081",
   // 交易中心
   "tradeApi": "//tc.dev.317hu.com",
+  "satisfactionApi": "//survey.dev.317hu.com",
+  "www_satisfactionApi": "//survey.dev.317hu.com",
   // 用户中心
   'userCentralApi': '//usercentral.dev.317hu.com:8081',
   'www_form_urlencoded_userCentralApi': '//usercentral.dev.317hu.com:8081',
+  //增值服务的域名
+  "payServer": "http://course.dev.317hu.com",
+  //宣教
+  "education": 'http://hospital.dev.317hu.com',
 }

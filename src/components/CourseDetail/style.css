@@ -1,0 +1,217 @@
+.courseTypeSprite{
+    position: relative;
+    left: 0;
+    top: 0;
+    padding: 20px 0;
+    .courseTypeName{
+        position: absolute;
+        left: 0px;
+        top: 50%;
+        width: 90px;
+        height: 30px;
+        line-height: 30px;
+        margin-top: -15px;
+        font-size: 14px;
+        color: #00B990;
+        letter-spacing: 0;
+        border: 1px solid #00B990;
+        text-align: center;
+        &.offline {
+            color: #FF8C40;
+            border: 1px solid #FF8C40;
+        }
+    }
+    .name {
+        padding-left: 0;
+        margin-left: 0;
+        border: 0;
+        font-size:16px;
+        color:#333;
+        text-align: center;
+    }
+}
+.coverPicSprite{
+    display: block;
+    padding: 10px 0;
+    text-align: center;
+    overflow: hidden;
+    width: 100%
+}
+.intro{
+    padding: 10px 0;
+}
+.classify{
+    padding: 10px 20px;
+    background-color: #FAFAFA;
+    border-top: 1px solid #eee;
+    font-size:12px;
+    color:#b5b5b5;
+    span {
+        color: #151515;
+        &.line {
+            border-right: 1px solid #b5b5b5;
+            display: inline-block;
+            width: 1px;
+            height: 10px;
+            padding: 0 10px;
+            margin-right: 20px;
+        }
+    }
+}
+
+.courseDetailCont {
+  position: relative;
+  left: 0;
+  top: 0;
+  margin-top: 16px;
+  .title {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      .name {
+          line-height: 24px;
+          padding-left: 17px;
+          font-size: 16px;
+          border-left: 3px solid #1a92ff;
+      }
+      .explain, .summary {
+          display: inline-block;
+          padding-left: 10px;
+          font-size: 14px;
+          b {
+              padding: 0 5px;
+              font-size: 16px;
+          }
+      }
+
+  }
+  .resourceItemSprite{
+      .resourceItemLink{
+          display: block;
+          height: 42px;
+          line-height: 42px;
+          border-bottom: 1px solid #eeeeee;
+      }
+  }
+  .icoTitleBar{
+    position: absolute;
+    left: 0;
+    top: 12px;
+    height: 24px;
+    border-left: 3px solid #1a92ff;
+  }
+  .explainTips{
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    display: inline-block;
+    padding-left: 10px;
+    font-size: 14px;
+    b {
+        padding: 0 5px;
+        font-size: 16px;
+    }
+  }
+  .courseDetailMessageList{
+    border-bottom: 1px solid #ececec;
+    padding-bottom: 10px;
+    .courseDetailMessageListContent{
+      padding: 10px 15px;
+    }
+    .courseDetailMessageListToolBar{
+      padding: 0px 15px 10px;
+      color: #b4b3b3;
+      .linkSprite{
+        text-align: right;
+        color: #0077E3;
+        .message{
+          display: inline-block;
+          cursor: pointer;
+        }
+        .icoDelete{
+          display: inline-block;
+          margin-left: 10px;
+          cursor: pointer;
+        }
+      }
+    }
+    .courseDetailMessageListSubmitBar{
+      background-color: #D0E9FF;
+      padding: 5px 15px;
+      
+      .inputText{
+        display: block;
+      }
+      .btnSprite{
+        text-align: right;
+      }
+    }
+  }
+}
+.examPaper {
+    max-height: 600px;
+    padding: 6px 20px 0;
+    overflow: auto;
+    background: #fafafa;
+}
+.buttonRow {
+    padding: 30px 0;
+    text-align: center;
+    > button {
+        width: 160px;
+        height: 40px;
+    }
+}
+
+.msgItem {
+    text-align: left;
+  }
+  .msgItem div {
+    padding-bottom: 10px;
+  }
+  .msgItem div:first-child p {
+    font-size: 16px;
+    color: #333333;
+    white-space: initial;
+  }
+  .msgItem div:nth-child(2) > span {
+    font-size: 14px;
+    color: #777777;
+    padding-right: 13px;
+  }
+  .msgItem .operationBtn {
+    float: right;
+    position: relative;
+  }
+  .msgItem .operationBtn > span {
+    font-size: 14px;
+    color: #0077E3;
+    padding-left: 26px;
+    cursor: pointer;
+  }
+  .replyTextArea {
+    padding: 10px 0;
+  }
+  .replyTextArea .content {
+    width: 91%;
+  }
+  .replyTextArea .release, .replyTextArea .release:hover {
+    float: right;
+    width: 8%;
+    height: 30px;
+    font-size: 12px;
+    text-align: center;
+    color: #ffffff;
+    background: #1A92FF;
+    border: 1px solid #1A92FF;
+    border-radius: 2px;
+  }
+  .replyContent {
+    padding: 10px 13px;
+    font-size: 14px;
+    color: #333333;
+    background: #F5F5F9;
+    border: 1px solid #E5E5E5;
+  }
+  .replyContent p {
+    white-space: initial;
+  }

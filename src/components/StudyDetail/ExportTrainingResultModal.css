@@ -1,0 +1,51 @@
+.exportExamResultModal {
+    padding: 20px 10px 30px 20px;
+    .filterRow {
+        text-align: center;
+        > button {
+            width: 150px;
+            height: 50px;
+            margin: 0 10px;
+            &.buttonGhost, &.buttonGhost:hover, &.buttonGhost:focus {
+                border: 1px solid #BABFD1;
+                color: #606F9A
+            }
+        }
+    }
+    .customBody {
+        margin-top: 20px;
+        padding: 8px 20px;
+        border: 1px solid #F2F3F6;
+        .exportFieldsRow {
+            > div {
+                margin: 8px 0;
+            }
+        }
+    }
+    .modalButtonRow {
+        margin-top: 20px;
+        text-align: center;
+        > button {
+            width: 100px;
+            height: 34px;
+        }
+    }
+    :global{
+      .boz-ant-col-5 {
+        .ant-checkbox{
+          float: left;
+          margin-top: 3px;
+        }
+        .ant-checkbox + span{
+          display: block;
+          padding-left: 0;
+          margin-left: 22px;
+        }
+      }
+      .boz-ant-col-5:nth-child(5n+1) {
+        display: block;
+        clear: both;
+      }
+        
+    }
+}

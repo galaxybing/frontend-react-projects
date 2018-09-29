@@ -1,0 +1,170 @@
+.insertQVideo {
+  text-align: center
+}
+.insertQVideoCont {
+  width: 615px;
+  height: 330px;
+  position: relative;
+  margin: 0 auto;
+}
+.insertQPlayBg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,.3)
+}
+.insertQPlayIcon {
+  font-size: 40px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-top: -20px;
+  margin-left: -20px;
+  cursor: pointer;
+  color: #51acff;
+  z-index: 10;
+}
+.insertQVideo video {
+  width: 100%;
+  height: 100%;
+  object-fit:fill
+}
+.insertQFooter {
+  height: 65px;
+  background: #FAFAFA;
+  border-top: #EEEEEE;
+  border-radius: 0 0 2px 2px;
+  text-align: center;
+}
+.insertQList {
+  padding: 20px 45px 25px 65px;
+}
+.insertQList > span {
+  display: block;
+  margin-bottom: 15px;
+  color: #A5A5A5;
+}
+.insertQList > ul > li {
+  height: 34px;
+  line-height: 34px;
+  padding: 0 15px;
+  margin-bottom: 6px;
+  background: #FBFBFB;
+}
+.insertQList > ul > li > label {
+  float: left;
+  color: #A5A5A5;
+}
+.insertQList > ul > li > span {
+  margin-left: 10px;
+  display: block;
+  float: left;
+  width: 510px;
+  overflow: hidden;
+  text-overflow:ellipsis;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.insertQList > ul > li > .insertQDel {
+  float: right;
+  margin-top: 10px;
+  color: #ccc;
+  cursor: pointer
+}
+
+.chooseQModalTitle {
+  font-size: 16px;
+  cursor: pointer
+}
+
+.insertQChooseTitle {
+  height: 40px;
+  line-height: 40px;
+  padding: 0 20px;
+  color: #A5A5A5;
+  border-bottom: 1px solid #E5E5E5;
+}
+.insertQChooseList {
+  background: #fff;
+  margin-bottom: 40px;
+  border-bottom: 1px solid #E5E5E5;
+}
+.insertQChooseList > li {
+  padding-left: 30px;
+}
+.insertQChooseList > li:hover {
+  background: #F3F8FC;
+}
+.insertQChooseList > li > div {
+  min-height: 48px;
+  overflow: hidden;
+  border-bottom: 1px solid #E5E5E5;
+}
+.insertQChooseList > li:last-child > div {
+  border-width: 0
+}
+.insertQName {
+  width: 530px;
+  float: left;
+  line-height: 24px;
+  margin-top: 12px;
+  margin-bottom: 10px;
+  word-break: break-all;
+}
+.insertQChooseAction {
+  float: right;
+  margin-right: 20px;
+  margin-top: 9px;
+}
+.insertQChooseAction > span {
+  height: 28px;
+  display: block;
+  line-height: 28px;
+  color: #A5A5A5;
+}
+.transcodingBox {
+  width: 615px;
+  height: 330px;
+  text-align: center;
+  line-height: 330px;
+  background-color: rgba(0, 0, 0, .5);
+  color: #ffffff;
+  margin: 0 auto;
+}
+.insertQStudyTime {
+  padding: 10px 25px;
+  background: #fafafa;
+  border-bottom: 1px solid #F4F4F4;
+}
+
+.aniTransVideoRun{
+  animation:ani-trans-video-run 1s infinite linear;
+  -webkit-animation:ani-trans-video-run 1s infinite linear;
+  transform-origin:50% 50%;
+  -webkit-transform-origin:50% 50%;
+  -moz-transform-origin:50% 50%;
+  -o-transform-origin:50% 50%;
+}
+
+@keyframes ani-trans-video-run{
+  0% {transform:rotate(0deg)}
+  50% {transform:rotate(-180deg);}
+  100% {transform:rotate(-360deg);}
+}
+@-webkit-keyframes ani-trans-video-run{
+  0% {-webkit-transform:rotate(0deg)}
+  50% {-webkit-transform:rotate(-180deg);}
+  100% {-webkit-transform:rotate(-360deg);}
+}
+@-moz-keyframes ani-trans-video-run{
+  0% {-moz-transform:rotate(0deg)}
+  50% {-moz-transform:rotate(-180deg);}
+  100% {-moz-transform:rotate(-360deg);}
+}
+@-o-keyframes ani-trans-video-run{
+  0% {-o-transform:rotate(0deg)}
+  50% {-o-transform:rotate(-180deg);}
+  100% {-o-transform:rotate(-360deg);}
+}

@@ -1,0 +1,215 @@
+
+.normal {
+  background:#fff;
+  margin: 0 30px;
+}
+.tab{
+  padding:20px 30px;
+  border-bottom:1px dashed #cfdaf9;
+}
+.tab:last-child{
+  border-bottom:none;
+}
+.name{
+  font-size:16px;
+  color:#333;
+}
+.nameIcon{
+  color:#2dd37f;
+  margin-right:5px;
+}
+.intro{
+  font-size:14px;
+  color:#333;
+  margin-top: 10px;
+}
+.classify{
+  font-size:12px;
+  color:#b5b5b5;
+  margin-top: 10px;
+}
+.contentTitle{
+  color:#b5b5b5;
+  font-size: 12px;
+}
+.contentTitle{
+  margin-bottom:10px;
+}
+.classify span{
+  color:#151515;
+}
+.classify span.line{
+    border-right: 1px solid #b5b5b5;
+    display: inline-block;
+    width: 1px;
+    height: 10px;
+    padding: 0 10px;
+    margin-right: 20px;
+}
+.question{
+  color:#333;
+  padding-bottom:10px;
+  margin: 10px 0;
+  border-bottom: 1px dashed #bbb;
+  display: flex;
+}
+.question:last-child{
+  border-bottom:none;
+}
+.circle{
+  display: inline-block;
+  width:16px;
+  height:16px;
+  border:1px solid #d8d8d8;
+  border-radius: 100%;
+  margin-right:10px;
+  vertical-align:middle;
+  position: relative;
+}
+.checkbox{
+  display: inline-block;
+  width:16px;
+  height:16px;
+  margin-right:10px;
+  vertical-align:middle;
+  border: 1px solid #CCCCCC;
+}
+.circleChecked{
+  background: #39B1F4;
+  border: 1px solid #39B1F4;
+}
+.inCircle{
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  width:8px;
+  height:8px;
+  border-radius: 100%;
+  text-align:center;
+  background: #fff;
+}
+.checkboxIcon{
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+    vertical-align: middle;
+    color: #39B1F4;
+    font-size: 18px;
+    line-height: 16px;
+}
+.questionItem{
+  margin-left: 65px;
+  line-height:30px;
+}
+.questionRadio,.questionRadio1,.questionRadio2{
+    display: inline-block;
+    width: 52px;
+    height:20px;
+    line-height:20px;
+    text-align: center;
+    border-radius: 2px;
+    background: #2CD47F;
+    color:#fff;
+    font-size: 12px;
+    margin-right:12px;
+}
+.questionRadio1{
+    background: #F6A623;
+}
+.questionRadio2{
+    background: #879cf2;
+}
+
+
+/* 创建试卷 */
+.questionType {
+  display: inline-block;
+  width: 45px;
+  height: 20px;
+  text-align: center;
+  line-height: 20px;
+  font-size: 12px;
+  /* font-weight: 200 */
+}
+.questionType.single {
+  color: #01D87A;
+  background: #D0F7E5;
+}
+.questionType.multiple {
+  color: #FF7F19;
+  background: #FFEECE;
+}
+.questionType.trueFalse {
+  color: #7864FF;
+  background: #EEEDFF;
+}
+.questionType.fillBlank {
+  color: #1E88FF;
+  background: #E5F1FF;
+}
+.createPaperQuestionItem {
+  height: 45px;
+  margin-top: -1px;
+  padding: 0 20px;
+  overflow: hidden;
+  background: rgba(242,243,246,0.50);
+  border: 1px solid #DADADA;
+  transition: height .5s;
+}
+.createPaperQuestionItem.repeatTips {
+  background: #FEFBF2;
+}
+.createPaperQuestionItem .questionItemTitle {
+  min-height: 45px;
+  padding-top: 6px;
+  position: relative;
+  cursor: pointer;
+
+}
+.createPaperQuestionItem .questionItemType {
+  width: 75px;
+  float: left;
+}
+.createPaperQuestionItem .questionItemType > span {
+  margin-left: 10px;
+}
+.createPaperQuestionItem .questionItemName {
+  position: relative;
+  margin-left: 75px;
+  overflow: hidden;
+}
+.questionItemName > div {
+  float: left;
+  width: 95%;
+  word-break: break-all;
+}
+.questionItemTitle .rightAnswers {
+  margin-left: 18px
+}
+.createPaperQuestionItem .questionItem {
+  margin-left: 85px;
+}
+.renderRepeatQList .questionTypeRepeat {
+  width: 45px;
+  margin-right: 5px;
+  float: left;
+}
+.renderRepeatQList li {
+  height: 20px;
+  overflow: hidden;
+  margin: 5px 0;
+  cursor: pointer;
+}
+.renderRepeatQList li .title {
+  display: inline-block;
+  width: 80%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.questionTitle {
+  margin-left: 10px;
+  flex: 1;
+  word-break: break-all;
+}

@@ -1,0 +1,36 @@
+.bread-nav-sprite{
+    display: flex;
+    justify-content:space-between;
+  }
+  .nav-list{
+    display: flex;
+  }
+  .nav{
+    padding-right: 15px;
+    position: relative;
+    left: 0;
+    top: 0;
+    font-size: 14px;
+  }
+  a.link-nav, a.link-nav:visited{
+    font-weight: normal;
+    font-size: 14px;
+    color: #A5A5A5;
+  }
+  .bread-nav-sprite p.nav:after{
+    position: absolute;
+    right: 0;
+    top: 0;
+    content: "\E61F";
+    font-family: 'anticon'!important;
+    font-size: 12px;
+    color: #BABFD1;
+  }
+  .bread-nav-sprite p.nav:last-child a.link-nav{
+    font-weight: normal;
+    color: #333333;
+  }
+  .bread-nav-sprite p.nav:last-child::after{
+      display: none;
+  }
+  

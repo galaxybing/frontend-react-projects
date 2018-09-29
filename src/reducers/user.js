@@ -1,27 +1,26 @@
+'use strict';
 const initialState = {
   data: null,
   isLoading: false
-}
+};
 
-function user (state = initialState, action) { // { type, data }
-  if (action.type === 'USER_LOGGING_IN') {
+function user(state = initialState, action) {
+  if(action.type==='USER_LOGGING_IN'){
     return {
-      ...initialState,
-      isLoading: true
+      ...initialState, isLoading: true
     }
   }
-  if (action.type === 'USER_LOGGED_IN') {
-    const { data } = action;
+  // 
+  if(action.type==='USER_LOGGED_IN'){
+    let data = action.data;
     return {
-      data: data,
-      isLoading: false
+      data: data, isLoading: false
     }
   }
-  if (action.type === 'USER_LOGGED_OUT') {
+  if(action.type==='USER_LOGGED_OUT'){
     return initialState
   }
-
   return state;
 }
 
-module.exports = user
+module.exports = user;

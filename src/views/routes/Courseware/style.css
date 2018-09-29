@@ -1,0 +1,53 @@
+.searchbarRows {
+    padding: 15px 0;
+    &:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+}
+.share{
+    padding:20px 0 10px;
+    text-align: right;
+    border-bottom: 1px solid rgb(217, 217, 217);
+    a{
+        margin-left: 30px;
+    }
+}
+.news{
+    margin-right: 20px;
+    .tipsNew{
+        padding: 0 3px;
+        display: inline-block;
+        height: 15px;
+        line-height: 13px;
+        vertical-align: top;
+        background: #FC5E5E;
+        border-radius: 10px;
+        color: #fff;
+        font-style: normal;
+        font-size: 12px;
+        font-weight: 100;
+    }
+}
+  
+
+.icoVideoEdit{
+    font-size: 16px;
+    color: #0088cc;
+    cursor: pointer;
+}
+.icoVideoDisabled{
+    font-size: 16px;
+    color: #b3b3b3;
+    cursor: not-allowed;
+  }
+.tagSource{
+    line-height: 140%;
+    .tag{
+        display: inline-block;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 33%;
+    }
+}

@@ -3,7 +3,7 @@ var join = path.join;
 var resolve = path.resolve;
 var existsSync = require('fs').existsSync;
 var webpack = require('webpack');
-const eslintFormatter = require('react-dev-utils/eslintFormatter');
+// const eslintFormatter = require('react-dev-utils/eslintFormatter');
 // process.noDeprecation = true;
 // 
 // loaderUtils Warning:
@@ -43,16 +43,12 @@ module.exports = {
     app: './src/index.js',
     // vendor: ['string.prototype.startswith', 'react', 'redux', 'react-redux', 'antd', 'moment' ], // 'lodash' 'moment', 'rc-calendar'  
   },
-  output: process.env.NODE_ENV === 'production' ? {
+  output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    // publicPath: process.env.NODE_ENV === 'production'
-    //   ? config.build.assetsPublicPath
-    //   : config.dev.assetsPublicPath
-  } : {
-    path: config.build.assetsRoot,
-    filename: '[name].js',
-    publicPath: config.dev.assetsPublicPath
+    publicPath: process.env.NODE_ENV === 'production'
+      ? config.build.assetsPublicPath
+      : config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],
