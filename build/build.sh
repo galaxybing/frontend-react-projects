@@ -43,7 +43,7 @@ checked_git_status () {
       cp -a ../tmp/* .
       rm -rf ../tmp
       git add .
-      git commit -m "$branch_name@$commit_msg@$env_list@$update_node_modules_status"
+      git commit -m "$env_list@$commit_msg@$update_node_modules_status"
       git push -f origin "HEAD:pub-$branch_name"
       commit_msg_status="...构建完成。"
     fi
