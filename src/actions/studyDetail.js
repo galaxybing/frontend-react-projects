@@ -3,7 +3,8 @@ import request from '../core/_utils/request';
 import { getCache } from '../core/_utils/storage';
 import { IEVersion } from '../core/_utils/common';
 import serialize from '../core/_utils/serialize';
-import { localApiConfig } from '../store/parse';
+// import { localApiConfig } from '../store/parse';
+const boz = require('../../config').BOZ
 
 const { hospitalId, userId, roleId, depts } = getCache('profile') || {};
 const { fromPage } = getCache('innerFromPage') || {};
@@ -89,7 +90,8 @@ module.exports = {
     },
     // 导出
     exportResult: (query) => {
-        location.href = `${localApiConfig().nurseTrainApi}/nurse-train-web/nursetrain/web/course/read/v2.2.7/exportTrainResult?${serialize(query)}`;
+      location.href = boz['api'][`${boz['env']}`]['nurseTrainApi'] + `/nurse-train-web/nursetrain/web/course/read/v2.2.7/exportTrainResult?${serialize(query)}`;
+        // location.href = `${localApiConfig().nurseTrainApi}/nurse-train-web/nursetrain/web/course/read/v2.2.7/exportTrainResult?${serialize(query)}`;
     },
     // 导出 随堂测验答卷
     exportTestProcessResult: (query) => {
@@ -100,7 +102,6 @@ module.exports = {
             },
             api: 'nurseTrainApi'
         });
-        // location.href = `${localApiConfig().nurseTrainApi}/nurse-train-web/nursetrain/web/paper/read/v2.6.2/downloadPaper?${serialize(query)}`;
     },
     // 获取导出字段记录
     exportFieldRecord: () => {

@@ -4,7 +4,7 @@ const path = require('path')
 var config = require('../config')
 module.exports = {
   entry: {
-    vendors: ['moment', 'echarts'],
+    vendors: ['moment'], // ['moment', 'echarts'],
     vendorsReact: ['rc-calendar', 'react', 'redux', 'react-redux', 'antd'],
     vendorsRaven: ['raven-js', '@317hu/GlobalRavenCaptureException'],
   },
