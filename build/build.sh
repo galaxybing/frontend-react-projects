@@ -45,7 +45,7 @@ checked_git_status () {
       git add .
       git commit -m "$branch_name@$commit_msg@$env_name"
       git push -f origin "HEAD:pub-$branch_name"
-      commit_msg_status="...构建完成，请查看钉钉消息"
+      commit_msg_status="...构建完成。"
     fi
     echo -e "$commit_msg_status"
   fi

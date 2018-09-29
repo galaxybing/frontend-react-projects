@@ -10,7 +10,7 @@ import { saveCache } from './core/_utils/storage';
 // import App from '../examples/v2.2.1/views/app'; // import App from './views/app';
 import App from './views/app';
 
-if (/^v(\d){1,2}\.(\d){1,2}\.(\d){1,4}$/.test(boz[`VERSION_ENV`])) {
+if (boz[`VERSION_ENV`] === 'prod') {
   window[`url$Raven`] = `http://993be79068aa427295767e9bcda03c1c@sentry.317hu.com/15`;
   require('@317hu/GlobalRavenCaptureException');
 }

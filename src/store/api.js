@@ -13,12 +13,17 @@ var ver = versionEnv;
 boz['env'] = versionEnv;
 
 if (boz[`RUN_ENV`] === 'dll' || boz[`RUN_ENV`] === 'local') {
+  // '/nurse-training-course/dist/static/';
   boz['assetsPublicPathConfig'] = '/static/';
   boz['loginConfig'] = '';
 } else { // dev sit uat
   // 环境变量 移除
-  boz['assetsPublicPathConfig'] = '//fe-pub.317hu.com/' + repository + '/' + branchEnv + '/static/';
-  boz['loginConfig'] = '//hospital.' + ver + '.317hu.com/hospital-admin/317hu-login/login.html';
+  
+  // __webpack_public_path__  fe-pub.317hu.com
+  __webpack_public_path__ = '//fe-pub.317hu.com/' + repository + '/' + branchEnv + '/' + versionEnv + '/static/'
+  
+  boz['assetsPublicPathConfig'] = '//fe-pub.317hu.com/' + repository + '/' + branchEnv + '/' + versionEnv + '/static/';
+  boz['loginConfig'] = ver === 'prod' ? '//hospital.317hu.com/hospital-admin/317hu-login/login.html' :  '//hospital.' + ver + '.317hu.com/hospital-admin/317hu-login/login.html';
 }
 
 module.exports = boz;

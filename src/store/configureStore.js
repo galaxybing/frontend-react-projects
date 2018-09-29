@@ -38,7 +38,7 @@ const loadInitializingState = () => { // 获取 持久化的数据对象
       return undefined
     } else {
       const state = JSON.parse(serializedState);
-      const version = boz[`VERSION_ENV`]; // process.env.VERSION_ENV || 'dev';
+      const version = boz[`VERSION_ENV`];
       if (state.config && state.config.version !== version ) {
         return undefined
       } else {

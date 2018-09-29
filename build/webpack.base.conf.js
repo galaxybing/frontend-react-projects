@@ -43,12 +43,16 @@ module.exports = {
     app: './src/index.js',
     // vendor: ['string.prototype.startswith', 'react', 'redux', 'react-redux', 'antd', 'moment' ], // 'lodash' 'moment', 'rc-calendar'  
   },
-  output: {
+  output: process.env.NODE_ENV === 'production' ? {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
-      ? config.build.assetsPublicPath
-      : config.dev.assetsPublicPath
+    // publicPath: process.env.NODE_ENV === 'production'
+    //   ? config.build.assetsPublicPath
+    //   : config.dev.assetsPublicPath
+  } : {
+    path: config.build.assetsRoot,
+    filename: '[name].js',
+    publicPath: config.dev.assetsPublicPath
   },
   resolve: {
     extensions: ['.js', '.vue', '.json'],

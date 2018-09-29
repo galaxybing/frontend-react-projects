@@ -11,7 +11,7 @@
     "test": "jest",
     "lint": "eslint",
     "start": "./build/start.sh",
-    "pub": "/bin/bash ./build/build.sh local",
+    "pub": "./node_modules/.bin/cross-env VERSION_ENV=uat node build/build.js feature-server-publish",
     "watch": ""
   },
   "theme": {
