@@ -53,7 +53,7 @@ const loadInitializingState = () => { // 获取 持久化的数据对象
 function configureStore(onComplete: ?() => void) {
   // 1) createStore 接受第二个参数，表示 State 的最初状态。这通常是服务器给出的。
   // 2) 如果 createStore 方法已经接受整个应用的初始状态（ initializingState ）作为参数，那样的话，applyMiddleware就是第三个参数了。不然就是第二个参数
-  const store = createStore(reducers, loadInitializingState(), composeEnhancers(createWeSiteStore));
+  const store = createStore(reducers, /* loadInitializingState(), */ composeEnhancers(createWeSiteStore));
   return store;
 }
 module.exports = {
