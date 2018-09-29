@@ -41,9 +41,12 @@ function checked_git_status () {
       git add .
       # git commit -m "$env_list@$commit_msg@$update_node_modules_status"
       # git push -f origin "HEAD:pub-$branch_name"
+      echo -e "$update_node_modules_status@$env_list@$commit_msg"
       commit_msg_status="...构建完成。"
     fi
     echo -e "$commit_msg_status"
   fi
 }
 export -f checked_git_status
+
+exec ./build/build.sh

@@ -6,8 +6,6 @@
 # 
 Pub=$1
 echo "----------------------------------"
-# exec ./build/common.sh
-
 update_node_modules_status=1
 
 if [ ! "$Pub" = "local" ];then
