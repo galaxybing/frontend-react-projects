@@ -14,7 +14,6 @@ import { getCache, saveCache } from '../core/_utils/storage';
 import { PREVIEWURL } from '../constants';
 saveCache('previewUrl', PREVIEWURL);
 import { Modal } from 'antd'
-const API_CONFIG = require('../store/api')
 moment.locale('zh-cn');  // 日历组件中文化
 class App extends React.Component {
   constructor(props) {
@@ -104,9 +103,9 @@ class App extends React.Component {
         width={640}
         title="提示"
         maskClosable={false}
-        onCancel={() => { window.location.href = API_CONFIG['education'] + '/hospital-admin/course-center-react/indexPage/index.html' }}
+        onCancel={() => { window.location.href = boz['api'][`${boz['env']}`]['education'] + '/hospital-admin/course-center-react/indexPage/index.html' }}
         footer={<div>
-          <a className="privilegeFoot" onClick={() => { window.location.href = API_CONFIG['payServer'] + '/hospital-admin/course-additional-services/servicesList/list.html' }}>开通</a>
+          <a className="privilegeFoot" onClick={() => { window.location.href = boz['api'][`${boz['env']}`]['payServer'] + '/hospital-admin/course-additional-services/servicesList/list.html' }}>开通</a>
         </div>}
       >
         <div className="privilegeContent">

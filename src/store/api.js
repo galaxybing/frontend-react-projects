@@ -13,7 +13,6 @@ var repository = pkg.name;
 var branchEnv = pkg.branchEnv;
 var ver = versionEnv;
 boz['env'] = versionEnv;
-
 if (boz[`RUN_ENV`] === 'dll' || boz[`RUN_ENV`] === 'local') {
   // '/nurse-training-course/dist/static/';
   boz['assetsPublicPathConfig'] = '/static/';
@@ -24,7 +23,8 @@ if (boz[`RUN_ENV`] === 'dll' || boz[`RUN_ENV`] === 'local') {
   // http://historyroute.sit.317hu.com/hospital-admin/nurse-training-course/trainings-manage.html
   // http://demo.317hu.com/frontend-react-projects/feature-server-publish/static/vendors.dll.js
   //
-  __webpack_public_path__ = '//demo.317hu.com/' + repository + '/' + branchEnv + '/static/'
+  // 本地构建 需要移除掉该动态变量；不然 后续的资源路径，将无未能保持相对路径，而是使用了下面的地址
+  // __webpack_public_path__ = '//demo.317hu.com/' + repository + '/' + branchEnv + '/static/'
   
   boz['assetsPublicPathConfig'] = '//demo.317hu.com/' + repository + '/' + branchEnv + '/static/';
   boz['loginConfig'] = ver === 'prod' ? '//hospital.317hu.com/hospital-admin/317hu-login/login.html' :  '//hospital.' + ver + '.317hu.com/hospital-admin/317hu-login/login.html';
