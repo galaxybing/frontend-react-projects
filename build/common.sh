@@ -2,7 +2,6 @@
 # common.sh
 #
 
-# 处理发布目录
 function checked_git_dir () {
   local dir=. origin
   if [ ! -d "$dir/.git" ]; then
@@ -20,18 +19,18 @@ function checked_git_status () {
     branch_name=$(git branch -v | grep '*' | awk '{print $2}')
     # echo -e "$env_list"
     if [ "$msg" = 'staged' ]; then
-      commit_msg_status="...请暂存本地修改？" # 因为，当前为发布服务器源码构建；所以需要本地源码必需暂存
+      commit_msg_status="...请暂存本地修改？"
     else
       # 统一发布
       if [ -d "tmp" ];then
         rm -rf tmp
       fi
-      mkdir -m 7777 tmp
+      mkdir -m 776 tmp
       git clone ./ ./tmp
       rm -rf tmp/.git
 
       if [ ! -d "pub" ];then
-        mkdir -m 7777 pub
+        mkdir -m 776 pub
       fi
       cd ./pub
       checked_git_dir
@@ -39,10 +38,9 @@ function checked_git_status () {
       cp -a ../tmp/* .
       rm -rf ../tmp
       git add .
-      # git commit -m "$env_list@$commit_msg@$update_node_modules_status"
-      # git push -f origin "HEAD:pub-$branch_name"
-      echo -e "$update_node_modules_status@$env_list@$commit_msg"
-      commit_msg_status="...构建完成。"
+      git commit -m "$update_node_modules_status@$env_list@$commit_msg"
+      git push -f origin "HEAD:pub-$branch_name"
+      commit_msg_status="...构建完成，请查看钉钉消息。"
     fi
     echo -e "$commit_msg_status"
   fi
