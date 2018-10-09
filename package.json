@@ -129,7 +129,6 @@
     "@317hu/editor135qiniu": "^0.0.4",
     "@317hu/rangedatepicker": "^1.0.3"
   },
-  "branchEnv": "feature-nurse-training-course",
   "jest": {
     "haste": {
       "defaultPlatform": "ios",
