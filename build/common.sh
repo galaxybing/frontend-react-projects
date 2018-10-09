@@ -38,7 +38,7 @@ function checked_git_status () {
       cp -a ../tmp/* .
       rm -rf ../tmp
       git add .
-      git commit -m "$update_node_modules_status@$env_list@$commit_msg"
+      git commit -m "$env_list@$commit_msg_action $commit_msg"
       git push -f origin "HEAD:pub-$branch_name"
       commit_msg_status="...构建完成，请查看钉钉消息。"
     fi
