@@ -35,8 +35,17 @@ function checked_git_status () {
       cd ./pub
       checked_git_dir
 
-      cp -a ../tmp/* .
+      cp -a ../tmp/. .
       rm -rf ../tmp
+      cur_dateTime=$(date "+%Y-%m-%d-%H:%M:%s")
+      # echo -n "$cur_dateTime"
+      # touch "pub-*"
+      FILE="pub.json"
+      echo -e "{" > $FILE
+      echo -e "\t\"branchEnv\":\"$branch_name\"," >> $FILE
+      echo -e "\t\"tamp\":\"$cur_dateTime\"" >> $FILE
+      echo -e "}" >> $FILE
+
       git add .
       git commit -m "$env_list@$commit_msg_action $commit_msg"
       git push -f origin "HEAD:pub-$branch_name"
