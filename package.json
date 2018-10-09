@@ -124,7 +124,7 @@
     "@317hu/CascaderTree": "^0.0.7",
     "@317hu/CascaderTrigger": "^0.0.8",
     "@317hu/GlobalRavenCaptureException": "^0.0.2",
-    "@317hu/MainTemplateLayout": "^2.2.2",
+    "@317hu/MainTemplateLayout": "^2.2.5",
     "@317hu/MainTemplateLayout-jssrmyy": "^0.0.4",
     "@317hu/editor135qiniu": "^0.0.4",
     "@317hu/rangedatepicker": "^1.0.3"

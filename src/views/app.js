@@ -78,7 +78,7 @@ class App extends React.Component {
         mainTemplateLayoutProps.skin = 'tree';
         document.getElementById('pageTitle') && (document.getElementById('pageTitle').innerHTML = '重附一管理系统');
         document.getElementById('favorIcon') &&
-          document.getElementById('favorIcon').setAttribute('href', 'http://image.317hu.com/cfyFavor.ico');
+          document.getElementById('favorIcon').setAttribute('href', '//image.317hu.com/cfyFavor.ico');
       }
 
       if (roleId && (roleId === 10000 || (roleId === 10003 && regionIds) || (roleId === 10001 && regionIds) || (roleId === 10004 && regionIds))) {

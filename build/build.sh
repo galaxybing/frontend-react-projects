@@ -8,10 +8,10 @@ Pub=$1
 echo "----------------------------------"
 
 if [ ! "$Pub" = "local" ];then
-  echo -e "please enter your will build env version, \n split with one space (eg, dev sit uat v*.*.*):" 
-  read env_list
-
-  sleep 1
+  # echo -e "please enter your will build env version, \n split with one space (eg, dev sit uat v*.*.*):" 
+  # read env_list
+  # 
+  # sleep 1
   
   echo "please enter action for commit:" 
   read commit_msg_action
@@ -19,7 +19,8 @@ if [ ! "$Pub" = "local" ];then
   echo "please enter message for commit:" 
   read commit_msg
 
-  echo -e "\nYou will publish env version: $env_list, commit message: $commit_msg_action $commit_msg ?"
+  # echo -e "\nYou will publish env version: $env_list, commit message: $commit_msg_action $commit_msg ?"
+  echo -e "\nYou will publish commit message: $commit_msg_action $commit_msg ?"
 
   echo "(0) Y"
   echo "(1) N"
@@ -27,7 +28,8 @@ if [ ! "$Pub" = "local" ];then
   read comfirm_build
   case $comfirm_build in
     0|Y|y)
-    echo "run build at $env_list..."
+    # echo "run build at $env_list..."
+    echo "run build..."
     sleep 1;;
     1|N|n)
     echo "it will abort..."
