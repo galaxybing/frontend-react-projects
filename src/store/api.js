@@ -10,23 +10,32 @@ boz['api']['prod'] = require('./api.prod.js');
 
 var pkg = require('../../package.json');
 var repository = pkg.name;
-var branchEnv = pkg.branchEnv;
+var branchEnv = pkg.branchEnv; // 生产环境下，分支环境名称为 hash
 var ver = versionEnv;
 boz['env'] = versionEnv;
 if (boz[`RUN_ENV`] === 'dll' || boz[`RUN_ENV`] === 'local') {
   // '/nurse-training-course/dist/static/';
   boz['assetsPublicPathConfig'] = '/static/';
   boz['loginConfig'] = '';
-} else if (boz[`RUN_ENV`] === 'build') { // dev sit uat
+} else if (boz[`RUN_ENV`] === 'build') { // dev sit uat??构建运行以后的静态部署文件里面，都是 build 值；
+                                         // 因为 process.env.RUN_ENV 值会不存在
   // 版本变量 -> 从路径里面移除  分支变量？？由开发人员输入时，写入 package.json 属性 
   // __webpack_public_path__  fe-pub.317hu.com
   // http://historyroute.sit.317hu.com/hospital-admin/nurse-training-course/trainings-manage.html
   // http://demo.317hu.com/frontend-react-projects/feature-server-publish/static/vendors.dll.js
-  //
-  // 本地构建 需要移除掉该动态变量；不然 后续的资源路径，将无未能保持相对路径，而是使用了下面的地址
-  // __webpack_public_path__ = '//demo.317hu.com/' + repository + '/' + branchEnv + '/static/'
   
-  boz['assetsPublicPathConfig'] = '//demo.317hu.com/' + repository + '/' + branchEnv + '/static/';
+  // 影响 按需加载的资源路径
+  // 本地构建 需要移除掉该动态变量；不然 后续的资源路径，将不能保持相对路径，而是使用了下面的地址
+  if (ver === 'prod') {
+    __webpack_public_path__ = '//resources.317hu.com/' + repository + '/' + branchEnv + '/static/'
+  } else {
+    __webpack_public_path__ = '//resources-intra.317hu.com/' + repository + '/' + branchEnv + '/static/'
+  }
+
+  //
+  // 影响 index.html 的资源路径生成（prod 环境时，通过 bone 操作实现 index.html 引用路径的更换？？）
+  boz['assetsPublicPathConfig'] = '//resources-intra.317hu.com/' + repository + '/' + branchEnv + '/static/';
+
   boz['loginConfig'] = ver === 'prod' ? '//hospital.317hu.com/hospital-admin/317hu-login/login.html' :  '//hospital.' + ver + '.317hu.com/hospital-admin/317hu-login/login.html';
 }
 
