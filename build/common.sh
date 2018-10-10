@@ -37,7 +37,7 @@ function checked_git_status () {
 
       cp -a ../tmp/. .
       rm -rf ../tmp
-      cur_dateTime=$(date "+%Y-%m-%d-%H:%M:%s")
+      cur_dateTime=$(date "+%Y%m%d%H%M%s")
       # echo -n "$cur_dateTime"
       # touch "pub-*"
       FILE="pub.json"
