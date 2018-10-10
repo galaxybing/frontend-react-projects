@@ -18,7 +18,7 @@ if [ ! "$Pub" = "local" ];then
 
   echo "please enter message for commit:" 
   read commit_msg
-
+  env_list=$(echo $env_list | awk '{for(i=1;i<100;i=i+1){if($i=="dev"||$i=="sit"||$i=="uat") printf $i" "}}')
   echo -e "\nYou will publish env version: $env_list, commit message: $commit_msg_action $commit_msg ?"
   # echo -e "\nYou will publish commit message: $commit_msg_action $commit_msg ?"
 
