@@ -4,13 +4,13 @@
   "main": "index.js",
   "private": true,
   "scripts": {
-    "build": "./build/common.sh",
+    "build": "./node_modules/.bin/cross-env ./build/common.sh",
     "build:dev": "node build/build.js",
     "build:dll": "./node_modules/.bin/cross-env VERSION_ENV=dev RUN_ENV=dll node build/dll.js",
-    "build:local": "./build/build.sh local",
+    "build:local": "./node_modules/.bin/cross-env ./build/build.sh local",
     "test": "jest",
     "lint": "eslint",
-    "start": "./build/start.sh",
+    "start": "./node_modules/.bin/cross-env ./build/start.sh",
     "pub": "./node_modules/.bin/cross-env node build/build.js",
     "watch": ""
   },
