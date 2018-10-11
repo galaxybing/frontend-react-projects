@@ -6,7 +6,7 @@
   "scripts": {
     "build": "./build/common.sh",
     "build:dev": "node build/build.js",
-    "build:dll": "cross-env VERSION_ENV=dev RUN_ENV=dll node build/dll.js",
+    "build:dll": "./node_modules/.bin/cross-env VERSION_ENV=dev RUN_ENV=dll node build/dll.js",
     "build:local": "./build/build.sh local",
     "test": "jest",
     "lint": "eslint",
