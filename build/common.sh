@@ -49,7 +49,7 @@ function checked_git_status () {
       git add .
       git commit -m "$env_list@$commit_msg_action $commit_msg"
       git push -f origin "HEAD:pub-$branch_name"
-      commit_msg_status="...构建完成，请查看钉钉消息。"
+      commit_msg_status="...构建完成，将发送【前端服务组】钉钉消息。"
     fi
     echo -e "$commit_msg_status"
   fi
