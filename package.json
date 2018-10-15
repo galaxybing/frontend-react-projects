@@ -118,7 +118,7 @@
     "webpack-merge": "^4.1.0"
   },
   "@317huDependencies": {
-    "@317hu/BOZ": "^0.0.2",
+    "@317hu/BOZ": "latest",
     "@317hu/CascaderCheckboxSelect": "^3.0.0",
     "@317hu/CascaderSelect": "^0.0.7",
     "@317hu/CascaderTree": "^0.0.7",
