@@ -21,7 +21,7 @@
     "@layout-body-background": "#F4F7FB"
   },
   "dependencies": {
-    "antd": "^2.13.0",
+    "antd": "~3.10.0",
     "axios": "^0.16.2",
     "create-react-class": "^15.5.3",
     "cross-env": "^5.0.5",
@@ -119,15 +119,7 @@
   },
   "@317huDependencies": {
     "@317hu/BOZ": "latest",
-    "@317hu/CascaderCheckboxSelect": "^3.0.0",
-    "@317hu/CascaderSelect": "^0.0.7",
-    "@317hu/CascaderTree": "^0.0.7",
-    "@317hu/CascaderTrigger": "^0.0.8",
-    "@317hu/GlobalRavenCaptureException": "^0.0.2",
-    "@317hu/MainTemplateLayout": "^2.2.5",
-    "@317hu/MainTemplateLayout-jssrmyy": "^0.0.4",
-    "@317hu/editor135qiniu": "^0.0.4",
-    "@317hu/rangedatepicker": "^1.0.3"
+    "@317hu/GlobalRavenCaptureException": "latest"
   },
   "jest": {
     "haste": {

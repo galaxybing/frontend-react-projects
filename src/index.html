@@ -20,49 +20,13 @@
     <%= htmlWebpackPlugin.options.vendorsReact %>
     <script type="text/javascript">
         var timetamp = (new Date()).getTime();
-        window['MAIN_TEMPLATE_LAYOUT'] = {
-            module: 'nurse-training-course',
-            env: 'dev'
-        };
         String.prototype.startsWith = function (str) {
             var reg = new RegExp("^" + str);
             return reg.test(this);
         }
     </script>
   </head>
-  <body class="app-container" data-app-id="git-review-wangyh">
+  <body class="app-container" data-app-id="pub-server">
     <div id="app"></div>
-    <script>
-      var _hmt = _hmt || [];
-      (function () {
-          if (window.location.hostname !== 'nursetrain.317hu.com') { return; }
-          var hm = document.createElement("script"); hm.src = "https://hm.baidu.com/hm.js?5183190bbfcb1f9c769e7997e40ec45d";
-          var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hm, s);
-          console.log('baidu 统计已加载');
-      })();
-    </script>
-    <script>
-      if (typeof Object.assign != 'function') {
-          Object.assign = function (target) {
-              'use strict';
-              if (target == null) {
-                  throw new TypeError('Cannot convert undefined or null to object');
-              }
-
-              target = Object(target);
-              for (var index = 1; index < arguments.length; index++) {
-                  var source = arguments[index];
-                  if (source != null) {
-                      for (var key in source) {
-                          if (Object.prototype.hasOwnProperty.call(source, key)) {
-                              target[key] = source[key];
-                          }
-                      }
-                  }
-              }
-              return target;
-          };
-      }
-    </script>
   </body>
 </html>

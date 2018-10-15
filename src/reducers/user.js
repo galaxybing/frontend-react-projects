@@ -1,26 +1,8 @@
 'use strict';
-const initialState = {
-  data: null,
-  isLoading: false
-};
+const initialState = {};
 
-function user(state = initialState, action) {
-  if(action.type==='USER_LOGGING_IN'){
-    return {
-      ...initialState, isLoading: true
-    }
-  }
-  // 
-  if(action.type==='USER_LOGGED_IN'){
-    let data = action.data;
-    return {
-      data: data, isLoading: false
-    }
-  }
-  if(action.type==='USER_LOGGED_OUT'){
-    return initialState
-  }
-  return state;
+function main(state = initialState, action) {
+    return state;
 }
 
-module.exports = user;
+module.exports = main;
