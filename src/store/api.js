@@ -10,7 +10,11 @@ boz['api']['prod'] = require('./api.prod.js');
 
 var ver = versionEnv;
 boz['env'] = versionEnv;
-if (boz[`RUN_ENV`] === 'dll' || boz[`RUN_ENV`] === 'local') {
+if (boz[`RUN_ENV`] === 'local') { // 部署版 构建本地相对路径使用
+  boz['assetsPublicPathConfig'] = '/nurse-training-course/dist/static/';
+  boz['loginConfig'] = '';
+}
+if (boz[`RUN_ENV`] === 'dll') {
   // '/nurse-training-course/dist/static/';
   boz['assetsPublicPathConfig'] = '/static/';
   boz['loginConfig'] = '';
