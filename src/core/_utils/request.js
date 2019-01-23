@@ -39,7 +39,7 @@ export default function request(query) {
     if (!api || api.split('_')[0] === 'www' || api.split('_')[0] === 'mock') {
       params = typeof body == 'string' ? body : (typeof body == 'undefined' ? '' : Object.keys(body).map(function(k) {
         let val = body[k];
-        if (!val) {
+        if (!val && (typeof val === 'object'|| typeof val === 'undefined')) {
           return encodeURIComponent(k) + '='
         }
         return encodeURIComponent(k) + '=' + encodeURIComponent(typeof val === 'string' ? val : JSON.stringify(val))

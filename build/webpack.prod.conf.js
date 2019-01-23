@@ -65,12 +65,13 @@ var webpackConfig = merge(baseWebpackConfig, {
                   localIdentName: '[name]__[local]___[hash:base64:5]',
                 }
             },{
-              loader: "less-loader"
-            },{
               loader: 'postcss-loader',
               options: {
                 plugins: process.env.NODE_ENV === 'production' ? (loader) => [require('postcss-import')({ root: loader.resourcePath }), require('autoprefixer')(),] : []
               }
+            },
+            {
+            loader: "less-loader"
             }
           ],
           fallback: "style-loader"

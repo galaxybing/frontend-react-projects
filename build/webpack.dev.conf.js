@@ -58,14 +58,14 @@ module.exports = merge(baseWebpackConfig, {
             }
           },
           {
-          loader: "less-loader"
-          },
-          {
             loader: 'postcss-loader',
             options: {
               plugins: process.env.NODE_ENV === 'production' ? (loader) => [require('postcss-import')({ root: loader.resourcePath }), require('autoprefixer')(),] : []
             }
-          }
+          },
+          {
+          loader: "less-loader"
+          },
         ]
       },
       {
