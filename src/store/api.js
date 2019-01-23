@@ -8,10 +8,11 @@ boz['api']['sit'] = require('./api.sit.js');
 boz['api']['uat'] = require('./api.uat.js');
 boz['api']['prod'] = require('./api.prod.js');
 
+var repository = require('../../package.json').name;
 var ver = versionEnv;
 boz['env'] = versionEnv;
 if (boz[`RUN_ENV`] === 'local') { // 部署版 构建本地相对路径使用
-  boz['assetsPublicPathConfig'] = '/nurse-training-course/dist/static/';
+  boz['assetsPublicPathConfig'] = `/${repository}/dist/static/`;
   boz['loginConfig'] = '';
 }
 if (boz[`RUN_ENV`] === 'dll') {
