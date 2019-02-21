@@ -8,7 +8,7 @@ Pub=$1
 echo "----------------------------------"
 
 if [ ! "$Pub" = "local" ];then
-  echo -e "please enter your will build env version, \n split with one space (eg, dev sit uat):" 
+  echo -e "please enter your will build env version, \n split with one space (eg, dev sit uat or deploy):" 
   read env_list
   
   sleep 1
@@ -18,7 +18,7 @@ if [ ! "$Pub" = "local" ];then
 
   echo "please enter message for commit:" 
   read commit_msg
-  env_list=$(echo $env_list | awk '{for(i=1;i<100;i=i+1){if($i=="dev"||$i=="sit"||$i=="uat") printf $i" "}}')
+  env_list=$(echo $env_list | awk '{for(i=1;i<100;i=i+1){if($i=="dev"||$i=="sit"||$i=="uat"||$i=="deploy") printf $i" "}}')
   echo -e "\nYou will publish env version: $env_list, commit message: $commit_msg_action $commit_msg ?"
   # echo -e "\nYou will publish commit message: $commit_msg_action $commit_msg ?"
 
