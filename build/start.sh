@@ -5,21 +5,29 @@
 # http://admin.dev.317hu.com/bz-admin/
 #
 
+Target=$1
 echo "----------------------------------"  
-echo "please select your execute env:" 
-select input in dev  sit uat Exit;  
-do  
-  break  
-done  
 
-echo "You have selected $input"
-sleep 1;
-if [ "$input" = "Exit" ];then
-  exit;
+if [ "$Target" = "deploy" ];then
+  ssh -p 22 fe@172.16.150.169
+  echo "～退出项目化部署环境。"
 else
-  echo "run start at $input..." 
-fi
+  echo "please select your execute env:" 
+  select input in dev  sit uat Exit;  
+  do  
+    break  
+  done  
 
-./node_modules/.bin/cross-env VERSION_ENV="$input" RUN_ENV=start node build/dev-server.js
-# env
-# export VERSION_ENV=dev-local
+  echo "You have selected $input"
+  sleep 1;
+  if [ "$input" = "Exit" ];then
+    exit;
+  else
+    echo "run start at $input..." 
+  fi
+
+  ./node_modules/.bin/cross-env VERSION_ENV="$input" RUN_ENV=start node build/dev-server.js
+  # env
+  # export VERSION_ENV=dev-local
+
+fi
