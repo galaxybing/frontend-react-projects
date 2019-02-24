@@ -11,26 +11,28 @@
 
 ```yaml
 # 浙江省口腔医院-住院医师规培系统
-Host com.zjkq
+Host com-zjkq-master
   HostName 172.16.150.164
   User root
   IdentityFile ~/.ssh/id_rsa
   ForwardAgent yes
 
 # 深圳市儿童医院
-Host com.szkid
+Host com-szkid-master
   HostName 172.16.150.153
   User root
   IdentityFile ~/.ssh/id_rsa
   ForwardAgent yes
+
 ```
 
 4. 连续执行以下命令，到达目标机器；
 
 ```bash
-# ssh com.[目标服务器域名的名称]
-ssh com.zjkq
+# ssh com-[目标服务器域名的名称]
+# 示例，浙江省口腔医院
+ssh com-zjkq-master
 ```
 
-5. 执行部署更新命令： ./deploy.sh com.[目标服务器域名的名称]
+5. 执行部署更新命令： ~/deploy.sh com-[目标服务器域名的名称]
 
