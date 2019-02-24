@@ -12,8 +12,8 @@ import { saveCache } from './core/_utils/storage';
 // import App from '../examples/v2.2.1/views/app'; // import App from './views/app';
 import App from './views/app';
 
-if (boz[`VERSION_ENV`] === 'prod') {
-  window[`url$Raven`] = `http://993be79068aa427295767e9bcda03c1c@sentry.317hu.com/15`;
+if (boz[`env`] === 'prod') {
+  window[`url$Raven`] = `//993be79068aa427295767e9bcda03c1c@sentry.317hu.com/15`;
   require('@317hu/GlobalRavenCaptureException');
 }
 
@@ -36,7 +36,7 @@ class Root extends Component {
         const store = this.state.store;
         store.dispatch({
           type: 'APP_VERSION_UPDATE',
-          data: boz[`VERSION_ENV`]
+          data: boz[`env`]
         })
         const state = store.getState();
         saveCache('state', state);

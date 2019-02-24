@@ -116,7 +116,7 @@ export default function request(query) {
 }
 
 export function checkIn() {
-  window.location.href = boz['loginConfig'] ? `${boz['loginConfig']}` : 'http://www.317hu.com/';
+  window.location.href = boz['loginConfig'] ? `${boz['loginConfig']}` : '//www.317hu.com/';
 }
 
 export var run = request;

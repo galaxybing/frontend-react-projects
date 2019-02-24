@@ -39,7 +39,7 @@ export function customRequest(info) {
         }
         info.onProgress(e);
       };
-      oReq.open('POST', 'http://upload.qiniu.com');
+      oReq.open('POST', '//upload.qiniup.com');
       oReq.onload = function (oEvent) {
         if (oReq.status === 200) {
           info.onSuccess({ response: oReq.response, domain });

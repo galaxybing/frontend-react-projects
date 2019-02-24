@@ -49,19 +49,21 @@ export function IEVersion() {
  * @param number
  */
 export function strOrNumConvert(number) {
-    const zh = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
-    const length = String(number).length;
-    if (length === 1) {
-        return zh[number];
-    } else if (length === 2) {
-        if (number === 10) {
-            return zh[number];
-        } else if (number > 10 && number < 20) {
-            return `十${zh[String(number).charAt(1)]}`;
-        } else {
-            return `${zh[String(number).charAt(0)]}十${zh[String(number).charAt(1)].replace('零', '')}`;
-        }
+  const zh = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
+  const length = String(number).length;
+  if (length === 1) {
+    return zh[number];
+  } else if (length === 2) {
+    if (number === 10) {
+      return zh[number];
+    } else if (number > 10 && number < 20) {
+      return `十${zh[String(number).charAt(1)]}`;
+    } else {
+      return `${zh[String(number).charAt(0)]}十${zh[String(number).charAt(1)].replace('零', '')}`;
     }
+  } else if (number == 100) {
+    return '一百'
+  }
 }
 
 /**
@@ -366,15 +368,25 @@ export function shallowEqualArrays(arrA, arrB) {
  * value list获取 label list
  */
 export function getLabelArraysByValue(arrA, arrB) {
-    let nameArrays = [];
-    for (const a of arrA) {
-        for (const b of arrB) {
-            if (a === b.value) {
-                nameArrays.push(b.label);
-            }
+  let nameArrays = [];
+  for (const a of arrA) {
+    for (const b of arrB) {
+      if (a === b.value) {
+        nameArrays.push(b.label);
+        break;
+      }
+      if (b.children) {
+        for (const c of b.children) {
+          if (a === c.value) {
+            nameArrays.push(c.label);
+            break;
+          }
         }
+      }
     }
     return nameArrays;
+  }
+  return nameArrays;
 }
 
 /**
