@@ -3,36 +3,25 @@
 
 # 前端工作流程化：frontend-react-projects 脚手架开发
 
-## 连接部署服务器脚本添加
+# Changelog
 
-1. 本地 id_rsa.pub 提交到 169 前端服务器账号：~/.ssh/authorized_keys
-2. 脚手架执行： npm run start:deploy
-3. 根据显示出来的 config 列表，确认对应部署项目目标域名的名称：
+### 连接部署服务器
 
-```yaml
-# 浙江省口腔医院-住院医师规培系统
-Host com-zjkq-master
-  HostName 172.16.150.164
-  User root
-  IdentityFile ~/.ssh/id_rsa
-  ForwardAgent yes
-
-# 深圳市儿童医院
-Host com-szkid-master
-  HostName 172.16.150.153
-  User root
-  IdentityFile ~/.ssh/id_rsa
-  ForwardAgent yes
-
-```
-
-4. 连续执行以下命令，到达目标机器；
+- 执行部署更新命令
 
 ```bash
-# ssh com-[目标服务器域名的名称]
-# 示例，浙江省口腔医院
-ssh com-zjkq-master
+npm run start:deploy # 进入 部署服务器，显示医院项目列表：
+
+|- 	 
+|- 	  浙江省口腔医院-住院医师规培系统.sit Host com-zjkq-master.sit HostName 172.16.150.166 
+|- 	  浙江省口腔医院-住院医师规培系统.dev Host com-zjkq-master.dev HostName 172.16.150.164 
+|- 	  深圳市儿童医院 Host com-szkid-master.dev HostName 172.16.150.75
+end!
+
+# 登录 所属项目目标机器，示例，浙江省口腔医院
+ssh com-zjkq-master.dev
+
+# 执行部署操作，即可
+./server-deploy.sh com-zjkq-master
+
 ```
-
-5. 执行部署更新命令： ~/deploy.sh com-[目标服务器域名的名称]
-
