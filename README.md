@@ -25,3 +25,5 @@ ssh com-zjkq-master.dev
 ./server-deploy.sh com-zjkq-master
 
 ```
+
+### 20190413 - 新增 remote远程的publish分支创建配置
