@@ -24,6 +24,8 @@ else
     exit;
   else
     echo "run start at $input..." 
+    #配置origin远程分支的代码审核，命令更新为：按分支名推送
+    git config remote.origin.push refs/heads/*:refs/for/*
   fi
 
   ./node_modules/.bin/cross-env VERSION_ENV="$input" RUN_ENV=start node build/dev-server.js
