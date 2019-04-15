@@ -12,8 +12,14 @@ import { saveCache } from './core/_utils/storage';
 // import App from '../examples/v2.2.1/views/app'; // import App from './views/app';
 import App from './views/app';
 
-if (boz[`env`] === 'prod') {
-  window[`url$Raven`] = `//993be79068aa427295767e9bcda03c1c@sentry.317hu.com/15`;
+// if (boz[`env`] === 'prod') {
+//   window[`url$Raven`] = `//1b90609f7634461d93cb44123172c1cb@sentry.317hu.com/2`;
+//   require('@317hu/GlobalRavenCaptureException');
+// }
+//
+//针对医院部署项目，uat环境，才需要进行sentry监控
+if (boz[`env`] === 'uat') {
+  window[`url$Raven`] = `//1b90609f7634461d93cb44123172c1cb@sentry.317hu.com/2`;
   require('@317hu/GlobalRavenCaptureException');
 }
 

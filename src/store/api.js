@@ -8,6 +8,8 @@ boz['api']['sit'] = require('./api.sit.js');
 boz['api']['uat'] = require('./api.uat.js');
 boz['api']['prod'] = require('./api.prod.js');
 
+// boz['skin'] = 'default' // default | ewell | tree 
+
 var repository = require('../../package.json').name;
 var ver = versionEnv;
 boz['env'] = versionEnv;
