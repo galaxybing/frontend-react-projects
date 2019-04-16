@@ -24,6 +24,10 @@ else
     exit;
   else
     echo "run start at $input..." 
+    
+    chmod +x ./build/*.sh
+    \cp -a ./build/commit-msg.sh .git/hooks/commit-msg
+    
     #配置origin远程分支的代码审核，命令更新为：按分支名推送
     git config remote.origin.push refs/heads/*:refs/for/*
   fi
