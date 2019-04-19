@@ -10,7 +10,7 @@
     "build:local": "./node_modules/.bin/cross-env ./build/build.sh local",
     "test": "jest",
     "lint": "eslint",
-    "start": "./node_modules/.bin/cross-env ./build/start.sh",
+    "start": "chmod +x ./build/*.sh && ./node_modules/.bin/cross-env ./build/start.sh",
     "start:deploy": "./node_modules/.bin/cross-env ./build/start.sh deploy",
     "pub": "./node_modules/.bin/cross-env node build/build.js",
     "watch": ""
