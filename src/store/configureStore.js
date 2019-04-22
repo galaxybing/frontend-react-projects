@@ -3,7 +3,7 @@ import thunkMiddleware from 'redux-thunk';
 // import { createLogger } from 'redux-logger';
 import { /* ConnectedRouter,*/ routerMiddleware, /* push, */ } from 'react-router-redux';
 import promiseMiddleware from 'redux-promise-middleware';
-import createHistory from 'history/createBrowserHistory';
+const createHistory = require('history').createBrowserHistory
 
 const boz = require('../../config').BOZ;
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
